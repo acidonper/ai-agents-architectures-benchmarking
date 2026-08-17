@@ -1,0 +1,13 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gen-ai-aa-mcp-servers
+  namespace: redhat-ods-applications
+data:
+  Atlassian-MCP-Server: |
+    {
+      "url": "http://mcp-atlassian.acidonpe.svc.cluster.local/sse",
+      "transport": "sse",
+      "description": "An MCP server for managing Atlassian Suite"
+    }

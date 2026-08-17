@@ -1,0 +1,6 @@
+# Fill this file before running the RAG benchmark (or pass --prompt).
+# Copy to user.txt and replace placeholders. Lines starting with # are ignored.
+
+According to the knowledge base, <QUESTION>
+
+Answer using retrieved documents only.

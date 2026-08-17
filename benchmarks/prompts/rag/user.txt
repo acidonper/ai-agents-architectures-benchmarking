@@ -1,0 +1,2 @@
+Create a new Jira issue named “AI agents to streamline document retrieval” on project SUP. PLease include in the description of the issue that Asier Cidon is the main developer and Roman Marting is the author.
+The issue description is “We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database”.

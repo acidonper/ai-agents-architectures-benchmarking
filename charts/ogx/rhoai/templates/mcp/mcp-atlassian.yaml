@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mcp-atlassian-env
+  namespace: acidonpe
+type: Opaque
+stringData:
+  JIRA_URL: "https://asiercidon.atlassian.net"
+  JIRA_USERNAME: "asier.cidon@gmail.com"
+  JIRA_API_TOKEN: "<YOUR_JIRA_API_TOKEN>"
+  TOOLSETS: "jira_issues"
+  ALLOW_GLOBAL_CRED_FALLBACK: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-atlassian
+  namespace: acidonpe
+  labels:
+    app: mcp-atlassian
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-atlassian
+  template:
+    metadata:
+      labels:
+        app: mcp-atlassian
+    spec:
+      containers:
+        - name: mcp-atlassian
+          image: ghcr.io/sooperset/mcp-atlassian:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - "--transport"
+            - "sse"
+            - "--port"
+            - "9000"
+            - "-vv"
+          ports:
+            - containerPort: 9000
+              name: http
+          envFrom:
+            - secretRef:
+                name: mcp-atlassian-env
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-atlassian
+  namespace: acidonpe
+spec:
+  type: ClusterIP
+  selector:
+    app: mcp-atlassian
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9000
+      name: http

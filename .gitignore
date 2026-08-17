@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Node
+apps/frontend/node_modules/
+apps/frontend/dist/
+*.log
+.DS_Store
+apps/frontend/.pnp
+apps/frontend/.pnp.js
+
+# Benchmarks
+benchmarks/.venv/
+benchmarks/.cache/
+benchmarks/.phoenix/
+# Local create-issue user prompt (filled per run; keep example checked in)
+benchmarks/prompts/jira_create/user.txt
+
+# Editors
+.idea/
+.vscode/
+
+*.tgz

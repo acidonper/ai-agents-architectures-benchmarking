@@ -1,0 +1,24 @@
+# Quick smoke benchmark against Llama Stack OpenAI-compatible API.
+# Override target/model via CLI or scripts/benchmark_guidellm.sh env vars.
+backend:
+  kind: openai_http
+  target: http://localhost:8321
+  model: vllm-inference-1/llama-32-fp8
+  request_format: /v1/chat/completions
+  stream: true
+  api_routes:
+    /health: v1/health
+data:
+  kind: synthetic_text
+  prompt_tokens: 256
+  output_tokens: 128
+profile:
+  kind: synchronous
+constraint:
+  - kind: max_requests
+    count: 20
+output:
+  - kind: json
+    path: benchmarks/results/quick.json
+  - kind: csv
+    path: benchmarks/results/quick.csv

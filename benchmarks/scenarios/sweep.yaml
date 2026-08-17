@@ -1,0 +1,26 @@
+# Capacity sweep: sync baseline → peak throughput → interpolated rates.
+backend:
+  kind: openai_http
+  target: http://localhost:8321
+  model: vllm-inference-1/llama-32-fp8
+  request_format: /v1/chat/completions
+  stream: true
+  api_routes:
+    /health: v1/health
+data:
+  kind: synthetic_text
+  prompt_tokens: 256
+  output_tokens: 128
+profile:
+  kind: sweep
+  sweep_size: 5
+constraint:
+  - kind: max_duration
+    seconds: 30
+output:
+  - kind: json
+    path: benchmarks/results/sweep.json
+  - kind: csv
+    path: benchmarks/results/sweep.csv
+  - kind: html
+    path: benchmarks/results/sweep.html

@@ -1,0 +1,32 @@
+# GuideLLM scenario: LLM + MCP via Llama Stack Responses API.
+# Requires BENCH_MCP_SERVER_URL (Jira MCP reachable from the Llama Stack host).
+#
+# Override target/model/tools via scripts/benchmark_guidellm.sh mcp-jira
+backend:
+  kind: openai_http
+  target: http://localhost:8321
+  model: vllm-inference-1/llama-32-fp8
+  request_format: /v1/responses
+  stream: false
+  http2: false
+  timeout: 180
+  api_routes:
+    /health: v1/health
+  extras:
+    body:
+      # Do not force exact output length — agentic MCP turns must stop naturally.
+      ignore_eos: false
+      tool_choice: auto
+data:
+  kind: json_file
+  path: benchmarks/datasets/jira_list_sup.jsonl
+profile:
+  kind: synchronous
+constraint:
+  - kind: max_requests
+    count: 5
+output:
+  - kind: json
+    path: benchmarks/results/mcp-jira.json
+  - kind: csv
+    path: benchmarks/results/mcp-jira.csv

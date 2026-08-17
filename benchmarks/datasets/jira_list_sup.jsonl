@@ -1,0 +1,3 @@
+{"prompt": "List Jira issues in project SUP. Summarize key, status, and summary for each issue you find."}
+{"prompt": "Using Jira tools, list open issues in project SUP."}
+{"prompt": "What issues exist in Jira project SUP? Use available MCP tools."}

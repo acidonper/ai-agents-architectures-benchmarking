@@ -1,0 +1,186 @@
+{
+  "created_at": "2026-08-11T12:34:41.356340+00:00",
+  "benchmark_id": "20260811-123439",
+  "scenario": "rag",
+  "target": "llama-stack",
+  "base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "prompt": "According to the knowledge base, how many remote work days are allowed per week?\n\nAnswer using retrieved documents only.",
+  "instructions": "You are a RAG assistant on Llama Stack.\n\nRules:\n- Always use the file_search tool against the configured vector stores.\n- Answer only from retrieved document context. If nothing relevant is found, say so clearly.\n- Prefer concise, factual answers. Quote or paraphrase the source material.\n- Do not invent policies, numbers, or procedures that were not retrieved.",
+  "prompt_files": {
+    "system_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/system.txt",
+    "user_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/user.txt"
+  },
+  "mcp": null,
+  "rag": {
+    "vector_store_ids": [
+      "vs_f0f99ac9-0904-43a5-94e0-6fefd6305bf4"
+    ],
+    "enable_rag": true
+  },
+  "summary": {
+    "requests": 1,
+    "ok": 1,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "total_time_s": {
+      "min": 1.5125594579876633,
+      "max": 1.5125594579876633,
+      "mean": 1.5125594579876633,
+      "median": 1.5125594579876633,
+      "sum": 1.5125594579876633,
+      "p95": 1.5125594579876633
+    },
+    "orchestration_time_s": {
+      "min": 1.5125594579876633,
+      "max": 1.5125594579876633,
+      "mean": 1.5125594579876633,
+      "median": 1.5125594579876633,
+      "sum": 1.5125594579876633,
+      "p95": 1.5125594579876633
+    },
+    "latency_s": {
+      "min": 1.5125594579876633,
+      "max": 1.5125594579876633,
+      "mean": 1.5125594579876633,
+      "median": 1.5125594579876633,
+      "sum": 1.5125594579876633,
+      "p95": 1.5125594579876633
+    },
+    "ttft_s": {
+      "min": 1.251340207993053,
+      "max": 1.251340207993053,
+      "mean": 1.251340207993053,
+      "median": 1.251340207993053,
+      "sum": 1.251340207993053,
+      "p95": 1.251340207993053
+    },
+    "itl_s": {
+      "min": 0.004343853483442217,
+      "max": 0.004343853483442217,
+      "mean": 0.004343853483442217,
+      "median": 0.004343853483442217,
+      "sum": 0.004343853483442217,
+      "p95": 0.004343853483442217
+    },
+    "rag_time_s": {
+      "min": 0.49557054199976847,
+      "max": 0.49557054199976847,
+      "mean": 0.49557054199976847,
+      "median": 0.49557054199976847,
+      "sum": 0.49557054199976847,
+      "p95": 0.49557054199976847
+    },
+    "time_to_rag_s": {
+      "min": 0.7556393749982817,
+      "max": 0.7556393749982817,
+      "mean": 0.7556393749982817,
+      "median": 0.7556393749982817,
+      "sum": 0.7556393749982817,
+      "p95": 0.7556393749982817
+    },
+    "rag_calls_total": 1,
+    "input_tokens": {
+      "min": 945.0,
+      "max": 945.0,
+      "mean": 945.0,
+      "median": 945.0,
+      "sum": 945.0,
+      "p95": 945.0
+    },
+    "output_tokens": {
+      "min": 61.0,
+      "max": 61.0,
+      "mean": 61.0,
+      "median": 61.0,
+      "sum": 61.0,
+      "p95": 61.0
+    },
+    "total_tokens": {
+      "min": 1006.0,
+      "max": 1006.0,
+      "mean": 1006.0,
+      "median": 1006.0,
+      "sum": 1006.0,
+      "p95": 1006.0
+    },
+    "tokens_per_second": {
+      "min": 234.04718196457802,
+      "max": 234.04718196457802,
+      "mean": 234.04718196457802,
+      "median": 234.04718196457802,
+      "sum": 234.04718196457802,
+      "p95": 234.04718196457802
+    },
+    "streamed_requests": 1,
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": true,
+        "total_time_s": 1.5126,
+        "orchestration_time_s": 1.5126,
+        "ttft_s": 1.2513,
+        "itl_s": 0.004344,
+        "rag_time_s": 0.4956,
+        "time_to_rag_s": 0.7556,
+        "rag_calls": 1,
+        "input_tokens": 945,
+        "output_tokens": 61,
+        "output_tokens_estimated": null,
+        "total_tokens": 1006,
+        "tokens_per_second": 234.0472,
+        "streamed": true,
+        "stream_delta_count": 38,
+        "mcp_calls": 0,
+        "tool_events": [
+          "file_search_call",
+          "response.function_call_arguments.delta",
+          "response.function_call_arguments.done"
+        ]
+      }
+    ],
+    "suite_wall_time_s": 1.7969
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 1.5125594579876633,
+      "status_code": 200,
+      "response_id": "resp_d081c9d1-f0ee-476b-8e2a-d34b0660e2a2",
+      "output_text": "This is a fact. Remote work is allowed 3 days per week.",
+      "tool_events": [
+        "file_search_call",
+        "response.function_call_arguments.delta",
+        "response.function_call_arguments.done"
+      ],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": null,
+      "trajectory": "1. file_search_call name=None args=None",
+      "trial_id": 0,
+      "mcp_tool_responses": [],
+      "jira_issues": [],
+      "streamed": true,
+      "ttft_s": 1.2513,
+      "itl_s": 0.004344,
+      "itl_s_median": 1.3e-05,
+      "itl_s_p95": 0.026049,
+      "input_tokens": 945,
+      "output_tokens": 61,
+      "total_tokens": 1006,
+      "output_tokens_estimated": null,
+      "stream_delta_count": 38,
+      "tokens_per_second": 234.0472,
+      "rag_calls": 1,
+      "rag_time_s": 0.4956,
+      "time_to_rag_s": 0.7556,
+      "rag_search_spans_s": [
+        0.495571
+      ],
+      "total_time_s": 1.5126,
+      "orchestration_time_s": 1.5126
+    }
+  ],
+  "rag_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-rag-20260811-123439-rag-responses.json"
+}

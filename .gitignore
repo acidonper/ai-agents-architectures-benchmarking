@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 venv/
 .env
+.env.bedrock
 *.egg-info/
 .pytest_cache/
 .mypy_cache/
@@ -31,3 +32,5 @@ benchmarks/prompts/jira_create/user.txt
 
 aws/mcp-atlassian
 aws/mcpatlassianagentcore
+
+test

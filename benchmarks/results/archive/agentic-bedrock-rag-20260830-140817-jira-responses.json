@@ -1,0 +1,47 @@
+{
+  "created_at": "2026-08-30T14:08:31.480001+00:00",
+  "benchmark_id": "20260830-140817",
+  "prompt": "Create a new Jira issue named “AI agents to streamline document retrieval” on project SUP. PLease include in the description of the issue that Asier Cidon is the main developer and Roman Marting is the author.\nThe issue description is “We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database”.",
+  "model": "eu.amazon.nova-2-lite-v1:0",
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "https://bedrock-agentcore.eu-north-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aeu-north-1%3A282516655659%3Aruntime%2Fmcp_atlassian_runtime-6xnN9g5ani/invocations?qualifier=DEFAULT",
+    "allowed_tools": null
+  },
+  "requests": [
+    {
+      "trial_id": 0,
+      "ok": true,
+      "total_time_s": 7.7805,
+      "ttft_s": 4.2222,
+      "itl_s": null,
+      "input_tokens": 10236,
+      "output_tokens": 274,
+      "output_tokens_estimated": null,
+      "total_tokens": 10510,
+      "tokens_per_second": 77.0045,
+      "streamed": false,
+      "response_id": null,
+      "assistant_summary": "Perfect! I've successfully created a new Jira issue for you. Here are the details:\n\n**Issue Created:**\n- **Key:** SUP-66\n- **Summary:** AI agents to streamline document retrieval\n- **Description:** We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\n- **Project:** SUP (Support)\n- **Issue Type:** Task\n- **Status:** Open (To Do)\n- **Priority:** Medium\n- **Reporter:** Asier Cidon\n\nThe issue has been successfully created and is now in the \"Open\" status, ready for development. You can view the issue at: https://asiercidon.atlassian.net/rest/api/2/issue/10343",
+      "jira_issues": [],
+      "mcp_tool_responses": [
+        {
+          "type": "mcp_call",
+          "id": "tooluse_fmreJ9gzvyq5A5koW4H7zy",
+          "name": "jira_create_issue",
+          "server_label": "jira",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "issue_type": "Task",
+            "summary": "AI agents to streamline document retrieval",
+            "description": "We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author."
+          },
+          "output": "{\n  \"message\": \"Issue created successfully\",\n  \"issue\": {\n    \"id\": \"10343\",\n    \"key\": \"SUP-66\",\n    \"summary\": \"AI agents to streamline document retrieval\",\n    \"url\": \"https://asiercidon.atlassian.net/rest/api/2/issue/10343\",\n    \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\",\n    \"status\": {\n      \"name\": \"Open\",\n      \"category\": \"To Do\",\n      \"color\": \"blue-gray\"\n    },\n    \"issue_type\": {\n      \"name\": \"Task\"\n    },\n    \"priority\": {\n      \"name\": \"Medium\"\n    },\n    \"project\": {\n      \"key\": \"SUP\",\n      \"name\": \"Support\",\n      \"avatar_url\": \"https://asiercidon.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10406\"\n    },\n    \"worklog\": {\n      \"startAt\": 0,\n      \"maxResults\": 20,\n      \"total\": 0,\n      \"worklogs\": []\n    },\n    \"assignee\": {\n      \"display_name\": \"Unassigned\"\n    },\n    \"reporter\": {\n      \"account_id\": \"6272760376b8d30068735324\",\n      \"display_name\": \"Asier Cidon\",\n      \"name\": \"Asier Cidon\",\n      \"email\": \"asier.cidon@gmail.com\",\n      \"avatar_url\": \"https://secure.gravatar.com/avatar/adc1ec088f2948ce641d15abdd9e6ac3?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAC-1.png\"\n    },\n    \"created\": \"2026-08-30 14:08:29 UTC\",\n    \"updated\": \"2026-08-30 14:08:29 UTC\"\n  }\n}"
+        }
+      ],
+      "trajectory": "1. mcp_call name=jira_create_issue status=ok args={\"project_key\": \"SUP\", \"issue_type\": \"Task\", \"summary\": \"AI agents to streamline document retrieval\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\"}"
+    }
+  ]
+}

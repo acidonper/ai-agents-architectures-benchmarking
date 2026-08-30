@@ -1,0 +1,45 @@
+{
+  "created_at": "2026-08-11T13:29:38.299703+00:00",
+  "benchmark_id": "20260811-132928",
+  "prompt": "According to the company procedures in the knowledge base, create a new Jira issue in project SUP.\n\nSummary subject: AI agents to streamline document retrieval\nMain developer: Asier Cidon\nAssignee / author note: Roman Martin\nDescription: We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.\n\nSteps:\n1. Use file_search to retrieve the New Jira Issue Creation procedure.\n2. Create the issue with jira MCP tools following that procedure.\n3. Report the created issue key from the tool response.",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "rag": {
+    "vector_store_ids": [
+      "vs_f0f99ac9-0904-43a5-94e0-6fefd6305bf4"
+    ],
+    "enable_rag": true
+  },
+  "requests": [
+    {
+      "trial_id": 0,
+      "ok": true,
+      "total_time_s": 4.5058,
+      "ttft_s": 2.8706,
+      "rag_time_s": 2.2626,
+      "time_to_rag_s": 0.0,
+      "rag_calls": 1,
+      "rag_search_spans_s": [],
+      "mcp_time_s": 0.608,
+      "time_to_mcp_s": 2.2626,
+      "mcp_calls": 1,
+      "mcp_call_spans_s": [
+        0.608027
+      ],
+      "itl_s": 0.007442,
+      "input_tokens": 9369,
+      "output_tokens": 202,
+      "total_tokens": 9571,
+      "tokens_per_second": 135.0324,
+      "streamed": true,
+      "response_id": "resp_9e0d67c8-6cfe-4d24-8695-3a02e49c0e9d",
+      "assistant_summary": "I was unable to create the issue due to an error in the additional_fields parameter. I will try again with a new description that follows the format of the other fields.\n\n{\"name\": \"jira_create_issue\", \"parameters\": {\"project_key\": \"SUP\", \"summary\": \"AI agents to streamline document retrieval\", \"issue_type\": \"Task\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.\", \"assignee\": \"Roman Martin\", \"components\": \"\", \"additional_fields\": \"{}\"}}",
+      "tool_events": [
+        "file_search_call",
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_create_issue status=error args={\"project_key\": \"SUP\", \"summary\": \"AI agents to streamline document retrieval\", \"issue_type\": \"Task\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.\", \"assignee\": \"Roman Martin\", \"components\": \"\", \"additional_fields\": \"{\"}"
+    }
+  ]
+}

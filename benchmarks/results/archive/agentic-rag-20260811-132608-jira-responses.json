@@ -1,0 +1,49 @@
+{
+  "created_at": "2026-08-11T13:26:13.270716+00:00",
+  "benchmark_id": "20260811-132608",
+  "prompt": "According to the company procedures in the knowledge base, create a new Jira issue in project SUP.\n\nSummary subject: AI agents to streamline document retrieval\nMain developer: Asier Cidon\nAssignee / author note: Roman Martin\nDescription: We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.\n\nSteps:\n1. Use file_search to retrieve the New Jira Issue Creation procedure.\n2. Create the issue with jira MCP tools following that procedure.\n3. Report the created issue key from the tool response.",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "requests": [
+    {
+      "trial_id": 0,
+      "ok": true,
+      "total_time_s": 4.0985,
+      "ttft_s": 2.2241,
+      "itl_s": 0.007695,
+      "input_tokens": 9384,
+      "output_tokens": 236,
+      "output_tokens_estimated": null,
+      "total_tokens": 9620,
+      "tokens_per_second": 130.5069,
+      "streamed": true,
+      "response_id": "resp_bbc51c80-3b13-401b-905b-dbc74495b14b",
+      "assistant_summary": "Based on the error message, it seems that the `additional_fields` parameter in the `jira_create_issue` function is not a valid argument. The `additional_fields` parameter should be a dictionary or a JSON string, but in this case, it's an empty string.\n\nTo fix this issue, you can remove the `additional_fields` parameter from the dictionary. Here is the corrected code:\n\n{\"name\": \"jira_create_issue\", \"parameters\": {\"project_key\": \"SUP\", \"summary\": \"AI agents to streamline document retrieval\", \"issue_type\": \"Task\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.\", \"components\": \"\", \"attachments\": \"\"}}",
+      "jira_issues": [],
+      "mcp_tool_responses": [
+        {
+          "id": "fc_cb29fe29-5494-4985-9993-a34e2c1fe4d4",
+          "name": "jira_create_issue",
+          "server_label": "jira",
+          "status": "error",
+          "error": "Error (code 1): None",
+          "arguments": {
+            "project_key": "SUP",
+            "summary": "AI agents to streamline document retrieval",
+            "issue_type": "Task",
+            "description": "We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.",
+            "additional_fields": "{",
+            "components": "",
+            "attachments": ""
+          },
+          "output": null
+        }
+      ],
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_create_issue status=error args={\"project_key\": \"SUP\", \"summary\": \"AI agents to streamline document retrieval\", \"issue_type\": \"Task\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.\", \"additional_fields\": \"{\", \"components\": \"\", \"attachments\": \"\"}"
+    }
+  ]
+}

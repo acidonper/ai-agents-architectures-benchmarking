@@ -1,0 +1,223 @@
+{
+  "created_at": "2026-08-30T13:58:37.904108+00:00",
+  "benchmark_id": "20260830-135830",
+  "scenario": "list",
+  "target": "bedrock-runtime",
+  "base_url": "arn:aws:bedrock-agentcore:eu-north-1:282516655659:runtime/mcp_atlassian_runtime-6xnN9g5ani",
+  "model": "eu.amazon.nova-2-lite-v1:0",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "instructions": "You are a Jira assistant. Always use MCP tools. For project listings, call jira_search (JQL like project = SUP) or jira_get_project_issues. Never invent issue keys. Summarize only issues returned by tools (key, status, summary).",
+  "prompt_files": {},
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "https://bedrock-agentcore.eu-north-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aeu-north-1%3A282516655659%3Aruntime%2Fmcp_atlassian_runtime-6xnN9g5ani/invocations?qualifier=DEFAULT",
+    "allowed_tools": null
+  },
+  "rag": null,
+  "summary": {
+    "requests": 1,
+    "ok": 1,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "total_time_s": {
+      "min": 6.867029125103727,
+      "max": 6.867029125103727,
+      "mean": 6.867029125103727,
+      "median": 6.867029125103727,
+      "sum": 6.867029125103727,
+      "p95": 6.867029125103727
+    },
+    "orchestration_time_s": {
+      "min": 6.867029125103727,
+      "max": 6.867029125103727,
+      "mean": 6.867029125103727,
+      "median": 6.867029125103727,
+      "sum": 6.867029125103727,
+      "p95": 6.867029125103727
+    },
+    "latency_s": {
+      "min": 6.867029125103727,
+      "max": 6.867029125103727,
+      "mean": 6.867029125103727,
+      "median": 6.867029125103727,
+      "sum": 6.867029125103727,
+      "p95": 6.867029125103727
+    },
+    "ttft_s": {
+      "min": 4.145267709158361,
+      "max": 4.145267709158361,
+      "mean": 4.145267709158361,
+      "median": 4.145267709158361,
+      "sum": 4.145267709158361,
+      "p95": 4.145267709158361
+    },
+    "itl_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "rag_time_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "time_to_rag_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "rag_calls_total": 0,
+    "mcp_time_s": {
+      "min": 1.2882355418987572,
+      "max": 1.2882355418987572,
+      "mean": 1.2882355418987572,
+      "median": 1.2882355418987572,
+      "sum": 1.2882355418987572,
+      "p95": 1.2882355418987572
+    },
+    "time_to_mcp_s": {
+      "min": 4.145295750116929,
+      "max": 4.145295750116929,
+      "mean": 4.145295750116929,
+      "median": 4.145295750116929,
+      "sum": 4.145295750116929,
+      "p95": 4.145295750116929
+    },
+    "mcp_calls_total": 1,
+    "input_tokens": {
+      "min": 11616.0,
+      "max": 11616.0,
+      "mean": 11616.0,
+      "median": 11616.0,
+      "sum": 11616.0,
+      "p95": 11616.0
+    },
+    "output_tokens": {
+      "min": 252.0,
+      "max": 252.0,
+      "mean": 252.0,
+      "median": 252.0,
+      "sum": 252.0,
+      "p95": 252.0
+    },
+    "total_tokens": {
+      "min": 11868.0,
+      "max": 11868.0,
+      "mean": 11868.0,
+      "median": 11868.0,
+      "sum": 11868.0,
+      "p95": 11868.0
+    },
+    "tokens_per_second": {
+      "min": 92.58824942330065,
+      "max": 92.58824942330065,
+      "mean": 92.58824942330065,
+      "median": 92.58824942330065,
+      "sum": 92.58824942330065,
+      "p95": 92.58824942330065
+    },
+    "streamed_requests": 0,
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": true,
+        "total_time_s": 6.867,
+        "orchestration_time_s": 6.867,
+        "ttft_s": 4.1453,
+        "itl_s": null,
+        "rag_time_s": null,
+        "time_to_rag_s": null,
+        "rag_calls": 0,
+        "mcp_time_s": 1.2882,
+        "time_to_mcp_s": 4.1453,
+        "input_tokens": 11616,
+        "output_tokens": 252,
+        "output_tokens_estimated": null,
+        "total_tokens": 11868,
+        "tokens_per_second": 92.5882,
+        "streamed": false,
+        "stream_delta_count": 2,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      }
+    ],
+    "suite_wall_time_s": 7.7667
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 6.867029125103727,
+      "status_code": 200,
+      "response_id": null,
+      "output_text": "Here are the Jira issues in project SUP:\n\n- **SUP-64**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-63**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-62**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-61**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-60**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-59**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-58**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-57**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-56**: Status - Open, Summary - AI agents to streamline document retrieval\n- **SUP-55**: Status - Open, Summary - AI agents to streamline document retrieval\n\nAll issues are currently in the Open status and appear to be related to implementing AI agents for document retrieval.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}",
+      "trial_id": 0,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP"
+          },
+          "output_preview": "{\n  \"total\": -1,\n  \"start_at\": 0,\n  \"max_results\": 10,\n  \"issues\": [\n    {\n      \"id\": \"10309\",\n      \"key\": \"SUP-64\",\n      \"summary\": \"AI agents to streamline document retrieval\",\n      \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-64\",\n      \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database.\",\n      \"status\": {\n        \"name\": \"Open\",\n        \"cat\u2026"
+        }
+      ],
+      "jira_issues": [],
+      "streamed": false,
+      "ttft_s": 4.1453,
+      "itl_s": null,
+      "itl_s_median": null,
+      "itl_s_p95": null,
+      "input_tokens": 11616,
+      "output_tokens": 252,
+      "total_tokens": 11868,
+      "output_tokens_estimated": null,
+      "stream_delta_count": 2,
+      "tokens_per_second": 92.5882,
+      "rag_calls": 0,
+      "rag_time_s": null,
+      "time_to_rag_s": null,
+      "rag_search_spans_s": [],
+      "mcp_time_s": 1.2882,
+      "time_to_mcp_s": 4.1453,
+      "mcp_call_spans_s": [
+        1.2882355418987572
+      ],
+      "total_time_s": 6.867,
+      "orchestration_time_s": 6.867
+    }
+  ],
+  "bedrock": {
+    "gateway_url": null,
+    "inference_url": null,
+    "runtime_arn": "arn:aws:bedrock-agentcore:eu-north-1:282516655659:runtime/mcp_atlassian_runtime-6xnN9g5ani",
+    "runtime_mcp_url": "https://bedrock-agentcore.eu-north-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aeu-north-1%3A282516655659%3Aruntime%2Fmcp_atlassian_runtime-6xnN9g5ani/invocations?qualifier=DEFAULT",
+    "runtime_qualifier": "DEFAULT",
+    "region": "eu-north-1",
+    "auth_mode": "cognito",
+    "knowledge_base_id": "7PTWKIDPIA",
+    "kb_embedding_model": "amazon.titan-embed-text-v2:0"
+  },
+  "jira_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-bedrock-jira-20260830-135830-jira-responses.json"
+}

@@ -1,0 +1,895 @@
+{
+  "created_at": "2026-08-07T11:16:49.535337+00:00",
+  "benchmark_id": "20260807-111528",
+  "target": "llama-stack",
+  "base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "jira_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-jira-20260807-111528-jira-responses.json",
+  "summary": {
+    "requests": 10,
+    "ok": 10,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "total_time_s": {
+      "min": 5.3296441250131465,
+      "max": 9.35196837503463,
+      "mean": 7.599268333206419,
+      "median": 7.644146458507748,
+      "sum": 75.99268333206419,
+      "p95": 9.554056381160626
+    },
+    "orchestration_time_s": {
+      "min": 5.3296441250131465,
+      "max": 9.35196837503463,
+      "mean": 7.599268333206419,
+      "median": 7.644146458507748,
+      "sum": 75.99268333206419,
+      "p95": 9.554056381160626
+    },
+    "latency_s": {
+      "min": 5.3296441250131465,
+      "max": 9.35196837503463,
+      "mean": 7.599268333206419,
+      "median": 7.644146458507748,
+      "sum": 75.99268333206419,
+      "p95": 9.554056381160626
+    },
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": true,
+        "total_time_s": 7.5157,
+        "orchestration_time_s": 7.5157,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 1,
+        "ok": true,
+        "total_time_s": 7.973,
+        "orchestration_time_s": 7.973,
+        "mcp_calls": 2,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 2,
+        "ok": true,
+        "total_time_s": 7.4781,
+        "orchestration_time_s": 7.4781,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 3,
+        "ok": true,
+        "total_time_s": 8.9029,
+        "orchestration_time_s": 8.9029,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 4,
+        "ok": true,
+        "total_time_s": 7.7726,
+        "orchestration_time_s": 7.7726,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 5,
+        "ok": true,
+        "total_time_s": 5.3296,
+        "orchestration_time_s": 5.3296,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 6,
+        "ok": true,
+        "total_time_s": 6.1382,
+        "orchestration_time_s": 6.1382,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 7,
+        "ok": true,
+        "total_time_s": 8.1467,
+        "orchestration_time_s": 8.1467,
+        "mcp_calls": 2,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 8,
+        "ok": true,
+        "total_time_s": 7.3839,
+        "orchestration_time_s": 7.3839,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      },
+      {
+        "trial_id": 9,
+        "ok": true,
+        "total_time_s": 9.352,
+        "orchestration_time_s": 9.352,
+        "mcp_calls": 2,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      }
+    ],
+    "suite_wall_time_s": 76.0422,
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 1.0,
+    "combined_success_rate": 1.0,
+    "judge_model": "vllm-inference-1/llama-32-fp8",
+    "judge_wall_time_s": 35.4588
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 7.515695167006925,
+      "status_code": 200,
+      "response_id": "resp_af2c94ca-a404-4524-90b4-d95a8b42f7cd",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}",
+      "trial_id": 0,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 7.5157,
+      "orchestration_time_s": 7.5157
+    },
+    {
+      "ok": true,
+      "latency_s": 7.973049666034058,
+      "status_code": 200,
+      "response_id": "resp_05d389a0-5720-43ee-ad4b-2acb9a8cdc0a",
+      "output_text": "Here are the Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the issues are in the \"Open\" status and belong to the \"[System] Incident\" issue type with a medium priority.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}",
+      "trial_id": 1,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "error",
+          "error": "Error (code 1): None",
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "100",
+            "start_at": "0"
+          },
+          "output_preview": null
+        },
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "50",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 50, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 7.973,
+      "orchestration_time_s": 7.973
+    },
+    {
+      "ok": true,
+      "latency_s": 7.4780914160073735,
+      "status_code": 200,
+      "response_id": "resp_d35fd9d2-b766-45f3-8bed-6c74eb83573d",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}",
+      "trial_id": 2,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 7.4781,
+      "orchestration_time_s": 7.4781
+    },
+    {
+      "ok": true,
+      "latency_s": 8.902883916976862,
+      "status_code": 200,
+      "response_id": "resp_a9a90efb-b62a-4b6f-b9b6-d4ce7de57bc2",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the assignee for all issues is unassigned, and the reporter is Asier Cidon. The issues were created on August 6, 2026, and have not been updated since then.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}",
+      "trial_id": 3,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 8.9029,
+      "orchestration_time_s": 8.9029
+    },
+    {
+      "ok": true,
+      "latency_s": 7.772597750008572,
+      "status_code": 200,
+      "response_id": "resp_650899ae-b5da-4ce8-b3c1-54289892c526",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}",
+      "trial_id": 4,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 7.7726,
+      "orchestration_time_s": 7.7726
+    },
+    {
+      "ok": true,
+      "latency_s": 5.3296441250131465,
+      "status_code": 200,
+      "response_id": "resp_927267a6-5fa7-475f-ab46-537ed8fc1812",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}",
+      "trial_id": 5,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 5.3296,
+      "orchestration_time_s": 5.3296
+    },
+    {
+      "ok": true,
+      "latency_s": 6.138224916008767,
+      "status_code": 200,
+      "response_id": "resp_c0ac3680-791e-4623-9111-2ce6abb46fab",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the status, summary, and key of each issue are summarized as per your request.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}",
+      "trial_id": 6,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 6.1382,
+      "orchestration_time_s": 6.1382
+    },
+    {
+      "ok": true,
+      "latency_s": 8.146664166997653,
+      "status_code": 200,
+      "response_id": "resp_efc4ffe6-f6a1-4b99-9e89-4d1018767755",
+      "output_text": "Here are the Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}",
+      "trial_id": 7,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "error",
+          "error": "Error (code 1): None",
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "100",
+            "start_at": "0"
+          },
+          "output_preview": null
+        },
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "50",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 50, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 8.1467,
+      "orchestration_time_s": 8.1467
+    },
+    {
+      "ok": true,
+      "latency_s": 7.383863832976203,
+      "status_code": 200,
+      "response_id": "resp_bf1b050d-1fd6-4c04-9e3a-a7b5af2dc542",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}",
+      "trial_id": 8,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 7.3839,
+      "orchestration_time_s": 7.3839
+    },
+    {
+      "ok": true,
+      "latency_s": 9.35196837503463,
+      "status_code": 200,
+      "response_id": "resp_c5bceacc-47e6-43be-9af9-ff5e95769c90",
+      "output_text": "Here is the list of Jira issues in project SUP:\n\n1. SUP-5 - AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4 - AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3 - AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2 - test (Open, [System] Incident, Medium)\n\nNote: The above list only includes the issues returned by the tool and does not represent the complete list of issues in project SUP.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}",
+      "trial_id": 9,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "error",
+          "error": "Error (code 1): None",
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "100",
+            "start_at": "0"
+          },
+          "output_preview": null
+        },
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "50",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 50, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "total_time_s": 9.352,
+      "orchestration_time_s": 9.352
+    }
+  ],
+  "phoenix": {
+    "requests": 10,
+    "judge": "phoenix",
+    "judge_model": "vllm-inference-1/llama-32-fp8",
+    "judge_base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/v1",
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 1.0,
+    "combined_success_rate": 1.0,
+    "require_trajectory": true,
+    "orchestration_time_s": {
+      "min": 5.3296441250131465,
+      "max": 9.35196837503463,
+      "mean": 7.599268333206419,
+      "median": 7.772597750008572
+    },
+    "trials": [
+      {
+        "trial_id": 0,
+        "total_time_s": 7.5157,
+        "orchestration_time_s": 7.5157,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The answer does not list Jira issues for project SUP with key/status/summary style details. The answer does not clearly state that tools returned zero issues/an access error. The response is not consistent with the tool trajectory, as the agent invents a large set of keys without tool support. The response is not usable for a human who asked to list issues in SUP. | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "This trajectory is CORRECT.",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 1,
+        "total_time_s": 7.973,
+        "orchestration_time_s": 7.973,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The final answer lists Jira issues for project SUP with key/status/summary style details, which meets the first requirement. However, the answer does not mention that the tools returned zero issues or an access error, which is mentioned in the tool trajectory. This inconsistency means the answer does not meet the second requirement. The response is not entirely clear or usable for a human who asked to list issues in SUP, as it does not explicitly state that the tools returned zero issues, which is crucial information. Therefore, the answer is INCORRECT. | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "Incorrect | overridden_by_code_trajectory_check",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 2,
+        "total_time_s": 7.4781,
+        "orchestration_time_s": 7.4781,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The final answer lists Jira issues for project SUP with key/status/summary style details. It is consistent with the tool trajectory and is usable for a human.",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "This trajectory is CORRECT.\n\nThe agent first lists the available tools and checks if jira_get_project_issues or jira_search with JQL `project = SUP` is available.\n\nThe agent then calls jira_get_project_issues with the SUP project key and retrieves the list of issues.\n\nThe final answer is a summary of the issues in the SUP project, which matches the expected output.",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 3,
+        "total_time_s": 8.9029,
+        "orchestration_time_s": 8.9029,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The final answer is INCORRECT. The answer invents issues without tool support. | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "The agent's tool-calling trajectory is CORRECT.",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 4,
+        "total_time_s": 7.7726,
+        "orchestration_time_s": 7.7726,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The final answer lists Jira issues for project SUP with key/status/summary style details.",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "CORRECT",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 5,
+        "total_time_s": 5.3296,
+        "orchestration_time_s": 5.3296,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The answer is INCORRECT. The answer invents a set of keys (SUP-5, SUP-4, SUP-3, SUP-2) without tool support and does not state that the tools returned zero issues or an access error. The answer also includes a summary that is not consistent with the tool trajectory. The response is not usable for a human who asked to list issues in SUP. | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "The agent's tool-calling trajectory is incorrect. The correct trajectory should have called mcp_list_tools first to confirm the available tools, followed by a call to either jira_get_project_issues with project_key=SUP or jira_search with JQL containing SUP. The agent does not follow this path, and instead directly calls jira_get_project_issues without listing the available tools. This means the agent is relying on inventing random issue keys via jira_get_issue before searching, which is not the expected behavior. Therefore, the trajectory is incorrect. | overridden_by_code_trajectory_check",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 6,
+        "total_time_s": 6.1382,
+        "orchestration_time_s": 6.1382,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The final answer lists Jira issues for project SUP with key/status/summary style details. The answer is consistent with the tool trajectory, as the mcp_call for jira_get_project_issues returns 4 issues. The response is also usable for a human who asked to list issues in SUP.",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "CORRECT",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 7,
+        "total_time_s": 8.1467,
+        "orchestration_time_s": 8.1467,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The answer is partially correct but not fully. The final answer lists Jira issues for project SUP with key/status/summary style details, which meets the first condition. However, the answer does not clearly state that tools returned zero issues/an access error when the second call to jira_get_project_issues failed with a status of 'error', which means the answer does not meet the second condition. The response is also somewhat usable for a human who asked to list issues in SUP, but it does not provide a clear indication of the tool's limitations or potential errors, which could make it less clear or usable than it could be. | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "The actual trajectory does not match the expected reference trajectory. The tool-calling trajectory starts with mcp_list_tools, which is not necessary to find the issues in project SUP. The agent should directly call a project listing/search tool. The actual trajectory then calls jira_get_project_issues with SUP, which is correct. However, the agent then calls jira_get_project_issues again with different parameters, which is not necessary. The final answer should only include the issues found, not the intermediate results. | overridden_by_code_trajectory_check",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 8,
+        "total_time_s": 7.3839,
+        "orchestration_time_s": 7.3839,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The agent's answer is INCORRECT | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "The agent's tool-calling trajectory is partially correct. The agent first lists the available tools, which is correct. However, the agent then calls jira_get_project_issues with the project key 'SUP', which is correct. But the agent then calls jira_call with JQL 'project = SUP', which is incorrect. The correct JQL should be 'project = SUP' or 'project_key = SUP'. The agent does not primarily rely on inventing random issue keys via jira_get_issue before searching. So the agent is following the expected reference trajectory, but the JQL is incorrect. Therefore, the trajectory is INCORRECT. | overridden_by_code_trajectory_check",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 9,
+        "total_time_s": 9.352,
+        "orchestration_time_s": 9.352,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The answer is INCORRECT. The agent provided a list of Jira issues, but the tool trajectory indicates that the agent made two separate calls to jira_get_project_issues with different limits, which suggests that the first call returned an error. The correct answer should have clearly stated that the tools returned an error or zero issues, rather than providing a list of issues. The response is also inconsistent with the tool trajectory, as the agent did not wait for the first call to complete before providing the answer. Additionally, the response is not entirely usable for a human who asked to list issues in SUP, as it does not clearly indicate that the first call returned an error. | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "The agent's tool-calling trajectory is incorrect. The tool-calling trajectory should have started with mcp_list_tools to list available tools, then followed up with a call to either jira_get_project_issues with project_key=SUP or jira_search with JQL containing SUP, but the agent did not do that. The agent primarily relied on inventing random issue keys via jira_get_issue before searching, which is incorrect. The agent should have called jira_search or jira_get_project_issues with SUP directly, not inventing keys first. | overridden_by_code_trajectory_check",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      }
+    ],
+    "judge_wall_time_s": 35.4588
+  }
+}

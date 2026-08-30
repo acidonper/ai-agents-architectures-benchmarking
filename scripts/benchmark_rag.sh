@@ -39,10 +39,9 @@ fi
 export BENCH_VECTOR_STORE_IDS="${BENCH_VECTOR_STORE_IDS:-${DEFAULT_VECTOR_STORE_IDS:-}}"
 export BENCH_MCP_SERVER_URL="${BENCH_MCP_SERVER_URL:-${MCP_SERVER_URL:-}}"
 
-export PHOENIX_JUDGE_BASE_URL="${PHOENIX_JUDGE_BASE_URL:-${LLAMA_STACK_BASE_URL:-}}"
-if [[ "${PHOENIX_JUDGE_BASE_URL:-}" == *"api.openai.com"* ]]; then
-  export PHOENIX_JUDGE_BASE_URL="${LLAMA_STACK_BASE_URL:-}"
-fi
+# Phoenix judge → Amazon Bedrock (not Llama Stack playground)
+# shellcheck disable=SC1091
+source "$ROOT/scripts/load_phoenix_judge_env.sh"
 
 if [[ -z "${BENCH_VECTOR_STORE_IDS}" ]]; then
   echo "Set BENCH_VECTOR_STORE_IDS to one or more comma-separated vector store ids." >&2

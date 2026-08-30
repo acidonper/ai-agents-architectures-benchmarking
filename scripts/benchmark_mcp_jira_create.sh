@@ -32,10 +32,8 @@ if [[ -f "$ROOT/backend/.env" ]]; then
   source "$ROOT/backend/.env"
   set +a
 fi
-export PHOENIX_JUDGE_BASE_URL="${PHOENIX_JUDGE_BASE_URL:-${LLAMA_STACK_BASE_URL:-}}"
-if [[ "${PHOENIX_JUDGE_BASE_URL:-}" == *"api.openai.com"* ]]; then
-  export PHOENIX_JUDGE_BASE_URL="${LLAMA_STACK_BASE_URL:-}"
-fi
+# shellcheck disable=SC1091
+source "$ROOT/scripts/load_phoenix_judge_env.sh"
 
 PY=python3.12
 if ! command -v "$PY" >/dev/null 2>&1; then

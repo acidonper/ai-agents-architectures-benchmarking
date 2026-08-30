@@ -1,4 +1,169 @@
-# Benchmark
+# StackChat — Llama Stack Chat Application
+
+Full-stack chat app that talks to a [Llama Stack](https://github.com/llamastack/llama-stack) server using the **Responses API**. One request can orchestrate:
+
+- **LLM** inference (any model registered in Llama Stack)
+- **RAG** via the built-in `file_search` tool and vector stores
+- **MCP** tool calling against configured Model Context Protocol servers
+
+```
+Browser (React)  →  FastAPI backend  →  Llama Stack (:8321)
+                                         ├─ LLM provider
+                                         ├─ Vector stores / file_search
+                                         └─ MCP servers
+```
+
+## Project layout
+
+```
+ia/
+├── backend/          # FastAPI + llama-stack-client
+│   └── app/
+│       ├── main.py
+│       ├── routers/  # chat, models, rag, mcp, health
+│       └── services/ # Llama Stack orchestration
+└── frontend/         # React + Vite chat UI
+```
+
+## Prerequisites
+
+- Python 3.11+ (3.12 recommended)
+- Node.js 18+
+- A running Llama Stack server (default `http://localhost:8321`)
+
+## Backend setup
+
+```bash
+cd backend
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+# edit .env: LLAMA_STACK_BASE_URL, DEFAULT_MODEL, DEFAULT_EMBEDDING_MODEL, optional MCP / vector stores
+uvicorn app.main:app --reload --port 8000
+```
+
+Or from the repo root: `./scripts/dev.sh backend`
+
+API docs: http://localhost:8000/docs
+
+### Key endpoints
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| `GET` | `/api/health` | Backend + Llama Stack reachability |
+| `GET` | `/api/config` | Public defaults (model, embedding, vector stores, MCP) |
+| `GET` | `/api/models?model_type=llm\|embedding\|all` | List models from Llama Stack |
+| `POST` | `/api/chat` | Non-streaming chat (Responses API) |
+| `POST` | `/api/chat/stream` | SSE streaming chat |
+| `GET/POST` | `/api/rag/vector-stores` | List / create vector stores (create requires embedding model) |
+| `POST` | `/api/rag/vector-stores/{id}/files` | Upload a document for RAG |
+| `GET` | `/api/mcp/defaults` | Default MCP servers from env |
+
+### Example chat payload
+
+```json
+{
+  "message": "Summarize our onboarding policy and check open tickets",
+  "model": "meta-llama/Llama-3.2-3B-Instruct",
+  "instructions": "Be concise. Prefer tools when helpful.",
+  "enable_rag": true,
+  "vector_store_ids": ["vs_abc123"],
+  "enable_mcp": true,
+  "mcp_servers": [
+    {
+      "server_label": "tickets",
+      "server_url": "http://localhost:3000/sse"
+    }
+  ]
+}
+```
+
+The backend turns that into a Llama Stack `responses.create` call with:
+
+```python
+tools=[
+  {"type": "file_search", "vector_store_ids": ["vs_abc123"]},
+  {"type": "mcp", "server_label": "tickets", "server_url": "http://localhost:3000/sse"},
+]
+```
+
+## Frontend setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:5173 — Vite proxies `/api` to the backend on port 8000.
+
+### UI features
+
+- Model picker (LLM only) + system instructions + temperature
+- **RAG**: pick embedding model + dimension, create vector store, upload docs, enable `file_search`
+- Toggle **MCP**, add server label/URL pairs
+- Streaming or non-streaming replies
+- Tool-call chips when Llama Stack uses `file_search` / MCP
+
+## RAG with embedding models
+
+Llama Stack indexes uploaded files with a registered **embedding model**, stores vectors (e.g. Milvus), and retrieves chunks via the Responses API `file_search` tool.
+
+On this playground Stack the embedding models are:
+
+- `sentence-transformers/ibm-granite/granite-embedding-125m-english` (768d)
+- `sentence-transformers/nomic-ai/nomic-embed-text-v1.5` (768d)
+
+```bash
+# backend/.env
+DEFAULT_EMBEDDING_MODEL=sentence-transformers/ibm-granite/granite-embedding-125m-english
+DEFAULT_EMBEDDING_DIMENSION=768
+# optional: DEFAULT_VECTOR_STORE_PROVIDER=milvus
+```
+
+Create a store (UI or API):
+
+```bash
+curl -sS http://localhost:8000/api/rag/vector-stores \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "policies",
+    "embedding_model": "sentence-transformers/ibm-granite/granite-embedding-125m-english",
+    "embedding_dimension": 768
+  }'
+```
+
+Then upload a file to `/api/rag/vector-stores/{id}/files`, enable RAG with that store id, and chat. StackChat injects:
+
+```python
+{"type": "file_search", "vector_store_ids": ["vs_…"]}
+```
+
+## Environment variables
+
+See `backend/.env.example`:
+
+| Variable | Description |
+|----------|-------------|
+| `LLAMA_STACK_BASE_URL` | Llama Stack URL (default `http://localhost:8321`) |
+| `LLAMA_STACK_API_KEY` | Optional API key |
+| `DEFAULT_MODEL` | Fallback inference LLM id |
+| `DEFAULT_EMBEDDING_MODEL` | Default embedding model for new vector stores |
+| `DEFAULT_EMBEDDING_DIMENSION` | Embedding size (e.g. `768`) |
+| `DEFAULT_VECTOR_STORE_PROVIDER` | Optional vector IO provider (`milvus`, …) |
+| `DEFAULT_MCP_SERVERS` | JSON array of MCP server configs |
+| `DEFAULT_VECTOR_STORE_IDS` | Comma-separated vector store ids used when RAG is on |
+| `CORS_ORIGINS` | Allowed frontend origins |
+
+## Typical workflow
+
+1. Start Llama Stack with an inference provider, an **embedding model**, and vector IO (e.g. Milvus).
+2. Start the backend and frontend.
+3. In the UI, pick an LLM.
+4. For RAG: choose an embedding model, create a vector store, upload docs, enable RAG.
+5. For MCP: add your MCP SSE URL, enable MCP.
+6. Chat — Llama Stack orchestrates tool discovery, retrieval, and final answer.
 
 ## Benchmark model performance (GuideLLM)
 
@@ -88,22 +253,24 @@ export BENCH_MCP_SERVER_LABEL=jira
 BENCH_PHOENIX=0 ./scripts/benchmark_mcp_jira.sh --no-phoenix --requests 3
 ```
 
-Phoenix judge model defaults to a **Llama Stack** LLM (OpenAI-compatible `/v1`).
-It prefers a model different from the agent under test when more than one LLM is registered.
+Phoenix judge defaults to **Amazon Bedrock** (`LLM(provider="bedrock")`, same inference
+profile as the agent: `BENCH_MODEL_INFERENCE_PROFILE_ID`). The retired Llama Stack
+playground URL is ignored.
 
 ```bash
-# Agent model (tool-calling run)
-export BENCH_MODEL=vllm-inference-1/llama-32-fp8
+# Default judge = Bedrock Nova (from backend/.env.bedrock)
+./scripts/benchmark_mcp_jira.sh --target llama-stack --requests 3
 
-# Dedicated judge on Llama Stack (recommended once you register a 2nd LLM)
-export PHOENIX_JUDGE_BASE_URL="$LLAMA_STACK_BASE_URL"
+# Override judge model (still Bedrock)
+export PHOENIX_JUDGE_MODEL=eu.amazon.nova-2-lite-v1:0
+
+# Optional: OpenAI-compatible judge on a live Llama Stack (not the old playground)
+export PHOENIX_JUDGE_PROVIDER=llama-stack
+export PHOENIX_JUDGE_BASE_URL=http://localhost:8321
 export PHOENIX_JUDGE_MODEL=vllm-inference-2/your-judge-model
-
-./scripts/benchmark_mcp_jira.sh --target llama-stack --requests 3 \
-  --judge-model "$PHOENIX_JUDGE_MODEL"
 ```
 
-Or source `script.sh` after setting `PHOENIX_JUDGE_MODEL`. OpenAI is not used for judging.
+Or source `script.sh`. The judge does not call OpenAI.com.
 | Metric | Meaning |
 |--------|---------|
 | `orchestration_time_s` | End-to-end wall clock for one LLM+MCP turn |
@@ -178,3 +345,74 @@ $EDITOR benchmarks/prompts/rag/user.txt
 | `itl_s` / tokens | Same as other agentic benches |
 
 Results: `benchmarks/results/agentic-rag-<stamp>.json`, plus `*-rag-responses.json` and `*-jira-responses.json`.
+
+### Bedrock AgentCore agentic benchmark
+
+Default stack (`--target bedrock-runtime`):
+
+```
+LLM     Bedrock Converse  BENCH_MODEL_INFERENCE_PROFILE_ID (e.g. eu.amazon.nova-2-lite-v1:0)
+MCP     AgentCore Runtime InvokeAgentRuntime JSON-RPC (Cognito Bearer)
+RAG     bedrock-agent-runtime Retrieve  BEDROCK_KNOWLEDGE_BASE_ID
+```
+
+| Component | How the bench uses it |
+|-----------|------------------------|
+| LLM | `bedrock-runtime` **Converse** with `BENCH_MODEL_INFERENCE_PROFILE_ID` |
+| MCP (Jira) | Runtime URL `…/runtimes/<encoded-arn>/invocations?qualifier=DEFAULT` |
+| RAG | Native **Retrieve** API (`--rag-mode bedrock_kb`) |
+
+```bash
+# LLM + Jira MCP via the AgentCore Runtime (no gateway /mcp)
+source scripts/load_bedrock_agentic_env.sh
+./scripts/benchmark_bedrock_agentic.sh --target bedrock-runtime --requests 1
+
+# RAG (KB Retrieve) + Runtime MCP + same LLM
+./scripts/benchmark_bedrock_rag.sh --requests 1
+```
+
+`backend/.env.bedrock` must include:
+
+```bash
+BENCH_MODEL_INFERENCE_PROFILE_ID=eu.amazon.nova-2-lite-v1:0
+BEDROCK_AGENT_RUNTIME_ARN=arn:aws:bedrock-agentcore:eu-north-1:ACCOUNT:runtime/mcp_atlassian_runtime-…
+BEDROCK_KNOWLEDGE_BASE_ID=7PTWKIDPIA
+BEDROCK_KB_EMBEDDING_MODEL=amazon.titan-embed-text-v2:0
+BENCH_RAG_MODE=bedrock_kb
+```
+
+Legacy **gateway** path (`--target bedrock-gateway`): inference at `/inference/v1/responses` and MCP at `{gateway}/mcp`.
+
+```bash
+./scripts/benchmark_bedrock_agentic.sh --target bedrock-gateway --requests 1
+```
+
+Bearer auth to the gateway: `BEDROCK_AUTH_MODE=bearer` and `BEDROCK_GATEWAY_TOKEN=...`.
+
+**Agentic gateway + Cognito** (matches AgentCore quick-start with `GW_AGENTIC_*` vars):
+
+```bash
+cp backend/.env.bedrock.example backend/.env.bedrock
+# Edit GW_AGENTIC_CLIENT_ID, GW_AGENTIC_CLIENT_SECRET, GW_AGENTIC_COGNITO_DISCOVERY_URL, GW_AGENTIC_ID
+
+source scripts/load_bedrock_agentic_env.sh   # sets BEDROCK_AUTH_MODE=cognito, fetches token at runtime
+./test.sh                                    # or ./scripts/benchmark_bedrock_agentic.sh ...
+```
+
+The harness calls Cognito’s `token_endpoint` (from the OIDC discovery URL) with `client_credentials`, caches the access token, and sends `Authorization: Bearer …` to `{gateway}/inference/v1/responses`.
+
+If token requests fail, set `GW_AGENTIC_OAUTH_SCOPE` or `BEDROCK_OAUTH_SCOPE` to the scope configured on your Cognito app client (not always the target path).
+
+**Bedrock API key** (`ABSK…`): use `BEDROCK_AUTH_MODE=api-key` and `BEDROCK_API_KEY=...` when the gateway accepts that key directly (not Cognito ingress).
+
+Phoenix judges use Amazon Bedrock (`PHOENIX_JUDGE_PROVIDER=bedrock`, model
+`BENCH_MODEL_INFERENCE_PROFILE_ID`). Opt out with `PHOENIX_JUDGE_PROVIDER=llama-stack`
+and a live `PHOENIX_JUDGE_BASE_URL` (the old playground host is ignored).
+
+Results use the prefix `agentic-bedrock-*`.
+
+## Notes
+
+- Conversation continuity uses `previous_response_id` from the Responses API when available.
+- If your Llama Stack client build does not support streaming on `responses.create`, the backend falls back to a single non-stream response over SSE.
+- Ensure MCP servers are reachable from the **Llama Stack** host, not only from the browser.

@@ -17,6 +17,8 @@ from typing import Any
 
 import pandas as pd
 
+from benchmarks.bedrock_client import BEDROCK_RAG_TOOL_RE
+
 SEMANTIC_SUCCESS_PROMPT_LIST = """
 You evaluate whether an agent completed this Jira task successfully.
 
@@ -216,7 +218,7 @@ def code_trajectory_ok_create(trajectory: str, mcp_calls: int) -> bool:
 def code_trajectory_ok_rag(trajectory: str, mcp_calls: int = 0) -> bool:
     """Deterministic trajectory gate for combined RAG + MCP."""
     t = (trajectory or "").lower()
-    has_rag = "file_search" in t
+    has_rag = "file_search" in t or bool(BEDROCK_RAG_TOOL_RE.search(t))
     has_mcp = mcp_calls > 0 or "mcp_call" in t
     return has_rag and has_mcp
 
@@ -244,7 +246,8 @@ DEFAULT_REFERENCE_TRAJECTORY_CREATE = (
 )
 
 DEFAULT_REFERENCE_TRAJECTORY_RAG = (
-    "1) file_search against the configured vector store(s) for company procedure/docs\n"
+    "1) Retrieve or AgenticRetrieveStream (Bedrock KB) or file_search (Llama Stack) "
+    "for company procedure/docs\n"
     "2) mcp_list_tools on jira MCP server (if needed)\n"
     "3) mcp_call for the requested Jira action using fields from RAG + user prompt\n"
     "4) final message summarizing retrieval + tool result (e.g. created issue key)"
@@ -551,33 +554,108 @@ def _list_llama_stack_llms(base_url: str, api_key: str | None = None) -> list[st
     return llms
 
 
+@dataclass
+class JudgeSpec:
+    """Where Phoenix LLM-as-judge calls go."""
+
+    provider: str  # bedrock | openai
+    model_id: str
+    base_url: str
+    api_key: str = "EMPTY"
+
+
+def _looks_like_bedrock_model(model_id: str) -> bool:
+    low = (model_id or "").strip().lower()
+    if not low:
+        return False
+    return low.startswith(
+        (
+            "amazon.",
+            "anthropic.",
+            "meta.",
+            "mistral.",
+            "eu.",
+            "us.",
+            "apac.",
+            "global.",
+            "bedrock/",
+        )
+    )
+
+
+def _is_retired_judge_url(url: str) -> bool:
+    low = (url or "").lower()
+    return "lsd-genai-playground" in low or "api.openai.com" in low
+
+
+def resolve_judge_provider() -> str:
+    """bedrock (default) or llama-stack OpenAI-compat when explicitly requested."""
+    raw = (os.getenv("PHOENIX_JUDGE_PROVIDER") or "").strip().lower()
+    if raw in {"llama-stack", "llamastack", "openai", "stack"}:
+        return "openai"
+    return "bedrock"
+
+
 def resolve_judge_model(
     *,
     agent_model: str | None = None,
     explicit: str | None = None,
-) -> tuple[str, str, str]:
-    """Resolve Phoenix judge to a Llama Stack OpenAI-compatible endpoint.
+) -> JudgeSpec:
+    """Resolve Phoenix judge: Amazon Bedrock Converse by default.
 
-    Preference:
-      1. PHOENIX_JUDGE_MODEL / explicit
-      2. First Stack LLM that differs from the agent model
-      3. Agent model / DEFAULT_MODEL (last resort)
-
-    Returns (model_id, base_url_with_v1, api_key).
+    Set PHOENIX_JUDGE_PROVIDER=llama-stack to use an OpenAI-compatible /v1 endpoint.
     """
+    from benchmarks.bedrock_client import resolve_region
+
+    provider = resolve_judge_provider()
+    explicit_model = (
+        (explicit or "").strip()
+        or os.getenv("PHOENIX_JUDGE_MODEL", "").strip()
+        or os.getenv("BENCH_JUDGE_MODEL", "").strip()
+    )
+    if explicit_model.lower().startswith("bedrock/"):
+        explicit_model = explicit_model.split("/", 1)[1]
+
+    if provider == "bedrock" or _looks_like_bedrock_model(explicit_model):
+        chosen = explicit_model
+        if not _looks_like_bedrock_model(chosen):
+            chosen = (
+                os.getenv("BENCH_MODEL_INFERENCE_PROFILE_ID", "").strip()
+                or (os.getenv("BENCH_MODEL", "").strip() if _looks_like_bedrock_model(os.getenv("BENCH_MODEL", "")) else "")
+                or "eu.amazon.nova-2-lite-v1:0"
+            )
+        region = resolve_region()
+        os.environ.setdefault("AWS_REGION", region)
+        os.environ.setdefault("AWS_DEFAULT_REGION", region)
+        os.environ.setdefault("AWS_REGION_NAME", region)
+        return JudgeSpec(
+            provider="bedrock",
+            model_id=chosen,
+            base_url=f"bedrock:{region}",
+            api_key="EMPTY",
+        )
+
     stack = (
         os.getenv("PHOENIX_JUDGE_BASE_URL")
         or os.getenv("LLAMA_STACK_BASE_URL")
         or "http://localhost:8321"
     ).rstrip("/")
-    # Prefer Llama Stack over OpenAI unless user set a non-OpenAI judge base.
-    if "api.openai.com" in stack:
-        stack = (
-            os.getenv("LLAMA_STACK_BASE_URL") or "http://localhost:8321"
-        ).rstrip("/")
+    if _is_retired_judge_url(stack):
         print(
-            "Ignoring OpenAI judge URL; Phoenix judge uses Llama Stack. "
-            "Set PHOENIX_JUDGE_MODEL to a Stack LLM id."
+            "Ignoring retired Llama Stack playground / OpenAI judge URL. "
+            "Phoenix judge uses Amazon Bedrock. "
+            "Set PHOENIX_JUDGE_PROVIDER=llama-stack and a live PHOENIX_JUDGE_BASE_URL for Stack."
+        )
+        region = resolve_region()
+        model = (
+            explicit_model
+            if _looks_like_bedrock_model(explicit_model)
+            else (os.getenv("BENCH_MODEL_INFERENCE_PROFILE_ID") or "eu.amazon.nova-2-lite-v1:0")
+        )
+        return JudgeSpec(
+            provider="bedrock",
+            model_id=model,
+            base_url=f"bedrock:{region}",
         )
 
     base = stack if stack.endswith("/v1") else f"{stack}/v1"
@@ -586,59 +664,46 @@ def resolve_judge_model(
         or os.getenv("LLAMA_STACK_API_KEY")
         or "EMPTY"
     )
-
     agent = (
         agent_model
         or os.getenv("BENCH_MODEL")
         or os.getenv("DEFAULT_MODEL")
-        or "vllm-inference-1/llama-32-fp8"
+        or explicit_model
     )
-
-    chosen = (
-        (explicit or "").strip()
-        or os.getenv("PHOENIX_JUDGE_MODEL", "").strip()
-        or os.getenv("BENCH_JUDGE_MODEL", "").strip()
-    )
-
+    chosen = explicit_model
     if not chosen:
         llms = _list_llama_stack_llms(base, api_key if api_key != "EMPTY" else None)
         others = [m for m in llms if m != agent]
-        if others:
-            chosen = others[0]
-            print(f"Phoenix judge auto-selected Llama Stack model (≠ agent): {chosen}")
-        elif llms:
-            chosen = llms[0]
-            print(
-                f"Phoenix judge using only available Stack LLM: {chosen} "
-                "(register another LLM on Llama Stack for a dedicated judge)."
-            )
-        else:
-            chosen = agent
-            print(f"Phoenix judge falling back to agent model: {chosen}")
-
-    return chosen, base, api_key
+        chosen = (others or llms or [agent])[0]
+    return JudgeSpec(provider="openai", model_id=chosen, base_url=base, api_key=api_key)
 
 
 def _judge_llm(agent_model: str | None = None, judge_model: str | None = None):
-    """Phoenix evals LLM wrapper — always a Llama Stack OpenAI-compatible model.
+    """Phoenix evals LLM wrapper (Amazon Bedrock by default).
 
     Returns (llm, model_id, base_url).
     """
     from phoenix.evals import LLM
 
-    model_id, base, api_key = resolve_judge_model(
-        agent_model=agent_model,
-        explicit=judge_model,
-    )
-    client_kwargs = {"base_url": base, "api_key": api_key}
-    print(f"Phoenix judge → {base}  model={model_id}")
+    spec = resolve_judge_model(agent_model=agent_model, explicit=judge_model)
+    if spec.provider == "bedrock":
+        print(f"Phoenix judge → Amazon Bedrock  model={spec.model_id}  ({spec.base_url})")
+        try:
+            llm = LLM(provider="bedrock", model=spec.model_id)
+        except Exception as exc:  # noqa: BLE001
+            print(f"Phoenix Bedrock provider failed ({exc}); retrying via litellm.")
+            llm = LLM(provider="litellm", model=f"bedrock/{spec.model_id}")
+        return llm, spec.model_id, spec.base_url
+
+    print(f"Phoenix judge → {spec.base_url}  model={spec.model_id}")
+    client_kwargs = {"base_url": spec.base_url, "api_key": spec.api_key}
     llm = LLM(
         provider="openai",
-        model=model_id,
+        model=spec.model_id,
         sync_client_kwargs=client_kwargs,
         async_client_kwargs=client_kwargs,
     )
-    return llm, model_id, base
+    return llm, spec.model_id, spec.base_url
 
 
 def _parse_score_cell(cell: Any) -> tuple[str, str | None]:
@@ -676,8 +741,9 @@ def _heuristic_labels(
             f"heuristic(create): requires jira_create_issue; events={row.tool_events}",
         )
     if scenario == "rag":
-        searched = "file_search" in traj or any(
-            "file_search" in str(e).lower() for e in (row.tool_events or [])
+        searched = "file_search" in traj or bool(BEDROCK_RAG_TOOL_RE.search(traj)) or any(
+            "file_search" in str(e).lower() or BEDROCK_RAG_TOOL_RE.search(str(e))
+            for e in (row.tool_events or [])
         )
         used_mcp = row.mcp_calls > 0 or "mcp_call" in traj
         empty_ok = any(
@@ -692,9 +758,9 @@ def _heuristic_labels(
         trajectory = "correct" if row.http_ok and searched and used_mcp else "incorrect"
         return (
             semantic,
-            f"heuristic(rag+mcp): http_ok={row.http_ok} file_search={searched} mcp={used_mcp}",
+            f"heuristic(rag+mcp): http_ok={row.http_ok} retrieval={searched} mcp={used_mcp}",
             trajectory,
-            f"heuristic(rag+mcp): requires file_search+mcp_call; events={row.tool_events}",
+            f"heuristic(rag+mcp): requires retrieval+mcp_call; events={row.tool_events}",
         )
 
     mentions_sup = "sup" in out or "sup-" in out or "project sup" in traj
@@ -801,10 +867,11 @@ def run_phoenix_evals(
         print(f"Phoenix LLM judge failed ({exc}); falling back to heuristic labels.")
         judge_mode = "heuristic"
         if resolved_judge is None:
-            resolved_judge, judge_base, _ = resolve_judge_model(
+            spec = resolve_judge_model(
                 agent_model=agent_model,
                 explicit=judge_model,
             )
+            resolved_judge, judge_base = spec.model_id, spec.base_url
         for r in rows:
             s_l, s_e, t_l, t_e = _heuristic_labels(r, scenario=scenario)
             semantic_labels.append(s_l)

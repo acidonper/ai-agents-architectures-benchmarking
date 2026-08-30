@@ -1,0 +1,278 @@
+{
+  "created_at": "2026-08-30T14:08:31.479900+00:00",
+  "benchmark_id": "20260830-140817",
+  "scenario": "rag",
+  "target": "bedrock-runtime",
+  "base_url": "arn:aws:bedrock-agentcore:eu-north-1:282516655659:runtime/mcp_atlassian_runtime-6xnN9g5ani",
+  "model": "eu.amazon.nova-2-lite-v1:0",
+  "prompt": "Create a new Jira issue named \u201cAI agents to streamline document retrieval\u201d on project SUP. PLease include in the description of the issue that Asier Cidon is the main developer and Roman Marting is the author.\nThe issue description is \u201cWe are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\u201d.",
+  "instructions": "You are a helpful AI agent that can help users with Jira-related tasks using the MCP tools available:\n\nYour capabilities include:\n1. Creating new Jira issues based on user requests and following the respective procedures defined at company level, with capacity for adding information to the issues automatically like summary or other information easy to complete.\n2. Adding comments to existing Jira issues for updating the issues itself\n3. Searching for existing Jira issues such as general information about the issues, authors and the information defined in the procedures described.\n\nRules for RAG:\n- Use the retrieved Amazon Bedrock Knowledge Base passages in the user message (bedrock-agent-runtime Retrieve).\n- Answer only from retrieved document context. If nothing relevant is found, say so clearly.\n- Prefer concise, factual answers. Quote or paraphrase the source material.\n- Do not invent policies, numbers, or procedures that were not retrieved.\n\nWhen users ask questions:\n- If they want to perform Jira operations, review the respective procedure defined at company level to advance following the rules stablished, and perform de operation following the structure provided by the MCP\n- If any prerequisite is not meet, check with the user and ask for the required information\n- Provide clear, helpful responses with relevant context based on the MCP response\n\nFor Jira operations:\n- When creating issues, ask for necessary details like project key, summary, and description (information defined in the procedure)\n- You are not allowed to use author, assignee or fields. \n- You can create a summary by your own based on the information provided for the user\n- Always provide feedback on the success or failure of operations with the llm and MCP responses",
+  "prompt_files": {
+    "system_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/system.txt",
+    "user_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/user.txt"
+  },
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "https://bedrock-agentcore.eu-north-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aeu-north-1%3A282516655659%3Aruntime%2Fmcp_atlassian_runtime-6xnN9g5ani/invocations?qualifier=DEFAULT",
+    "allowed_tools": null
+  },
+  "rag": {
+    "mode": "bedrock_kb",
+    "vector_store_ids": null,
+    "gateway_mcp_url": null,
+    "retrieve_api": "bedrock-agent-runtime:Retrieve",
+    "knowledge_base_id": "7PTWKIDPIA",
+    "knowledge_base_name": "knowledge-base-quick-start-9qd1p",
+    "kb_embedding_model": "amazon.titan-embed-text-v2:0",
+    "mcp_tools": null,
+    "enable_rag": true
+  },
+  "summary": {
+    "requests": 1,
+    "ok": 1,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "total_time_s": {
+      "min": 7.780451667029411,
+      "max": 7.780451667029411,
+      "mean": 7.780451667029411,
+      "median": 7.780451667029411,
+      "sum": 7.780451667029411,
+      "p95": 7.780451667029411
+    },
+    "orchestration_time_s": {
+      "min": 7.780451667029411,
+      "max": 7.780451667029411,
+      "mean": 7.780451667029411,
+      "median": 7.780451667029411,
+      "sum": 7.780451667029411,
+      "p95": 7.780451667029411
+    },
+    "latency_s": {
+      "min": 7.780451667029411,
+      "max": 7.780451667029411,
+      "mean": 7.780451667029411,
+      "median": 7.780451667029411,
+      "sum": 7.780451667029411,
+      "p95": 7.780451667029411
+    },
+    "ttft_s": {
+      "min": 4.222207375103608,
+      "max": 4.222207375103608,
+      "mean": 4.222207375103608,
+      "median": 4.222207375103608,
+      "sum": 4.222207375103608,
+      "p95": 4.222207375103608
+    },
+    "itl_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "rag_time_s": {
+      "min": 0.7393392079975456,
+      "max": 0.7393392079975456,
+      "mean": 0.7393392079975456,
+      "median": 0.7393392079975456,
+      "sum": 0.7393392079975456,
+      "p95": 0.7393392079975456
+    },
+    "time_to_rag_s": {
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "sum": 0.0,
+      "p95": 0.0
+    },
+    "rag_calls_total": 1,
+    "mcp_time_s": {
+      "min": 2.317033000057563,
+      "max": 2.317033000057563,
+      "mean": 2.317033000057563,
+      "median": 2.317033000057563,
+      "sum": 2.317033000057563,
+      "p95": 2.317033000057563
+    },
+    "time_to_mcp_s": {
+      "min": 4.222216125112027,
+      "max": 4.222216125112027,
+      "mean": 4.222216125112027,
+      "median": 4.222216125112027,
+      "sum": 4.222216125112027,
+      "p95": 4.222216125112027
+    },
+    "mcp_calls_total": 1,
+    "input_tokens": {
+      "min": 10236.0,
+      "max": 10236.0,
+      "mean": 10236.0,
+      "median": 10236.0,
+      "sum": 10236.0,
+      "p95": 10236.0
+    },
+    "output_tokens": {
+      "min": 274.0,
+      "max": 274.0,
+      "mean": 274.0,
+      "median": 274.0,
+      "sum": 274.0,
+      "p95": 274.0
+    },
+    "total_tokens": {
+      "min": 10510.0,
+      "max": 10510.0,
+      "mean": 10510.0,
+      "median": 10510.0,
+      "sum": 10510.0,
+      "p95": 10510.0
+    },
+    "tokens_per_second": {
+      "min": 77.00446268460031,
+      "max": 77.00446268460031,
+      "mean": 77.00446268460031,
+      "median": 77.00446268460031,
+      "sum": 77.00446268460031,
+      "p95": 77.00446268460031
+    },
+    "streamed_requests": 0,
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": true,
+        "total_time_s": 7.7805,
+        "orchestration_time_s": 7.7805,
+        "ttft_s": 4.2222,
+        "itl_s": null,
+        "rag_time_s": 0.7393,
+        "time_to_rag_s": 0.0,
+        "rag_calls": 1,
+        "mcp_time_s": 2.317,
+        "time_to_mcp_s": 4.2222,
+        "input_tokens": 10236,
+        "output_tokens": 274,
+        "output_tokens_estimated": null,
+        "total_tokens": 10510,
+        "tokens_per_second": 77.0045,
+        "streamed": false,
+        "stream_delta_count": 2,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      }
+    ],
+    "suite_wall_time_s": 8.5248,
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 0.0,
+    "combined_success_rate": 0.0,
+    "judge_model": "eu.amazon.nova-2-lite-v1:0",
+    "judge_wall_time_s": 4.228
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 7.780451667029411,
+      "status_code": 200,
+      "response_id": null,
+      "output_text": "Perfect! I've successfully created a new Jira issue for you. Here are the details:\n\n**Issue Created:**\n- **Key:** SUP-66\n- **Summary:** AI agents to streamline document retrieval\n- **Description:** We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\n- **Project:** SUP (Support)\n- **Issue Type:** Task\n- **Status:** Open (To Do)\n- **Priority:** Medium\n- **Reporter:** Asier Cidon\n\nThe issue has been successfully created and is now in the \"Open\" status, ready for development. You can view the issue at: https://asiercidon.atlassian.net/rest/api/2/issue/10343",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_call name=jira_create_issue status=ok args={\"project_key\": \"SUP\", \"issue_type\": \"Task\", \"summary\": \"AI agents to streamline document retrieval\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\"}",
+      "trial_id": 0,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_create_issue",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "issue_type": "Task",
+            "summary": "AI agents to streamline document retrieval",
+            "description": "We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author."
+          },
+          "output_preview": "{\n  \"message\": \"Issue created successfully\",\n  \"issue\": {\n    \"id\": \"10343\",\n    \"key\": \"SUP-66\",\n    \"summary\": \"AI agents to streamline document retrieval\",\n    \"url\": \"https://asiercidon.atlassian.net/rest/api/2/issue/10343\",\n    \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\",\n    \"status\"\u2026"
+        }
+      ],
+      "jira_issues": [],
+      "streamed": false,
+      "ttft_s": 4.2222,
+      "itl_s": null,
+      "itl_s_median": null,
+      "itl_s_p95": null,
+      "input_tokens": 10236,
+      "output_tokens": 274,
+      "total_tokens": 10510,
+      "output_tokens_estimated": null,
+      "stream_delta_count": 2,
+      "tokens_per_second": 77.0045,
+      "rag_calls": 1,
+      "rag_time_s": 0.7393,
+      "time_to_rag_s": 0.0,
+      "rag_search_spans_s": [],
+      "mcp_time_s": 2.317,
+      "time_to_mcp_s": 4.2222,
+      "mcp_call_spans_s": [
+        2.317033000057563
+      ],
+      "total_time_s": 7.7805,
+      "orchestration_time_s": 7.7805
+    }
+  ],
+  "bedrock": {
+    "gateway_url": null,
+    "inference_url": null,
+    "runtime_arn": "arn:aws:bedrock-agentcore:eu-north-1:282516655659:runtime/mcp_atlassian_runtime-6xnN9g5ani",
+    "runtime_mcp_url": "https://bedrock-agentcore.eu-north-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aeu-north-1%3A282516655659%3Aruntime%2Fmcp_atlassian_runtime-6xnN9g5ani/invocations?qualifier=DEFAULT",
+    "runtime_qualifier": "DEFAULT",
+    "region": "eu-north-1",
+    "auth_mode": "cognito",
+    "knowledge_base_id": "7PTWKIDPIA",
+    "kb_embedding_model": "amazon.titan-embed-text-v2:0"
+  },
+  "jira_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-bedrock-rag-20260830-140817-jira-responses.json",
+  "rag_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-bedrock-rag-20260830-140817-rag-responses.json",
+  "phoenix": {
+    "requests": 1,
+    "scenario": "rag",
+    "judge": "phoenix",
+    "judge_model": "eu.amazon.nova-2-lite-v1:0",
+    "judge_base_url": "bedrock:eu-north-1",
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 0.0,
+    "combined_success_rate": 0.0,
+    "require_trajectory": true,
+    "orchestration_time_s": {
+      "min": 7.780451667029411,
+      "max": 7.780451667029411,
+      "mean": 7.780451667029411,
+      "median": 7.780451667029411
+    },
+    "trials": [
+      {
+        "trial_id": 0,
+        "total_time_s": 7.7805,
+        "orchestration_time_s": 7.7805,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The agent trajectory shows a direct MCP tool call to create a Jira issue with the correct parameters including the summary, description (which incorporates both the technical description and the requested developer/author information), project key, and issue type. However, the evaluation criteria require that for tasks depending on company documents, there should be file_search/retrieval against a vector store to load procedure or knowledge context. In this case, the user did not request any retrieval from company documents or reference any specific documentation that would require RAG - the task was purely about creating a Jira issue with given content. The agent correctly used the MCP tool for the requested Jira action and provided consistent final output matching the tool response. Since there was no need for document retrieval/RAG in this specific task (it was a straightforward issue creation with provided content), the absence of file_search/retrieval does not constitute an error. The agent fulfilled the user's request completely using the appropriate MCP tool and provided accurate results.",
+        "trajectory_label": "incorrect",
+        "trajectory_explanation": "The actual trajectory only performed a single mcp_call to create the Jira issue without first retrieving relevant company procedures or knowledge context using the available Bedrock KB. According to the expected reference trajectory, a correct path should include: 1) Retrieval via Bedrock KB (or equivalent) to get company procedures/docs, 2) Optional tool listing, 3) MCP call for Jira action, and 4) final summary. Skipping the initial retrieval step violates the requirement to first consult knowledge context before taking action. Therefore this trajectory is incorrect.",
+        "trajectory_code_ok": false,
+        "passed": false,
+        "trajectory": "1. mcp_call name=jira_create_issue status=ok args={\"project_key\": \"SUP\", \"issue_type\": \"Task\", \"summary\": \"AI agents to streamline document retrieval\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\"}"
+      }
+    ],
+    "judge_wall_time_s": 4.228
+  }
+}

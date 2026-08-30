@@ -1,0 +1,2857 @@
+{
+  "created_at": "2026-08-07T10:55:10.844689+00:00",
+  "target": "llama-stack",
+  "base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "summary": {
+    "requests": 100,
+    "ok": 100,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "orchestration_time_s": {
+      "min": 4.9789292920031585,
+      "max": 11.286877624981571,
+      "mean": 7.947017495857435,
+      "median": 7.715963895985624,
+      "p95": 10.718709537474206
+    },
+    "latency_s": {
+      "min": 4.9789292920031585,
+      "max": 11.286877624981571,
+      "mean": 7.947017495857435,
+      "median": 7.715963895985624,
+      "p95": 10.718709537474206
+    },
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 1.0,
+    "combined_success_rate": 1.0,
+    "judge_model": "vllm-inference-2/your-larger-model"
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 10.651699624955654,
+      "status_code": 200,
+      "response_id": "resp_933f3a9e-5787-414c-8d1f-071e0df03485",
+      "output_text": "Here is a list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5 - Open - AI agents to streamline document retrieval 4\n2. SUP-4 - Open - AI agents to streamline document retrieval 2\n3. SUP-3 - Open - AI agents to streamline document retrieval\n4. SUP-2 - Open - test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 10.914155916019809,
+      "status_code": 200,
+      "response_id": "resp_7d9b07a3-6c9d-438b-872f-6e3d4f203122",
+      "output_text": "Here are the Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, Medium, Unassigned)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, Medium, Unassigned)\n3. SUP-3: AI agents to streamline document retrieval (Open, Medium, Unassigned)\n4. SUP-2: test (Open, Medium, Unassigned)\n\nNote that all issues are currently open and unassigned, with a medium priority.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.82978195801843,
+      "status_code": 200,
+      "response_id": "resp_1e65d14e-cd44-451b-8a88-8c7ce6410097",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.638050374982413,
+      "status_code": 200,
+      "response_id": "resp_0c327268-93fd-4f43-8f81-2e9238005d0e",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.304954416991677,
+      "status_code": 200,
+      "response_id": "resp_e67cedc7-c916-4982-b70d-99caa3919c37",
+      "output_text": "Here is a list of Jira issues in project SUP:\n\n1. SUP-5 - AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4 - AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3 - AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2 - test (Open, [System] Incident, Medium)\n\nNote that the issues are listed in chronological order based on their creation date.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.980854791007005,
+      "status_code": 200,
+      "response_id": "resp_0f6fc972-5ac3-4dea-b7bc-05d08f8a7fa8",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.381579666980542,
+      "status_code": 200,
+      "response_id": "resp_2cf8a7b1-6831-4aeb-afb7-f6f3a95227e9",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.4644171250402,
+      "status_code": 200,
+      "response_id": "resp_536966c5-b53d-475a-8aa1-82b15073693a",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n- Issue 1: SUP-5\n  - Status: Open\n  - Summary: AI agents to streamline document retrieval 4\n\n- Issue 2: SUP-4\n  - Status: Open\n  - Summary: AI agents to streamline document retrieval 2\n\n- Issue 3: SUP-3\n  - Status: Open\n  - Summary: AI agents to streamline document retrieval\n\n- Issue 4: SUP-2\n  - Status: Open\n  - Summary: test\n\n- Issue 5: SUP-1\n  - Status: Open\n  - Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.970954874996096,
+      "status_code": 200,
+      "response_id": "resp_db4976df-187c-4cbf-84d3-9c7a0abc02ba",
+      "output_text": "Here is the list of Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n5. SUP-1: (Not available)\n\nNote: SUP-1 is not available in the current list of issues.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.144950332993176,
+      "status_code": 200,
+      "response_id": "resp_83b41578-0ca4-4bf9-9174-f7c1596079b2",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.8445732920081355,
+      "status_code": 200,
+      "response_id": "resp_14c008b2-1542-4b5f-825b-7e02078aa3e1",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.327971082995646,
+      "status_code": 200,
+      "response_id": "resp_ccbbe97b-913f-4b7c-a209-fc4c847da149",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.918436582956929,
+      "status_code": 200,
+      "response_id": "resp_a9b80afa-0b75-47d8-83b7-e19ca51fc9f1",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the assignee for all issues is Unassigned, and the reporter is Asier Cidon. The issues were created on August 6, 2026, and have not been updated since then.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.814594083989505,
+      "status_code": 200,
+      "response_id": "resp_296c8dfc-594a-4683-8c3b-d2a9a775a795",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.355433582968544,
+      "status_code": 200,
+      "response_id": "resp_9a8839de-8ac5-4c22-81c0-ca5176c78979",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.02875504095573,
+      "status_code": 200,
+      "response_id": "resp_bbd7dd91-76fd-4698-b76d-20ed4859b324",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.535318584006745,
+      "status_code": 200,
+      "response_id": "resp_f0f243eb-753c-4d04-b69f-adde2c2dd26c",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.208159125002567,
+      "status_code": 200,
+      "response_id": "resp_151744f3-1104-4615-9d63-3e8fb2b9b6d7",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident)\n4. SUP-2: test (Open, [System] Incident)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.165395957999863,
+      "status_code": 200,
+      "response_id": "resp_c541f4b2-1bf0-4b08-b6e0-f4af161e97c6",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.584639625041746,
+      "status_code": 200,
+      "response_id": "resp_a6527fe5-e577-430c-ba9c-dfd3a3b49be4",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.876048333011568,
+      "status_code": 200,
+      "response_id": "resp_d1f4137a-77c4-4d46-9eff-d160f9c7c3ab",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.641368749958929,
+      "status_code": 200,
+      "response_id": "resp_6ff10dd9-543f-4f16-b579-259ff05aa033",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n- SUP-5: Open, AI agents to streamline document retrieval 4\n- SUP-4: Open, AI agents to streamline document retrieval 2\n- SUP-3: Open, AI agents to streamline document retrieval\n- SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.520191334013361,
+      "status_code": 200,
+      "response_id": "resp_aa8e522e-9431-4836-9f64-feac20aeab75",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test\n5. SUP-1: Not shown in the response.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.765279415994883,
+      "status_code": 200,
+      "response_id": "resp_3860e659-691e-4bf2-aaa6-d7c22a36e780",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- SUP-5: Open, AI agents to streamline document retrieval 4\n- SUP-4: Open, AI agents to streamline document retrieval 2\n- SUP-3: Open, AI agents to streamline document retrieval\n- SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.471937125024851,
+      "status_code": 200,
+      "response_id": "resp_a92535fb-00a2-4d07-84c3-bfc1660cb7f8",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, Medium, Unassigned)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, Medium, Unassigned)\n* SUP-3: AI agents to streamline document retrieval (Open, Medium, Unassigned)\n* SUP-2: test (Open, Medium, Unassigned)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 11.216897291946225,
+      "status_code": 200,
+      "response_id": "resp_bbc46fae-bd51-41a2-990a-fc83af02c5e4",
+      "output_text": "Here is the list of Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, Medium, Unassigned)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, Medium, Unassigned)\n3. SUP-3: AI agents to streamline document retrieval (Open, Medium, Unassigned)\n4. SUP-2: test (Open, Medium, Unassigned)\n\nNote: The assignee field is currently set to \"Unassigned\" for all issues.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.02879791695159,
+      "status_code": 200,
+      "response_id": "resp_306220f7-f1bb-47f4-8f35-a2f89c1d2867",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.106425500009209,
+      "status_code": 200,
+      "response_id": "resp_3f3ada4f-4e3e-4713-a2c6-0765d483afef",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, Medium, Unassigned)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, Medium, Unassigned)\n* SUP-3: AI agents to streamline document retrieval (Open, Medium, Unassigned)\n* SUP-2: test (Open, Medium, Unassigned)\n\nNote that the assignee for all issues is Unassigned.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.017068292014301,
+      "status_code": 200,
+      "response_id": "resp_8f0c6366-3202-4b92-8640-d0e640198b94",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.164183833054267,
+      "status_code": 200,
+      "response_id": "resp_74c62a2e-2a83-4832-9844-7d08e4942934",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 4.9789292920031585,
+      "status_code": 200,
+      "response_id": "resp_c711c803-75cf-4345-bed0-8e08e647a00d",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.0542000840068795,
+      "status_code": 200,
+      "response_id": "resp_3408a17d-496e-4fdc-a057-b8aa75bf3b74",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.945316041004844,
+      "status_code": 200,
+      "response_id": "resp_470e3bbf-85dd-4b9b-89cb-27b03cd2d91b",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n- SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n- SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n- SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.262189749977551,
+      "status_code": 200,
+      "response_id": "resp_6e78a35c-9361-4e31-8e37-6a0377b9a04c",
+      "output_text": "Here are the Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, Medium, Unassigned)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, Medium, Unassigned)\n3. SUP-3: AI agents to streamline document retrieval (Open, Medium, Unassigned)\n4. SUP-2: test (Open, Medium, Unassigned)\n\nNote: The assignee field is currently set to \"Unassigned\" for all issues.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.541733750025742,
+      "status_code": 200,
+      "response_id": "resp_39d79245-353d-4498-b1cc-d360e38b5e36",
+      "output_text": "Here is the list of Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.107252250018064,
+      "status_code": 200,
+      "response_id": "resp_7b298e08-7f23-496f-b851-64c6d9aab183",
+      "output_text": "Here is the list of Jira issues in project SUP:\n\n- SUP-5: Open, AI agents to streamline document retrieval 4\n- SUP-4: Open, AI agents to streamline document retrieval 2\n- SUP-3: Open, AI agents to streamline document retrieval\n- SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.073217500001192,
+      "status_code": 200,
+      "response_id": "resp_c553044c-6bff-4c71-8cdb-765e381466cf",
+      "output_text": "Here is the list of Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.47803312499309,
+      "status_code": 200,
+      "response_id": "resp_1c27b7dd-e106-4909-842f-35e60156ca08",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote: The assignee for all issues is Unassigned, and the reporter is Asier Cidon. The created and updated dates are also available for each issue.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.442911166988779,
+      "status_code": 200,
+      "response_id": "resp_5d385028-0eb4-4e06-8cb9-6160bb0eea76",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n- SUP-5: Open, AI agents to streamline document retrieval 4\n- SUP-4: Open, AI agents to streamline document retrieval 2\n- SUP-3: Open, AI agents to streamline document retrieval\n- SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.169258875015657,
+      "status_code": 200,
+      "response_id": "resp_62b35bcd-771e-46bb-abc5-2ac9f2ec4fb4",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.122517041978426,
+      "status_code": 200,
+      "response_id": "resp_37eed3d8-7679-47d4-9205-e32a47ff96de",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.648246333992574,
+      "status_code": 200,
+      "response_id": "resp_ebadfdcc-4cbc-4478-b804-a506b5be2673",
+      "output_text": "Here is a list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.955281583010219,
+      "status_code": 200,
+      "response_id": "resp_108fead1-48d4-4c11-bb78-9815503539ff",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.3541975829866715,
+      "status_code": 200,
+      "response_id": "resp_4c8666d2-e89f-48ed-8c83-177078a3ad77",
+      "output_text": "Here is a list of Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 10.185732665995602,
+      "status_code": 200,
+      "response_id": "resp_8a2b6481-69ce-4f57-a828-e2cde7ead17e",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.902724165993277,
+      "status_code": 200,
+      "response_id": "resp_c7e496a4-1058-4b25-aced-453977be5bc7",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 10.722236374975182,
+      "status_code": 200,
+      "response_id": "resp_8210fb6f-3afb-431b-9326-8c1e73ac41c9",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.93681954202475,
+      "status_code": 200,
+      "response_id": "resp_236d76fa-a747-4a16-97e7-1568328457f5",
+      "output_text": "Here is a list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test\n5. SUP-1: Not available, Not available",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.997008625010494,
+      "status_code": 200,
+      "response_id": "resp_f6814d51-3e1e-4896-a5e2-05aee279fba2",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.862445583974477,
+      "status_code": 200,
+      "response_id": "resp_f6def401-b234-4155-8d68-8b32b0d5c5f9",
+      "output_text": "Here is a list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.412529999972321,
+      "status_code": 200,
+      "response_id": "resp_6db70bd5-4d43-400f-8daf-f7d88bfe3907",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.315523875004146,
+      "status_code": 200,
+      "response_id": "resp_3a5f8f9d-603a-4182-8f5a-58510a70610f",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.446047667006496,
+      "status_code": 200,
+      "response_id": "resp_6b4d216c-5431-4f25-a806-415ab3f7d7f8",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test\n5. SUP-1: Not available, Not started, No summary available",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.428609208029229,
+      "status_code": 200,
+      "response_id": "resp_a5c022ea-08da-4889-8750-41ff80d01037",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |\n\nNote that the status of these issues is currently \"Open\" and their summaries provide a brief description of the issue.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.558346250036266,
+      "status_code": 200,
+      "response_id": "resp_ca7ee00c-f71a-4d00-967d-aed4a77e56f5",
+      "output_text": "Here is the list of Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the assignee for each issue is currently unassigned, and the reporter is Asier Cidon. The issues were created on August 6, 2026.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.798579499998596,
+      "status_code": 200,
+      "response_id": "resp_9a5efa8f-2939-4633-8f1a-423fd445c0c5",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.939126707962714,
+      "status_code": 200,
+      "response_id": "resp_69794e8d-3c5c-4e86-9802-84f01b3dd740",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.467892332992051,
+      "status_code": 200,
+      "response_id": "resp_0466825a-8d4c-48fb-b2e8-e1d0871f3a6a",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.693241583998315,
+      "status_code": 200,
+      "response_id": "resp_d64070d2-338c-418f-8030-0a5839e19ff5",
+      "output_text": "Here is a list of Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the status, summary, and key of each issue are summarized as requested.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.298427790985443,
+      "status_code": 200,
+      "response_id": "resp_deea1380-ebaa-4551-90d2-45101dee71d8",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test\n5. SUP-1: Not available in this response (due to limit of 50 results per call)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.266834707988892,
+      "status_code": 200,
+      "response_id": "resp_b9b3990d-87f2-495e-8b8c-c597516ac103",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.986359375005122,
+      "status_code": 200,
+      "response_id": "resp_f96bc555-5937-475d-829c-d0a2c40b6376",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.349062707973644,
+      "status_code": 200,
+      "response_id": "resp_97f90cda-26f6-4231-b7ac-1a40c5a9753c",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote: The issues are summarized with their key, status, and summary. The status is Open, and the summary is provided for each issue. The issue type is [System] Incident, and the priority is Medium.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.283440041996073,
+      "status_code": 200,
+      "response_id": "resp_e9abd09b-1bc8-4b33-b7de-2a16401d91ef",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.128138125000987,
+      "status_code": 200,
+      "response_id": "resp_cd96cf72-8b96-48e9-8eab-e76de5a7b9bf",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.689998916990589,
+      "status_code": 200,
+      "response_id": "resp_21556ae4-cfb8-42f6-aa02-3cd9b5453a6c",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.578396916971542,
+      "status_code": 200,
+      "response_id": "resp_79597c59-fc1c-4f5b-8765-e0e2df2e7755",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.214740540948696,
+      "status_code": 200,
+      "response_id": "resp_50d637f5-2a09-42f9-9cf3-7b7ed699ef22",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 11.117055333976168,
+      "status_code": 200,
+      "response_id": "resp_4159a395-5b2b-4f3a-a3b4-a938f0c0c89e",
+      "output_text": "Here is a list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: Open [System] Incident, Medium, Unassigned, Asier Cidon\n2. SUP-4: Open [System] Incident, Medium, Unassigned, Asier Cidon\n3. SUP-3: Open [System] Incident, Medium, Unassigned, Asier Cidon\n4. SUP-2: Open [System] Incident, Medium, Unassigned, Asier Cidon",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.4523713330272585,
+      "status_code": 200,
+      "response_id": "resp_bd52c5e6-bd7e-44ec-94d7-671a8feec0e1",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.576515291992109,
+      "status_code": 200,
+      "response_id": "resp_7f407f5d-0657-4636-a2d0-3b9eb3ec40b0",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.738711958983913,
+      "status_code": 200,
+      "response_id": "resp_b8f4b2d8-6aa4-4b21-9429-a7814e2802cc",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- SUP-5: Open, AI agents to streamline document retrieval 4 (No assignee)\n- SUP-4: Open, AI agents to streamline document retrieval 2 (No assignee)\n- SUP-3: Open, AI agents to streamline document retrieval (No assignee)\n- SUP-2: Open, test (No assignee)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.934874999977183,
+      "status_code": 200,
+      "response_id": "resp_aa7a4766-9b52-495d-ba38-229bf5a21bab",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.224829250015318,
+      "status_code": 200,
+      "response_id": "resp_f79aa2c9-e2d4-46e8-bf6e-1f16f7d857dd",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test\n5. SUP-1: Not available in the response",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.225532582961023,
+      "status_code": 200,
+      "response_id": "resp_b06b2354-4015-4a2f-85d4-6ae09cdfa14d",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |\n\nNote that there are four issues in project SUP, and their status is all Open. The summaries are also provided for each issue.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.842476541001815,
+      "status_code": 200,
+      "response_id": "resp_e83cad97-1cc1-4778-a550-41ab2943c7a3",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.488666167017072,
+      "status_code": 200,
+      "response_id": "resp_9e4a3282-254e-4e6d-95a8-8ed99f91235c",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the assignee field is currently set to \"Unassigned\" for all issues.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 10.3703897089581,
+      "status_code": 200,
+      "response_id": "resp_ad1b08ae-2742-452d-b4d7-ee8f5c9147ff",
+      "output_text": "Here are the Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)\n\nNote: The issues are listed with their keys, statuses, and summaries. The status is Open and the issue type is [System] Incident. The priority is Medium. The assignee is Unassigned and the reporter is Asier Cidon. The created and updated dates are August 6, 2026.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.855059708002955,
+      "status_code": 200,
+      "response_id": "resp_42289c2d-bb96-4737-89cb-6d0aae045b2a",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.181504417036194,
+      "status_code": 200,
+      "response_id": "resp_10dc5ac9-3b7b-4c66-9c7e-899792b90ff6",
+      "output_text": "Here is the list of Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5 - Open - AI agents to streamline document retrieval 4\n2. SUP-4 - Open - AI agents to streamline document retrieval 2\n3. SUP-3 - Open - AI agents to streamline document retrieval\n4. SUP-2 - Open - test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.657830500043929,
+      "status_code": 200,
+      "response_id": "resp_726bbc43-901b-4fff-9c79-6781cfd96b20",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.0883097919868305,
+      "status_code": 200,
+      "response_id": "resp_6d604eed-516f-4ff8-95aa-88b0b4bc77e1",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.139679542044178,
+      "status_code": 200,
+      "response_id": "resp_5ee9658b-3595-4628-a928-dbedb95ef860",
+      "output_text": "Here is the list of Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |\n\nNote that the list only includes issues with a status of \"Open\" and a summary. The \"Assignee\" field is not included in the summary.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.26187241700245,
+      "status_code": 200,
+      "response_id": "resp_bc4eccf6-4f89-4b8d-8a16-e55a1f2f518a",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.215388374985196,
+      "status_code": 200,
+      "response_id": "resp_2d5269d5-1f34-4ab9-850b-0eb938b98f98",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.024838208977599,
+      "status_code": 200,
+      "response_id": "resp_2c2cafc5-9bbe-4ff5-b12e-534968986c63",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 9.384128124976996,
+      "status_code": 200,
+      "response_id": "resp_b1d4a389-4cec-47df-bdaf-1748031f4356",
+      "output_text": "Here is the list of Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.241318917018361,
+      "status_code": 200,
+      "response_id": "resp_4ef5192f-95de-4205-a6fc-6bade006bc3f",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.244183833012357,
+      "status_code": 200,
+      "response_id": "resp_1622505e-fc93-40dd-b5fe-edb97f7157b2",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test\n5. SUP-1: Not available in the results",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.939718500012532,
+      "status_code": 200,
+      "response_id": "resp_e0b2e012-9f1a-4fe7-9541-b4985ab968b9",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Open, AI agents to streamline document retrieval 4\n* SUP-4: Open, AI agents to streamline document retrieval 2\n* SUP-3: Open, AI agents to streamline document retrieval\n* SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.4099949590163305,
+      "status_code": 200,
+      "response_id": "resp_503d1656-d379-4d7a-82ab-eaeb42d6d61b",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n- SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n- SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n- SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.598883000027854,
+      "status_code": 200,
+      "response_id": "resp_b1a1f659-07f8-4475-ac96-f0ab1143663c",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the assignee field is currently set to \"Unassigned\" for all issues.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.395397583954036,
+      "status_code": 200,
+      "response_id": "resp_0bdda60c-256f-439a-8ad1-bdb4f5100262",
+      "output_text": "Here are the Jira issues in project SUP:\n\n- Key: SUP-5, Status: Open, Summary: AI agents to streamline document retrieval 4\n- Key: SUP-4, Status: Open, Summary: AI agents to streamline document retrieval 2\n- Key: SUP-3, Status: Open, Summary: AI agents to streamline document retrieval\n- Key: SUP-2, Status: Open, Summary: test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.341657541983295,
+      "status_code": 200,
+      "response_id": "resp_940ed4c1-965b-41bc-993e-91868abfe699",
+      "output_text": "Here are the Jira issues in project SUP:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 11.286877624981571,
+      "status_code": 200,
+      "response_id": "resp_e241229e-c1fd-4b23-8dea-7d965adaf29a",
+      "output_text": "Here is the list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 2,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.712928541994188,
+      "status_code": 200,
+      "response_id": "resp_35bd8512-7838-4fed-8b57-e139ea84e4cc",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.71899924997706,
+      "status_code": 200,
+      "response_id": "resp_74cb5162-4103-4115-a59b-6a3e7915cb36",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n- SUP-5: Open, AI agents to streamline document retrieval 4\n- SUP-4: Open, AI agents to streamline document retrieval 2\n- SUP-3: Open, AI agents to streamline document retrieval\n- SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.186282665992621,
+      "status_code": 200,
+      "response_id": "resp_38227983-e173-49c7-9ace-fd5b0162f793",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n- SUP-5: Open, AI agents to streamline document retrieval 4\n- SUP-4: Open, AI agents to streamline document retrieval 2\n- SUP-3: Open, AI agents to streamline document retrieval\n- SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.090221750026103,
+      "status_code": 200,
+      "response_id": "resp_da0cddcd-914c-4b26-8aac-e3454b56d6f0",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: Open, AI agents to streamline document retrieval 4\n2. SUP-4: Open, AI agents to streamline document retrieval 2\n3. SUP-3: Open, AI agents to streamline document retrieval\n4. SUP-2: Open, test",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 8.286829750053585,
+      "status_code": 200,
+      "response_id": "resp_436738b0-b5f2-4a58-a1f0-c4ab1acd102c",
+      "output_text": "Here are the Jira issues in project SUP:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n* SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n* SUP-2: test (Open, [System] Incident, Medium)",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    }
+  ],
+  "phoenix": {
+    "requests": 100,
+    "judge": "heuristic",
+    "judge_model": "vllm-inference-2/your-larger-model",
+    "judge_base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/v1",
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 1.0,
+    "combined_success_rate": 1.0,
+    "require_trajectory": true,
+    "orchestration_time_s": {
+      "min": 4.9789292920031585,
+      "max": 11.286877624981571,
+      "mean": 7.947017495857435,
+      "median": 7.71899924997706
+    },
+    "trials": [
+      {
+        "trial_id": 0,
+        "orchestration_time_s": 10.651699624955654,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 1,
+        "orchestration_time_s": 10.914155916019809,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 2,
+        "orchestration_time_s": 8.82978195801843,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 3,
+        "orchestration_time_s": 6.638050374982413,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 4,
+        "orchestration_time_s": 8.304954416991677,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 5,
+        "orchestration_time_s": 7.980854791007005,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 6,
+        "orchestration_time_s": 6.381579666980542,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 7,
+        "orchestration_time_s": 7.4644171250402,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 8,
+        "orchestration_time_s": 7.970954874996096,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 9,
+        "orchestration_time_s": 7.144950332993176,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 10,
+        "orchestration_time_s": 7.8445732920081355,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 11,
+        "orchestration_time_s": 8.327971082995646,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 12,
+        "orchestration_time_s": 8.918436582956929,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 13,
+        "orchestration_time_s": 7.814594083989505,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 14,
+        "orchestration_time_s": 7.355433582968544,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 15,
+        "orchestration_time_s": 8.02875504095573,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 16,
+        "orchestration_time_s": 9.535318584006745,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 17,
+        "orchestration_time_s": 9.208159125002567,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 18,
+        "orchestration_time_s": 7.165395957999863,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 19,
+        "orchestration_time_s": 7.584639625041746,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 20,
+        "orchestration_time_s": 6.876048333011568,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 21,
+        "orchestration_time_s": 7.641368749958929,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 22,
+        "orchestration_time_s": 9.520191334013361,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 23,
+        "orchestration_time_s": 6.765279415994883,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 24,
+        "orchestration_time_s": 7.471937125024851,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 25,
+        "orchestration_time_s": 11.216897291946225,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 26,
+        "orchestration_time_s": 9.02879791695159,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 27,
+        "orchestration_time_s": 7.106425500009209,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 28,
+        "orchestration_time_s": 7.017068292014301,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 29,
+        "orchestration_time_s": 7.164183833054267,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 30,
+        "orchestration_time_s": 4.9789292920031585,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 31,
+        "orchestration_time_s": 6.0542000840068795,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 32,
+        "orchestration_time_s": 7.945316041004844,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 33,
+        "orchestration_time_s": 9.262189749977551,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 34,
+        "orchestration_time_s": 6.541733750025742,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 35,
+        "orchestration_time_s": 8.107252250018064,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 36,
+        "orchestration_time_s": 7.073217500001192,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 37,
+        "orchestration_time_s": 7.47803312499309,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 38,
+        "orchestration_time_s": 6.442911166988779,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 39,
+        "orchestration_time_s": 8.169258875015657,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 40,
+        "orchestration_time_s": 7.122517041978426,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 41,
+        "orchestration_time_s": 9.648246333992574,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 42,
+        "orchestration_time_s": 7.955281583010219,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 43,
+        "orchestration_time_s": 7.3541975829866715,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 44,
+        "orchestration_time_s": 10.185732665995602,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 45,
+        "orchestration_time_s": 7.902724165993277,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 46,
+        "orchestration_time_s": 10.722236374975182,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 47,
+        "orchestration_time_s": 7.93681954202475,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 48,
+        "orchestration_time_s": 7.997008625010494,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 49,
+        "orchestration_time_s": 7.862445583974477,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 50,
+        "orchestration_time_s": 7.412529999972321,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 51,
+        "orchestration_time_s": 7.315523875004146,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 52,
+        "orchestration_time_s": 8.446047667006496,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 53,
+        "orchestration_time_s": 7.428609208029229,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 54,
+        "orchestration_time_s": 9.558346250036266,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 55,
+        "orchestration_time_s": 6.798579499998596,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 56,
+        "orchestration_time_s": 7.939126707962714,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 57,
+        "orchestration_time_s": 7.467892332992051,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 58,
+        "orchestration_time_s": 7.693241583998315,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 59,
+        "orchestration_time_s": 9.298427790985443,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 60,
+        "orchestration_time_s": 7.266834707988892,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 61,
+        "orchestration_time_s": 7.986359375005122,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 62,
+        "orchestration_time_s": 7.349062707973644,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 63,
+        "orchestration_time_s": 7.283440041996073,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 64,
+        "orchestration_time_s": 6.128138125000987,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 65,
+        "orchestration_time_s": 7.689998916990589,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 66,
+        "orchestration_time_s": 7.578396916971542,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 67,
+        "orchestration_time_s": 7.214740540948696,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 68,
+        "orchestration_time_s": 11.117055333976168,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 69,
+        "orchestration_time_s": 7.4523713330272585,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 70,
+        "orchestration_time_s": 7.576515291992109,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 71,
+        "orchestration_time_s": 7.738711958983913,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 72,
+        "orchestration_time_s": 7.934874999977183,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 73,
+        "orchestration_time_s": 7.224829250015318,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 74,
+        "orchestration_time_s": 7.225532582961023,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 75,
+        "orchestration_time_s": 7.842476541001815,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 76,
+        "orchestration_time_s": 8.488666167017072,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 77,
+        "orchestration_time_s": 10.3703897089581,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 78,
+        "orchestration_time_s": 7.855059708002955,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 79,
+        "orchestration_time_s": 8.181504417036194,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 80,
+        "orchestration_time_s": 7.657830500043929,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 81,
+        "orchestration_time_s": 7.0883097919868305,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 82,
+        "orchestration_time_s": 6.139679542044178,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 83,
+        "orchestration_time_s": 8.26187241700245,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 84,
+        "orchestration_time_s": 7.215388374985196,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 85,
+        "orchestration_time_s": 7.024838208977599,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 86,
+        "orchestration_time_s": 9.384128124976996,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 87,
+        "orchestration_time_s": 7.241318917018361,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 88,
+        "orchestration_time_s": 8.244183833012357,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 89,
+        "orchestration_time_s": 6.939718500012532,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 90,
+        "orchestration_time_s": 7.4099949590163305,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 91,
+        "orchestration_time_s": 7.598883000027854,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 92,
+        "orchestration_time_s": 7.395397583954036,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 93,
+        "orchestration_time_s": 8.341657541983295,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 94,
+        "orchestration_time_s": 11.286877624981571,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=2 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=error args={\"project_key\": \"SUP\", \"limit\": \"100\", \"start_at\": \"0\"}\n3. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 95,
+        "orchestration_time_s": 7.712928541994188,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 96,
+        "orchestration_time_s": 7.71899924997706,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 97,
+        "orchestration_time_s": 8.186282665992621,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\"}"
+      },
+      {
+        "trial_id": 98,
+        "orchestration_time_s": 8.090221750026103,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      },
+      {
+        "trial_id": 99,
+        "orchestration_time_s": 8.286829750053585,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "heuristic: http_ok=True mcp_calls=1 mentions_sup=True",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=['mcp', 'mcp_call', 'mcp_list_tools']",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      }
+    ]
+  }
+}

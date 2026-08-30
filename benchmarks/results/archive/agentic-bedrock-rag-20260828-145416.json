@@ -1,0 +1,218 @@
+{
+  "created_at": "2026-08-28T14:54:18.353194+00:00",
+  "benchmark_id": "20260828-145416",
+  "scenario": "rag",
+  "target": "bedrock-gateway",
+  "base_url": "https://gateway-quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.eu-north-1.amazonaws.com",
+  "model": "amazon.nova-2-lite-v1:0",
+  "prompt": "How is possible to create a jira issue?",
+  "instructions": "You are a helpful AI agent that can help users with Jira-related tasks using the MCP tools available:\n\nYour capabilities include:\n1. Creating new Jira issues based on user requests and following the respective procedures defined at company level, with capacity for adding information to the issues automatically like summary or other information easy to complete.\n2. Adding comments to existing Jira issues for updating the issues itself\n3. Searching for existing Jira issues such as general information about the issues, authors and the information defined in the procedures described.\n\nRules for RAG:\n- Always use the file_search tool against the configured vector stores.\n- Answer only from retrieved document context. If nothing relevant is found, say so clearly.\n- Prefer concise, factual answers. Quote or paraphrase the source material.\n- Do not invent policies, numbers, or procedures that were not retrieved.\n\nWhen users ask questions:\n- If they want to perform Jira operations, review the respective procedure defined at company level to advance following the rules stablished, and perform de operation following the structure provided by the MCP\n- If any prerequisite is not meet, check with the user and ask for the required information\n- Provide clear, helpful responses with relevant context based on the MCP response\n\nFor Jira operations:\n- When creating issues, ask for necessary details like project key, summary, and description (information defined in the procedure)\n- You are not allowed to use author, assignee or fields. \n- You can create a summary by your own based on the information provided for the user\n- Always provide feedback on the success or failure of operations with the llm and MCP responses\n\nAnswer using the retrieved Bedrock Knowledge Base context ('knowledge-base-quick-start-9qd1p'). Cite facts from the passages in the user message. If nothing relevant was retrieved, say so. Never invent procedures or issue keys.",
+  "prompt_files": {
+    "system_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/system.txt",
+    "user_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/user.txt"
+  },
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "https://gateway-quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.eu-north-1.amazonaws.com/mcp",
+    "allowed_tools": null
+  },
+  "rag": {
+    "mode": "bedrock_kb",
+    "vector_store_ids": null,
+    "gateway_mcp_url": null,
+    "retrieve_api": "bedrock-agent-runtime:Retrieve",
+    "knowledge_base_id": "7PTWKIDPIA",
+    "knowledge_base_name": "knowledge-base-quick-start-9qd1p",
+    "kb_embedding_model": "amazon.titan-embed-text-v2:0",
+    "mcp_tools": null,
+    "enable_rag": true
+  },
+  "summary": {
+    "requests": 1,
+    "ok": 0,
+    "errors": 1,
+    "success_rate": 0.0,
+    "tool_activity_rate": 0.0,
+    "total_time_s": {
+      "min": 0.18179229099769145,
+      "max": 0.18179229099769145,
+      "mean": 0.18179229099769145,
+      "median": 0.18179229099769145,
+      "sum": 0.18179229099769145,
+      "p95": 0.18179229099769145
+    },
+    "orchestration_time_s": {
+      "min": 0.18179229099769145,
+      "max": 0.18179229099769145,
+      "mean": 0.18179229099769145,
+      "median": 0.18179229099769145,
+      "sum": 0.18179229099769145,
+      "p95": 0.18179229099769145
+    },
+    "latency_s": {
+      "min": 0.18179229099769145,
+      "max": 0.18179229099769145,
+      "mean": 0.18179229099769145,
+      "median": 0.18179229099769145,
+      "sum": 0.18179229099769145,
+      "p95": 0.18179229099769145
+    },
+    "ttft_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "itl_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "rag_time_s": {
+      "min": 0.630970458034426,
+      "max": 0.630970458034426,
+      "mean": 0.630970458034426,
+      "median": 0.630970458034426,
+      "sum": 0.630970458034426,
+      "p95": 0.630970458034426
+    },
+    "time_to_rag_s": {
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "sum": 0.0,
+      "p95": 0.0
+    },
+    "rag_calls_total": 1,
+    "mcp_time_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "time_to_mcp_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "mcp_calls_total": 0,
+    "input_tokens": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "output_tokens": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "total_tokens": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "tokens_per_second": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "streamed_requests": 0,
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": false,
+        "total_time_s": 0.1818,
+        "orchestration_time_s": 0.1818,
+        "ttft_s": null,
+        "itl_s": null,
+        "rag_time_s": 0.631,
+        "time_to_rag_s": 0.0,
+        "rag_calls": 1,
+        "mcp_time_s": null,
+        "time_to_mcp_s": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "output_tokens_estimated": 0,
+        "total_tokens": null,
+        "tokens_per_second": null,
+        "streamed": false,
+        "stream_delta_count": 0,
+        "mcp_calls": 0,
+        "tool_events": []
+      }
+    ],
+    "suite_wall_time_s": 1.7002
+  },
+  "trials": [
+    {
+      "ok": false,
+      "latency_s": 0.18179229099769145,
+      "status_code": 404,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"error\": {\"message\": \"Gateway not found\", \"type\": \"not_found_error\", \"code\": \"404\"}}",
+      "trajectory": "(no tool steps recorded)",
+      "trial_id": 0,
+      "mcp_tool_responses": [],
+      "jira_issues": [],
+      "streamed": false,
+      "ttft_s": null,
+      "itl_s": null,
+      "itl_s_median": null,
+      "itl_s_p95": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": null,
+      "output_tokens_estimated": 0,
+      "stream_delta_count": 0,
+      "tokens_per_second": null,
+      "rag_calls": 1,
+      "rag_time_s": 0.631,
+      "time_to_rag_s": 0.0,
+      "rag_search_spans_s": [],
+      "mcp_time_s": null,
+      "time_to_mcp_s": null,
+      "mcp_call_spans_s": [],
+      "total_time_s": 0.1818,
+      "orchestration_time_s": 0.1818
+    }
+  ],
+  "bedrock": {
+    "gateway_url": "https://gateway-quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.eu-north-1.amazonaws.com",
+    "inference_url": "https://gateway-quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.eu-north-1.amazonaws.com/inference/v1/responses",
+    "runtime_arn": null,
+    "runtime_qualifier": null,
+    "region": "eu-north-1",
+    "auth_mode": "cognito",
+    "knowledge_base_id": "7PTWKIDPIA",
+    "kb_embedding_model": "amazon.titan-embed-text-v2:0"
+  },
+  "jira_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-bedrock-rag-20260828-145416-jira-responses.json",
+  "rag_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-bedrock-rag-20260828-145416-rag-responses.json"
+}

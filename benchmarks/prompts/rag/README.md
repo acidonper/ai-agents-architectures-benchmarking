@@ -6,14 +6,11 @@
 | `user.txt.example` | Example user prompt |
 | `user.txt` | **Edit this** before each run (gitignored) |
 
-The `rag` scenario injects **both** tools:
+The `rag` scenario with `--target bedrock-runtime` uses:
 
-```json
-[
-  {"type": "file_search", "vector_store_ids": ["vs_…"]},
-  {"type": "mcp", "server_label": "jira", "server_url": "…"}
-]
-```
+1. **RAG** — Amazon Bedrock Knowledge Base **Retrieve** (not `file_search`)
+2. **MCP** — AgentCore Runtime InvokeAgentRuntime (`jira_*` tools)
+3. **LLM** — Bedrock Converse (`BENCH_MODEL_INFERENCE_PROFILE_ID`)
 
 ## Run
 

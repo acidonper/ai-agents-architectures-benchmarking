@@ -1,0 +1,1401 @@
+{
+  "created_at": "2026-08-07T07:52:29.393902+00:00",
+  "target": "stackchat",
+  "base_url": "http://127.0.0.1:8000",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "summary": {
+    "requests": 100,
+    "ok": 91,
+    "errors": 9,
+    "success_rate": 0.91,
+    "tool_activity_rate": 0.91,
+    "latency_s": {
+      "min": 2.2744257080485113,
+      "max": 16.845452083973214,
+      "mean": 8.646315768768545,
+      "median": 7.9727452704973985,
+      "p95": 14.721416966695688
+    }
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 8.074590165982954,
+      "status_code": 200,
+      "response_id": "resp_d5a1e13d-1841-4cdb-8926-541baa50abe5",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n\t* Key: SUP-5\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n\t* Key: SUP-4\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n\t* Key: SUP-3\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n4. SUP-2: test (Open, [System] Incident, Medium)\n\t* Key: SUP-2\n\t* Status: Open\n\t* Summary: tet\n5. SUP-1: (Not found)\n\nNote: The issues are listed in ascending order of their created date.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 3.6005639590439387,
+      "status_code": 200,
+      "response_id": "resp_316c6071-8026-4f69-8e9f-2ec65d98d274",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote that the status of each issue is \"Open\" and the summaries are brief descriptions of the issue.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 3.4025893329526298,
+      "status_code": 200,
+      "response_id": "resp_cfccfc0d-bb0d-49a2-972e-eac236f7148a",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote that the status is \"Open\" for all issues, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 3.1603472499991767,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 3.5061716670170426,
+      "status_code": 200,
+      "response_id": "resp_8272c191-7501-46d7-96ee-fc5ba5eea889",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote that the status is \"Open\" and the category is \"To Do\" for all issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 4.163394542003516,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 2.2744257080485113,
+      "status_code": 200,
+      "response_id": "resp_51a7d88e-4db3-426b-a793-09d575bf9faf",
+      "output_text": "This will list Jira issues in project SUP. Summarize key, status, and summary.\n\nNote: You need to replace \"SUP-[key]\" with the actual key of the issue you want to retrieve.\n\nAlso, please note that the error message indicates that the issue_key field should match a specific pattern. Make sure to use the correct pattern when calling the function.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 2.884712082974147,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 5.464453833003063,
+      "status_code": 200,
+      "response_id": "resp_ba42c034-92f4-4cd7-b2b7-4c36f6631ea6",
+      "output_text": "This will list all the issues in the 'SUP' project, but it will only return 50 at a time. To get all the issues, you can use the 'start_at' parameter to specify the starting index for pagination.\n\nFor example, to get issues 51-100, you can use the following command:\n\n{\"name\": \"jira_get_project_issues\", \"parameters\": {\"project_key\": \"SUP\", \"limit\": \"50\", \"start_at\": \"51\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 5.513171041966416,
+      "status_code": 200,
+      "response_id": "resp_0253660e-e52e-410a-844e-0797c4a796de",
+      "output_text": "The above code searches for Jira issues in the project SUP, summarizing the key, status, and summary of each issue. The output is a JSON object containing a list of issues, each with its id, key, and browse URL.\n\nPlease note that the actual output may vary depending on the Jira instance and the search query.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 3.5523496249807067,
+      "status_code": 200,
+      "response_id": "resp_780f0048-4cdb-47f6-84a0-f902e8f08dd4",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote: The status of each issue is \"Open\", and the summaries are brief descriptions of the issues. The browse URLs provide more detailed information about each issue.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 3.551216874970123,
+      "status_code": 200,
+      "response_id": "resp_5b8eee07-b385-4deb-9afc-c22cb0bd0667",
+      "output_text": "This error means that the `issue_key` field does not match the expected pattern. The pattern `^[A-Z][A-Z0-9_]+-\\\\d+(?:-\\\\d+)*$` requires the string to start with one or more uppercase letters, followed by one or more uppercase letters, numbers, or underscores, and then a hyphen and one or more digits. The error is caused by the presence of `[key]` in the `issue_key` field, which is not a valid string.\n\nTo fix this error, you need to provide a valid `issue_key` field that matches the expected pattern. For example:\n\n{\"name\": \"jira_get_issue\", \"parameters\": {\"issue_key\": \"SUP-123\", \"fields\": \"key,status,summary\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 5.958567040972412,
+      "status_code": 200,
+      "response_id": "resp_fded1a79-6dce-4431-b15d-68024a7c6989",
+      "output_text": "The Jira issues in project SUP are:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, To Do, blue-gray)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, To Do, blue-gray)\n* SUP-3: AI agents to streamline document retrieval (Open, To Do, blue-gray)\n* SUP-2: test (Open, To Do, blue-gray)\n\nNote that the status of each issue is \"Open\" and the summary is provided.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.352038458979223,
+      "status_code": 200,
+      "response_id": "resp_cdf04e7e-6c49-4f48-96b1-6e431cc67ced",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote: The list only includes issues that were found in the search results. If there are no issues in the project, an empty list will be returned.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.940408750029746,
+      "status_code": 200,
+      "response_id": "resp_3f991768-4e3d-478d-a078-3ba104d3390e",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote: The output from the jira_search function is a JSON object containing information about the issues in project SUP. The issues are listed in a list called \"issues\" which contains dictionaries for each issue. Each dictionary contains the issue's \"id\", \"key\", \"summary\", and \"status\". The \"status\" is another dictionary that contains the issue's status name, category, and color.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 4.403844874992501,
+      "status_code": 200,
+      "response_id": "resp_8acfbdd0-22cf-4870-8f76-ea8ebf52b06d",
+      "output_text": "This will list all Jira issues in project SUP, summarizing key, status, and summary.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.675874624983408,
+      "status_code": 200,
+      "response_id": "resp_a9d18df4-29aa-4b3b-aee6-d453a29eb760",
+      "output_text": "Here is the list of Jira issues in project SUP with summary, key, and status:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the list only includes issues that were found in the search results. If there are more issues in the project SUP that are not included in this list, please let me know and I can try to find them for you.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 3.7952177089755423,
+      "status_code": 200,
+      "response_id": "resp_c66d9775-7fc1-4990-8568-e0ebd8b5c957",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote: The status is \"Open\" for all issues, indicating that they are currently in the \"To Do\" category.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 3.808325332996901,
+      "status_code": 200,
+      "response_id": "resp_36c3b25a-0759-4816-8d13-9b8da90afd92",
+      "output_text": "This error occurs because the `issue_key` parameter in the `jira_get_issue` function does not match the required pattern. The pattern `^[A-Z][A-Z0-9_]+-\\\\d+(?:-\\\\d+)*$` indicates that the `issue_key` should start with a capital letter, followed by one or more capital letters, numbers, or underscores, then a hyphen, and finally one or more digits or hyphens.\n\nTo fix this error, you need to provide an `issue_key` that matches the required pattern. For example:\n\n{\"name\": \"jira_get_issue\", \"parameters\": {\"issue_key\": \"SUP-123\", \"fields\": \"key,status,summary\", \"expand\": \"transitions,changelog,renderedFields\", \"use_display_names\": \"true\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 3.293054041976575,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 5.061391916999128,
+      "status_code": 200,
+      "response_id": "resp_0170f8fc-7e66-477b-a6c8-007f9d45c4ba",
+      "output_text": "This will list all issues in project SUP, summarizing key, status, and summary.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.7366170000168495,
+      "status_code": 200,
+      "response_id": "resp_aa298ca3-7f53-48af-b78a-b6c21bde9b5c",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: Key, Open, AI agents to streamline document retrieval 4\n2. SUP-4: Key, Open, AI agents to streamline document retrieval 2\n3. SUP-3: Key, Open, AI agents to streamline document retrieval\n4. SUP-2: Key, Open, test",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.7729799170047045,
+      "status_code": 200,
+      "response_id": "resp_9a86d7c8-ddcc-4707-9f84-2e6860d009ff",
+      "output_text": "The Jira issues in project SUP are:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, To Do, blue-gray)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, To Do, blue-gray)\n* SUP-3: AI agents to streamline document retrieval (Open, To Do, blue-gray)\n* SUP-2: test (Open, To Do, blue-gray)\n\nNote that the list of issues is limited to the first 100 results, and there may be more issues available in the project.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 4.512957207974978,
+      "status_code": 200,
+      "response_id": "resp_e21c7bb9-45cd-4d9f-9733-8e2bdaaf0f71",
+      "output_text": "Based on the search results, here are the issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote that the status of each issue is \"Open\" and the summaries are brief descriptions of the issue.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 4.272825625026599,
+      "status_code": 200,
+      "response_id": "resp_db2e16e2-5918-4022-8eea-05b304cc5999",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is \"Open\", indicating that they are currently open and awaiting attention. The summaries provided are a brief description of each issue.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.601143832958769,
+      "status_code": 200,
+      "response_id": "resp_361f93d3-b5f2-4d9d-800f-c71a09d95ac0",
+      "output_text": "Here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the issue SUP-1 is not found, and the search results only show four issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 4.894626916968264,
+      "status_code": 200,
+      "response_id": "resp_25c14928-80a4-4b04-8084-7f97b66370be",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of all issues is \"Open\" and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 3.8616922089713626,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.916280833014753,
+      "status_code": 200,
+      "response_id": "resp_84bc135c-737d-4267-9962-64b72f0bb7d8",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote: The status of each issue is \"Open\" and categorized as \"To Do\".",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 7.559513207990676,
+      "status_code": 200,
+      "response_id": "resp_a7af6960-1c62-46b5-b78e-876142ace103",
+      "output_text": "Here is the list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote: The actual output from the Jira search may vary depending on the project and issue data.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 5.070357916993089,
+      "status_code": 200,
+      "response_id": "resp_c4b0a88c-ef6f-457a-876d-439bd19a2aa8",
+      "output_text": "Here is the list of Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status is currently \"Open\" for all issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 5.0206586249987595,
+      "status_code": 200,
+      "response_id": "resp_195af35d-f6d4-4e88-b77b-1904f8a80185",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is \"Open\", and the summaries are provided as per the search results.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 4.032427875034045,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 10.264823459030595,
+      "status_code": 200,
+      "response_id": "resp_4a51ee0f-5f6d-4dfe-be1d-f921d92754ed",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote that these are the only issues found in the search results. If there are more issues in the project, they may not be included in this list.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.802994417026639,
+      "status_code": 200,
+      "response_id": "resp_363b62e2-4874-4d7e-ae43-ed2477ee6f15",
+      "output_text": "This will list all the Jira issues in project SUP, summarizing key, status, and summary for each issue. If an issue is not found, it will display an error message.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.614579790970311,
+      "status_code": 200,
+      "response_id": "resp_75ae0c18-f3a2-41a7-aac1-c9cad1f87e69",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: \"AI agents to streamline document retrieval 4\" (Open)\n2. SUP-4: \"AI agents to streamline document retrieval 2\" (Open)\n3. SUP-3: \"AI agents to streamline document retrieval\" (Open)\n4. SUP-2: \"test\" (Open)\n\nNote that the status is \"Open\" for all four issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 6.7160085829673335,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.016257499984931,
+      "status_code": 200,
+      "response_id": "resp_a15746e5-598f-4c95-a993-81f01441af3e",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote that the status of each issue is Open, and the summaries are related to AI agents and document retrieval.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 13.330075624980964,
+      "status_code": 200,
+      "response_id": "resp_e458169b-d086-4bce-ab21-df7a4010191e",
+      "output_text": "Here is a list of Jira issues in project SUP, summarizing key, status, and summary:\n\n| Issue Key | Summary | Status |\n| --- | --- | --- |\n| SUP-5 | AI agents to streamline document retrieval 4 | Open |\n| SUP-4 | AI agents to streamline document retrieval 2 | Open |\n| SUP-3 | AI agents to streamline document retrieval | Open |\n| SUP-2 | test | Open |\n| SUP-1 | | Open |",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 12.796746416017413,
+      "status_code": 200,
+      "response_id": "resp_5c73d708-2aa9-4af0-bde0-39c0ad400070",
+      "output_text": "Here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote: The output from the jira_search function is a JSON object containing a list of issues that match the search criteria. Each issue is represented as a dictionary with keys for id, key, summary, browse_url, and status. The status is represented as a dictionary with keys for name, category, and color.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 6.753689957957249,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 6.6976106250076555,
+      "status_code": 200,
+      "response_id": "resp_7c3f043d-f100-4e56-bbff-459c1c29b176",
+      "output_text": "This will list Jira issues in project SUP and summarize key, status, and summary. \n\nPlease replace 'key' with the actual key of the issue you want to retrieve. \n\nNote: The pattern for the issue key is^[A-Z][A-Z0-9_]+-\\\\d+(?:-\\\\d+)*$. This ensures that the issue key starts with an uppercase letter, followed by any number of uppercase letters, numbers, or underscores, then a hyphen, and finally one or more digits or hyphens.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 12.03379745798884,
+      "status_code": 200,
+      "response_id": "resp_5795a866-e21d-47ca-99aa-15168fa54204",
+      "output_text": "Here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote: The status of each issue is \"Open\" as it is the current status of all the issues in the search result.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 13.591223333030939,
+      "status_code": 200,
+      "response_id": "resp_a8711675-2d0a-483b-88cc-11773bbdeb14",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n\t* Key: SUP-5\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n\t* Key: SUP-4\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n\t* Key: SUP-3\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n4. SUP-2: test (Open, [System] Incident, Medium)\n\t* Key: SUP-2\n\t* Status: Open\n\t* Summary: tet\n\nNote that the issues are currently open and belong to the [System] Incident category with a medium priority. The assignee is unassigned for all issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.237097750010435,
+      "status_code": 200,
+      "response_id": "resp_a393274e-a601-4630-a512-e158c10b967f",
+      "output_text": "Based on the search results, here is a summary of the Jira issues in project SUP:\n\n* Issue 1: SUP-5 - Key: SUP-5, Summary: AI agents to streamline document retrieval 4, Status: Open\n* Issue 2: SUP-4 - Key: SUP-4, Summary: AI agents to streamline document retrieval 2, Status: Open\n* Issue 3: SUP-3 - Key: SUP-3, Summary: AI agents to streamline document retrieval, Status: Open\n* Issue 4: SUP-2 - Key: SUP-2, Summary: test, Status: Open\n\nNote that there are four issues in total, and all of them are currently open.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 12.181160417036153,
+      "status_code": 200,
+      "response_id": "resp_1ca7e95f-6b90-45b0-9a79-6a60ba9e061d",
+      "output_text": "Here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote: The status of each issue is \"Open\" as it is the default status for new issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.175217457988765,
+      "status_code": 200,
+      "response_id": "resp_a0be2beb-471a-4656-8a45-09fb4f92865e",
+      "output_text": "Here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote that the status of the issues is Open, and the summaries are AI agents to streamline document retrieval, AI agents to streamline document retrieval, AI agents to streamline document retrieval, and test respectively.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.178803791990504,
+      "status_code": 200,
+      "response_id": "resp_2f3bbc51-f3be-4ae4-aee1-36adf94320ab",
+      "output_text": "Here is the list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote: The list only includes issues that are currently open and in the \"To Do\" category. If you want to see all issues in the project, you can modify the JQL query to exclude the \"status = 'Open'\" filter.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 13.294973083015066,
+      "status_code": 200,
+      "response_id": "resp_15877e14-ed56-47a9-9197-87d7a840b7e4",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the list is not exhaustive as the search result only shows the first 100 issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 10.5383509999956,
+      "status_code": 200,
+      "response_id": "resp_bf692f98-8c2b-46a1-abe6-fc2ccb20a4a2",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)\n\nNote that the status and summary of each issue are based on the data provided in the output of the jira_get_project_issues function.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.351321917027235,
+      "status_code": 200,
+      "response_id": "resp_2a05fb1a-ae41-4aa2-a728-06a44ebfad4d",
+      "output_text": "Here is the list of Jira issues in project SUP with key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.2910407920135185,
+      "status_code": 200,
+      "response_id": "resp_53587510-0341-4152-8cb0-58b9a7405e0d",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5 - Open - AI agents to streamline document retrieval 4\n2. SUP-4 - Open - AI agents to streamline document retrieval 2\n3. SUP-3 - Open - AI agents to streamline document retrieval\n4. SUP-2 - Open - test\n\nNote that the status is \"Open\" for all issues, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.829399167036172,
+      "status_code": 200,
+      "response_id": "resp_97af4f07-8f2b-44d0-bfc0-832c398703fd",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote: The status is \"Open\" for all issues, indicating that they are not yet completed.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 10.563535875000525,
+      "status_code": 200,
+      "response_id": "resp_7c9a789d-6e49-4170-b139-a04b7559c2e5",
+      "output_text": "Here is the list of Jira issues in project SUP with key, status, and summary:\n\n1. SUP-5 - AI agents to streamline document retrieval 4 (Open)\n2. SUP-4 - AI agents to streamline document retrieval 2 (Open)\n3. SUP-3 - AI agents to streamline document retrieval (Open)\n4. SUP-2 - test (Open)\n\nNote that the list only includes issues that are not closed and are from the SUP project.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.940810166008305,
+      "status_code": 200,
+      "response_id": "resp_f32d68f8-f061-4247-bdd5-e193a3d0ab0e",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is Open, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 10.487153499969281,
+      "status_code": 200,
+      "response_id": "resp_66690f03-d61c-4f6a-b081-51bc4147a815",
+      "output_text": "This will list all the issues in the project SUP and summarize their key, status, and summary. If an issue is not found, it will display an error message.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 7.247091333963908,
+      "status_code": 200,
+      "response_id": "resp_1091e8ea-f1ad-4a06-897e-dd736e167fa9",
+      "output_text": "This error means that the issue_key 'SUP-[key]' does not match the expected pattern of '^[A-Z][A-Z0-9_]+-\\\\d+(?:-\\\\d+)*$'. The pattern is used to validate if the issue_key is in the correct format.\n\nTo fix this, we need to provide a valid issue_key. Since you want to list Jira issues in project SUP, we can use the 'SUP-' as the prefix for the issue_key. Here's another attempt:\n\n{\"name\": \"jira_get_issue\", \"parameters\": {\"issue_key\": \"SUP-12345\", \"fields\": \"summary,status,summary\", \"expand\": \"renderedFields\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.242361875018105,
+      "status_code": 200,
+      "response_id": "resp_9bd4820e-d0da-4039-9730-12cb5f3a22ee",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status is \"Open\" for all issues, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.862129541987088,
+      "status_code": 200,
+      "response_id": "resp_4f221b06-e6b3-48e9-8ded-e83a7dfc49f0",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote: The status of each issue is \"Open\", indicating that they are currently being worked on and have not been resolved yet.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.872723708976991,
+      "status_code": 200,
+      "response_id": "resp_fcfe8f42-93d3-4152-983f-637852e356ca",
+      "output_text": "Here is a list of Jira issues in project SUP with key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)\n\nNote: The list only includes issues with a status of \"Open\" and priority of \"Medium\".",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 10.034525583032519,
+      "status_code": 200,
+      "response_id": "resp_a26a5f41-c155-42eb-b3b0-4899d94cb86a",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the above output is based on the Jira search result provided in the previous response. If you want to get the actual list of issues in project SUP, you may need to modify the Jira search query or use a different tool.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 6.869885166990571,
+      "status_code": 200,
+      "response_id": "resp_4ddc480d-e3e1-48a4-9c52-eece26e8eef9",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote: The status of each issue is \"Open\" and the summaries are truncated for brevity.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.618013833009172,
+      "status_code": 200,
+      "response_id": "resp_b510be3c-eb5b-4b09-a51a-d19bf8c0d10e",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is \"Open\", indicating that they have not been completed yet.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.36567875003675,
+      "status_code": 200,
+      "response_id": "resp_408464e3-926b-4797-9c12-7dfcaa13b05c",
+      "output_text": "The issue key \"SUP-123\" was not found in the project SUP. You can try searching for issues in the project SUP using the Jira search API or check if the issue key is correct and you have the necessary permissions to access the project.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 10.547557041980326,
+      "status_code": 200,
+      "response_id": "resp_2104725e-6d2f-4aed-9709-052be91bc62c",
+      "output_text": "Here is the list of Jira issues in project SUP, summarizing key, status, and summary:\n\n| Issue Key | Summary | Status |\n| --- | --- | --- |\n| SUP-5 | AI agents to streamline document retrieval 4 | Open |\n| SUP-4 | AI agents to streamline document retrieval 2 | Open |\n| SUP-3 | AI agents to streamline document retrieval | Open |\n| SUP-2 | test | Open |\n\nNote that the list only includes issues with a status of \"Open\" and does not include any issues that may be in a different status.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 7.319122333952691,
+      "status_code": 200,
+      "response_id": "resp_63fbc4a6-a860-4e76-b29d-008ce419aab6",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n* SUP-5: Key, Open, AI agents to streamline document retrieval 4\n* SUP-4: Key, Open, AI agents to streamline document retrieval 2\n* SUP-3: Key, Open, AI agents to streamline document retrieval\n* SUP-2: Key, Open, test",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 10.785929833014961,
+      "status_code": 200,
+      "response_id": "resp_39625acc-1b37-497a-9cee-aba91370e134",
+      "output_text": "This will list all Jira issues in the project SUP, summarizing their key, status, and summary.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.047438749985304,
+      "status_code": 200,
+      "response_id": "resp_0a4be99f-6e38-4e2e-a801-290c71780870",
+      "output_text": "This will list all the Jira issues in the project SUP, summarizing key, status, and summary. \n\nPlease note that the output may vary based on the actual data in your Jira project. \n\nAlso, the limit parameter was set to 100 which is greater than the allowed limit of 50. The output provided by the function shows an error message indicating that the limit should be less than or equal to 50.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.683311625034548,
+      "status_code": 200,
+      "response_id": "resp_9a708b03-632a-4189-89af-14ba3309d032",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n\t* Key: SUP-5\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval 4\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n\t* Key: SUP-4\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval 2\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n\t* Key: SUP-3\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval\n4. SUP-2: test (Open, [System] Incident, Medium)\n\t* Key: SUP-2\n\t* Status: Open\n\t* Summary: tet\n\nNote that the issues are all in the Open status and have a Medium priority. The summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 12.0134899590048,
+      "status_code": 200,
+      "response_id": "resp_61db6497-c010-4a99-a927-91afbfb40098",
+      "output_text": "Here are the Jira issues in project SUP, summarized by key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote: The status of the issues is \"Open\" and the category is \"To Do\". The browse URL is also provided for each issue.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.538439291995019,
+      "status_code": 200,
+      "response_id": "resp_c509dd8b-6ab5-448e-b316-76e328454866",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote that the actual output may vary based on the Jira instance and the user's permissions.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 7.309262541006319,
+      "status_code": 200,
+      "response_id": "resp_f92e89bc-ce4f-48ba-b8cc-c9a23f260e28",
+      "output_text": "Here is the corrected function call:\n\n{\"name\": \"jira_get_issue\", \"parameters\": {\"issue_key\": \"SUP-123\", \"fields\": \"key,summary,status\", \"expand\": \"transitions,changelog,watchers,worklogs,renderedFields\", \"use_display_names\": \"true\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": false,
+      "latency_s": 8.456716584041715,
+      "status_code": 502,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"detail\": \"Error code: 500 - {'detail': 'This model only supports single tool-calls at once! This model only supports single tool-calls at once!'}\"}"
+    },
+    {
+      "ok": true,
+      "latency_s": 7.556679666042328,
+      "status_code": 200,
+      "response_id": "resp_5497fbbf-8c3d-4a5a-96c9-07eed101ad2e",
+      "output_text": "Here is the corrected function call:\n\n{\"name\": \"jira_get_issue\", \"parameters\": {\"issue_key\": \"SUP-123\", \"fields\": \"key,status,summary\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 14.198614125023596,
+      "status_code": 200,
+      "response_id": "resp_207602d0-c6b0-499c-8fa4-e5c2af1b563b",
+      "output_text": "Here is a list of Jira issues in project SUP with key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do, Medium)\n4. SUP-2: test (Open, To Do, Medium)\n\nNote: The issues are listed in the order they appear in the response from the Jira API.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 7.600394583016168,
+      "status_code": 200,
+      "response_id": "resp_579dc9aa-32ab-49f3-bb8e-c69aa7466e02",
+      "output_text": "This error means that the issue_key field does not match the expected pattern. The pattern expects a string that starts with an uppercase letter, followed by any number of uppercase letters, numbers, or underscores, and then optionally followed by a hyphen and one or more digits.\n\nTo fix this error, you need to provide a valid issue_key. For example:\n\n{\"name\": \"jira_get_issue\", \"parameters\": {\"issue_key\": \"SUP-123\", \"fields\": \"key,summary,status\", \"expand\": \"renderedFields\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 9.519326415960677,
+      "status_code": 200,
+      "response_id": "resp_479a03a4-726d-42d9-a995-76ab4d6dfd5a",
+      "output_text": "This will list all the Jira issues in project SUP, summarizing their key, status, and summary.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 13.003786334011238,
+      "status_code": 200,
+      "response_id": "resp_1cfe64b7-0389-490e-9588-2f5f6185219c",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do, blue-gray)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do, blue-gray)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do, blue-gray)\n4. SUP-2: test (Open, To Do, blue-gray)\n\nNote that the status of each issue is \"Open\" and the category is \"To Do\", with a color of blue-gray.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 15.197005165973678,
+      "status_code": 200,
+      "response_id": "resp_24a08bd9-bc51-4b10-b75f-e12c040dcfab",
+      "output_text": "The list of Jira issues in project SUP includes:\n\n* SUP-5: AI agents to streamline document retrieval 4\n\t+ Status: Open\n\t+ Summary: AI agents to streamline document retrieval 4\n* SUP-4: AI agents to streamline document retrieval 2\n\t+ Status: Open\n\t+ Summary: AI agents to streamline document retrieval 2\n* SUP-3: AI agents to streamline document retrieval\n\t+ Status: Open\n\t+ Summary: AI agents to streamline document retrieval\n* SUP-2: test\n\t+ Status: Open\n\t+ Summary: test\n* SUP-1: \n    + Status: Open\n    + Summary: \n\nNote that the issue SUP-1 is not included in the list as it is not provided in the output.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 7.765551500022411,
+      "status_code": 200,
+      "response_id": "resp_93b05cfc-09ba-4ab7-a101-f663b7ff31ef",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is \"Open\", indicating that they are currently open and awaiting attention. The summaries provide a brief description of each issue.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 7.888240250002127,
+      "status_code": 200,
+      "response_id": "resp_36b9d7c8-a076-43e9-a1aa-cb6da47a65be",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with their key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is Open, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 15.763890957983676,
+      "status_code": 200,
+      "response_id": "resp_70f84b3e-7188-41e0-b63c-eb2e7cac8e31",
+      "output_text": "Here is the list of Jira issues in project SUP with key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4\n\t* Status: Open\n\t* Summary: We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\n2. SUP-4: AI agents to streamline document retrieval 2\n\t* Status: Open\n\t* Summary: We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\n3. SUP-3: AI agents to streamline document retrieval\n\t* Status: Open\n\t* Summary: We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\n4. SUP-2: test\n\t* Status: Open\n\t* Summary: tet\n\nNote that the list only includes issues with a status of \"Open\" and a priority of \"Medium\". If you want to see all issues in project SUP, you can modify the Jira_get_project_issues function to include all fields.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.109694749990012,
+      "status_code": 200,
+      "response_id": "resp_e1281bfa-5d23-466b-ba50-dd01442d7f24",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote: The status is \"Open\" for all issues, indicating that they are not yet closed or resolved.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 13.83337725000456,
+      "status_code": 200,
+      "response_id": "resp_e574f09d-41d4-4ae7-8531-2d4626249f60",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do, blue-gray)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do, blue-gray)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do, blue-gray)\n4. SUP-2: test (Open, To Do, blue-gray)\n\nNote that the actual output may vary depending on the Jira instance and the user's permissions.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 14.734985749993939,
+      "status_code": 200,
+      "response_id": "resp_8e20a35c-2653-4cc9-8817-c9ad8f2cf49a",
+      "output_text": "Here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4\n\t* Key: SUP-5\n\t* Status: Open\n\t* Summary: Implementing an innovative capability that integrates autonomous AI agents into internal workflows to streamline document retrieval from the central database.\n2. SUP-4: AI agents to streamline document retrieval 2\n\t* Key: SUP-4\n\t* Status: Open\n\t* Summary: Implementing an innovative capability that integrates autonomous AI agents into internal workflows to streamline document retrieval from the central database.\n3. SUP-3: AI agents to streamline document retrieval\n\t* Key: SUP-3\n\t* Status: Open\n\t* Summary: Implementing an innovative capability that integrates autonomous AI agents into internal workflows to streamline document retrieval from the central database.\n4. SUP-2: test\n\t* Key: SUP-2\n\t* Status: Open\n\t* Summary: tet\n\nNote: The issues are in the \"To Do\" category and have a medium priority. The assignee is currently unassigned, and the reporter is Asier Cidon. The issues were created on August 6, 2026, and have not been updated since then.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.87071999994805,
+      "status_code": 200,
+      "response_id": "resp_e9e269bb-8ff6-49ff-9ff7-dd4349a2aca1",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote that the status is \"Open\" for all issues, indicating that they are currently open and awaiting resolution. The summaries are brief descriptions of the issues, and the keys are unique identifiers for each issue in project SUP.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 13.189877333992627,
+      "status_code": 200,
+      "response_id": "resp_6a330056-c5be-409b-9ad8-b115f8b83830",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, To Do)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, To Do)\n3. SUP-3: AI agents to streamline document retrieval (Open, To Do)\n4. SUP-2: test (Open, To Do)\n\nNote: The status and summary of each issue are based on the output of the jira_search function, which returns the issues in the project SUP with a limit of 100 results.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 13.021511542028747,
+      "status_code": 200,
+      "response_id": "resp_1bad0828-8fc2-41bb-8708-e8b190c9b982",
+      "output_text": "This will list all the Jira issues in the SUP project, summarizing key, status, and summary for each issue. \n\nPlease note that the first attempt to list issues failed because the issue key 'SUP-123' was not found. The second attempt also failed because the limit parameter was set to 100, which is greater than the allowed maximum of 50. \n\nTo fix this, you can either remove the limit parameter or set it to a value less than or equal to 50. \n\nHere's how you can do it:\n\n{\"name\": \"jira_get_project_issues\", \"parameters\": {\"project_key\": \"SUP\", \"limit\": \"50\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 16.845452083973214,
+      "status_code": 200,
+      "response_id": "resp_52ecbaf5-56c7-469e-aae8-e7c20c98b799",
+      "output_text": "Here is the list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4\n\t* Key: SUP-5\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n2. SUP-4: AI agents to streamline document retrieval 2\n\t* Key: SUP-4\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n3. SUP-3: AI agents to streamline document retrieval\n\t* Key: SUP-3\n\t* Status: Open\n\t* Summary: AI agents to streamline document retrieval from the central database\n4. SUP-2: test\n\t* Key: SUP-2\n\t* Status: Open\n\t* Summary: tet\n\nNote that the list only includes issues with a status of \"Open\" and does not include any issues that may be in a different status.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.029209707980044,
+      "status_code": 200,
+      "response_id": "resp_e06f5aae-ed56-4d23-b320-20015ee1f4fd",
+      "output_text": "Based on the search results, here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, AI agents to streamline document retrieval)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, AI agents to streamline document retrieval)\n3. SUP-3: AI agents to streamline document retrieval (Open, AI agents to streamline document retrieval)\n4. SUP-2: test (Open, test)\n\nNote that the status is \"Open\" for all issues, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 14.281049625016749,
+      "status_code": 200,
+      "response_id": "resp_0cbb136c-0e6d-428c-a342-4919084ed983",
+      "output_text": "Here is the list of Jira issues in project SUP with key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4\n   - Status: Open\n   - Summary: AI agents to streamline document retrieval 4\n\n2. SUP-4: AI agents to streamline document retrieval 2\n   - Status: Open\n   - Summary: AI agents to streamline document retrieval 2\n\n3. SUP-3: AI agents to streamline document retrieval\n   - Status: Open\n   - Summary: AI agents to streamline document retrieval\n\n4. SUP-2: test\n   - Status: Open\n   - Summary: test",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 14.437706125027034,
+      "status_code": 200,
+      "response_id": "resp_174eec86-3c33-4159-9e78-26ea4aafdaca",
+      "output_text": "Here is the list of Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)\n5. SUP-1: (Not available)\n\nNote that the first issue is not available because it's not in the response.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 10,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.402296625019517,
+      "status_code": 200,
+      "response_id": "resp_428502b6-55af-4f8c-8f4a-a2febf754ba7",
+      "output_text": "This means that the `issue_key` field does not match the required pattern. The pattern `^[A-Z][A-Z0-9_]+-\\\\d+(?:-\\\\d+)*$` matches strings that start with an uppercase letter, followed by one or more uppercase letters, numbers, or underscores, and then a hyphen, followed by one or more digits, optionally separated by hyphens.\n\nTo fix this, you can modify the `issue_key` field to match the required pattern. For example:\n\n{\"name\": \"jira_get_issue\", \"parameters\": {\"issue_key\": \"SUP-123\", \"fields\": \"key,status,summary\"}}",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 8.596624582947697,
+      "status_code": 200,
+      "response_id": "resp_95086ff7-b5b8-4d1d-b682-c6d983980c67",
+      "output_text": "Based on the search results, here is a list of Jira issues in project SUP with summarized key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is Open, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 4,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 12.981562333006877,
+      "status_code": 200,
+      "response_id": "resp_3873ee18-cf9f-4651-92b6-9d947ae1c46f",
+      "output_text": "The Jira issues in project SUP are:\n\n* SUP-5: AI agents to streamline document retrieval 4 (Open, To Do, blue-gray)\n* SUP-4: AI agents to streamline document retrieval 2 (Open, To Do, blue-gray)\n* SUP-3: AI agents to streamline document retrieval (Open, To Do, blue-gray)\n* SUP-2: test (Open, To Do, blue-gray)\n\nThese are the results of the search query \"project = SUP\" with the fields key, status, and summary. The total number of issues found is -1, indicating that there are no issues in the database. The start_at value is 0, indicating that the search started from the first issue. The max_results value is 100, indicating that the maximum number of results to return is 100.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 14.463610084028915,
+      "status_code": 200,
+      "response_id": "resp_480d1178-10b5-4c12-9a02-2137d8acd4a7",
+      "output_text": "Here is the list of Jira issues in project SUP with key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that there are four issues in the project SUP.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 16.28280241700122,
+      "status_code": 200,
+      "response_id": "resp_0cf807a6-ad43-4ff9-a4f3-da2274374f43",
+      "output_text": "Here are the Jira issues in project SUP with a summary of key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4\n\t* Key: SUP-5\n\t* Status: Open\n\t* Summary: Implementing an innovative capability that integrates autonomous AI agents into internal workflows to streamline document retrieval from the central database.\n2. SUP-4: AI agents to streamline document retrieval 2\n\t* Key: SUP-4\n\t* Status: Open\n\t* Summary: Implementing an innovative capability that integrates autonomous AI agents into internal workflows to streamline document retrieval from the central database.\n3. SUP-3: AI agents to streamline document retrieval\n\t* Key: SUP-3\n\t* Status: Open\n\t* Summary: Implementing an innovative capability that integrates autonomous AI agents into internal workflows to streamline document retrieval from the central database.\n4. SUP-2: test\n\t* Key: SUP-2\n\t* Status: Open\n\t* Summary: tet\n5. SUP-1: (no issues found)",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 12,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 11.073049500002526,
+      "status_code": 200,
+      "response_id": "resp_551512ea-f2b6-408a-aeb5-c09bf11c52fc",
+      "output_text": "Since there are no issues in the project SUP, the function returns an error message.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 12.101078542007599,
+      "status_code": 200,
+      "response_id": "resp_c5d063fb-b8bf-4af1-a147-641826f90fc7",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n3. SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n4. SUP-2: test (Open, [System] Incident, Medium)\n\nNote: The above output is a JSON response from the Jira API, and it contains a list of issues with their respective keys, statuses, and summaries.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    },
+    {
+      "ok": true,
+      "latency_s": 10.694339790963568,
+      "status_code": 200,
+      "response_id": "resp_3b105813-9286-42f2-ab49-294cbf1f9b10",
+      "output_text": "Here are the Jira issues in project SUP, summarizing key, status, and summary:\n\n1. SUP-5: AI agents to streamline document retrieval 4 (Open)\n2. SUP-4: AI agents to streamline document retrieval 2 (Open)\n3. SUP-3: AI agents to streamline document retrieval (Open)\n4. SUP-2: test (Open)\n\nNote that the status of each issue is \"Open\" and the summaries are brief descriptions of the issue.",
+      "tool_events": [
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 2,
+      "mcp_calls": 8,
+      "error": null
+    }
+  ]
+}

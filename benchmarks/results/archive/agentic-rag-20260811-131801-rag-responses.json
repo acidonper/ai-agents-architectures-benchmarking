@@ -1,0 +1,44 @@
+{
+  "created_at": "2026-08-11T13:18:09.744766+00:00",
+  "benchmark_id": "20260811-131801",
+  "prompt": "Create a new Jira issue named “AI agents to streamline document retrieval” on project SUP with Asier Cidon as a main developer and Roman Marting as a assignee.\nThe issue description is “We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database”.",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "rag": {
+    "vector_store_ids": [
+      "vs_f0f99ac9-0904-43a5-94e0-6fefd6305bf4"
+    ],
+    "enable_rag": true
+  },
+  "requests": [
+    {
+      "trial_id": 0,
+      "ok": true,
+      "total_time_s": 7.6872,
+      "ttft_s": 4.9342,
+      "rag_time_s": null,
+      "time_to_rag_s": null,
+      "rag_calls": 1,
+      "rag_search_spans_s": [],
+      "mcp_time_s": null,
+      "time_to_mcp_s": 4.6942,
+      "mcp_calls": 1,
+      "mcp_call_spans_s": [],
+      "itl_s": 0.004761,
+      "input_tokens": 9612,
+      "output_tokens": 579,
+      "total_tokens": 10191,
+      "tokens_per_second": 210.3907,
+      "streamed": true,
+      "response_id": "resp_6b77d9c2-5cc8-436c-b13d-765f82a012f4",
+      "assistant_summary": "The provided JSON does not match the expected format for creating a Jira issue. The fields dictionary is missing some required keys, such as 'assignee' and 'description'. Additionally, the 'issue_key' field is not allowed.\n\nHere is a revised version of the JSON that should work:\n\n{\"name\": \"jira_create_issue\", \"parameters\": {\"fields\": \"{\\\"project\\\": {\\\"key\\\": \\\"SUP\\\"}, \\\"summary\\\": \\\"AI agents to streamline document retrieval\\\", \\\"description\\\": \\\"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\\\", \\\"assignee\\\": {\\\"name\\\": \\\"Asier Cidon\\\"}, \\\"issuetype\\\": {\\\"name\\\": \\\"Epic\\\"}}\", \"issue_type\": \"Epic\", \"project_key\": \"SUP\", \"summary\": \"AI agents to streamline document retrieval\", \"assignee\": \"Asier Cidon\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"components\": \"\", \"additional_fields\": \"\", \"attachments\": \"\", \"return_fields\": \"*all\", \"validate_only\": \"false\", \"issue_key\": \"\"}}",
+      "tool_events": [
+        "file_search_call",
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools",
+        "response.function_call_arguments.delta"
+      ],
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_create_issue status=error args={\"fields\": \"{\\\"project\\\": {\\\"key\\\": \\\"SUP\\\"}, \\\"summary\\\": \\\"AI agents to streamline document retrieval\\\", \\\"description\\\": \\\"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\\\", \\\"assignee\\\": {\\\"name\\\": \\\"Asier Cidon\\\"}, \\\"issuetype\\\": {\\\"name\\\": \\\"Epic\\\"}, \\\"components\\\": [], \\\""
+    }
+  ]
+}

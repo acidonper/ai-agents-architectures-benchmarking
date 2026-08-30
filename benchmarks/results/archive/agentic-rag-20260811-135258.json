@@ -1,0 +1,267 @@
+{
+  "created_at": "2026-08-11T13:53:12.770205+00:00",
+  "benchmark_id": "20260811-135258",
+  "scenario": "rag",
+  "target": "llama-stack",
+  "base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "prompt": "Create a new Jira issue named \u201cAI agents to streamline document retrieval\u201d on project SUP. PLease include in the description of the issue that Asier Cidon is the main developer and Roman Marting is the author.\nThe issue description is \u201cWe are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\u201d.",
+  "instructions": "You are a helpful AI agent that can help users with Jira-related tasks using the MCP tools available:\n\nYour capabilities include:\n1. Creating new Jira issues based on user requests and following the respective procedures defined at company level, with capacity for adding information to the issues automatically like summary or other information easy to complete.\n2. Adding comments to existing Jira issues for updating the issues itself\n3. Searching for existing Jira issues such as general information about the issues, authors and the information defined in the procedures described.\n\nRules for RAG:\n- Always use the file_search tool against the configured vector stores.\n- Answer only from retrieved document context. If nothing relevant is found, say so clearly.\n- Prefer concise, factual answers. Quote or paraphrase the source material.\n- Do not invent policies, numbers, or procedures that were not retrieved.\n\nWhen users ask questions:\n- If they want to perform Jira operations, review the respective procedure defined at company level to advance following the rules stablished, and perform de operation following the structure provided by the MCP\n- If any prerequisite is not meet, check with the user and ask for the required information\n- Provide clear, helpful responses with relevant context based on the MCP response\n\nFor Jira operations:\n- When creating issues, ask for necessary details like project key, summary, and description (information defined in the procedure)\n- You are not allowed to use additional fields, only the minimun required and included in the RAG documentation.\n- You can create a summary by your own based on the information provided for the user\n- Always provide feedback on the success or failure of operations with the llm and MCP responses\n- Always retry if you have any error from the MCP",
+  "prompt_files": {
+    "system_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/system.txt",
+    "user_prompt_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/prompts/rag/user.txt"
+  },
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "rag": {
+    "vector_store_ids": [
+      "vs_f0f99ac9-0904-43a5-94e0-6fefd6305bf4"
+    ],
+    "enable_rag": true
+  },
+  "summary": {
+    "requests": 1,
+    "ok": 1,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "total_time_s": {
+      "min": 8.89760650000244,
+      "max": 8.89760650000244,
+      "mean": 8.89760650000244,
+      "median": 8.89760650000244,
+      "sum": 8.89760650000244,
+      "p95": 8.89760650000244
+    },
+    "orchestration_time_s": {
+      "min": 8.89760650000244,
+      "max": 8.89760650000244,
+      "mean": 8.89760650000244,
+      "median": 8.89760650000244,
+      "sum": 8.89760650000244,
+      "p95": 8.89760650000244
+    },
+    "latency_s": {
+      "min": 8.89760650000244,
+      "max": 8.89760650000244,
+      "mean": 8.89760650000244,
+      "median": 8.89760650000244,
+      "sum": 8.89760650000244,
+      "p95": 8.89760650000244
+    },
+    "ttft_s": {
+      "min": 6.189650459011318,
+      "max": 6.189650459011318,
+      "mean": 6.189650459011318,
+      "median": 6.189650459011318,
+      "sum": 6.189650459011318,
+      "p95": 6.189650459011318
+    },
+    "itl_s": {
+      "min": 0.0059037224797247635,
+      "max": 0.0059037224797247635,
+      "mean": 0.0059037224797247635,
+      "median": 0.0059037224797247635,
+      "sum": 0.0059037224797247635,
+      "p95": 0.0059037224797247635
+    },
+    "rag_time_s": {
+      "min": 4.60544891700556,
+      "max": 4.60544891700556,
+      "mean": 4.60544891700556,
+      "median": 4.60544891700556,
+      "sum": 4.60544891700556,
+      "p95": 4.60544891700556
+    },
+    "time_to_rag_s": {
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "sum": 0.0,
+      "p95": 0.0
+    },
+    "rag_calls_total": 1,
+    "mcp_time_s": {
+      "min": 1.5842015420057578,
+      "max": 1.5842015420057578,
+      "mean": 1.5842015420057578,
+      "median": 1.5842015420057578,
+      "sum": 1.5842015420057578,
+      "p95": 1.5842015420057578
+    },
+    "time_to_mcp_s": {
+      "min": 4.60544891700556,
+      "max": 4.60544891700556,
+      "mean": 4.60544891700556,
+      "median": 4.60544891700556,
+      "sum": 4.60544891700556,
+      "p95": 4.60544891700556
+    },
+    "mcp_calls_total": 1,
+    "input_tokens": {
+      "min": 9484.0,
+      "max": 9484.0,
+      "mean": 9484.0,
+      "median": 9484.0,
+      "sum": 9484.0,
+      "p95": 9484.0
+    },
+    "output_tokens": {
+      "min": 322.0,
+      "max": 322.0,
+      "mean": 322.0,
+      "median": 322.0,
+      "sum": 322.0,
+      "p95": 322.0
+    },
+    "total_tokens": {
+      "min": 9806.0,
+      "max": 9806.0,
+      "mean": 9806.0,
+      "median": 9806.0,
+      "sum": 9806.0,
+      "p95": 9806.0
+    },
+    "tokens_per_second": {
+      "min": 169.91233382709308,
+      "max": 169.91233382709308,
+      "mean": 169.91233382709308,
+      "median": 169.91233382709308,
+      "sum": 169.91233382709308,
+      "p95": 169.91233382709308
+    },
+    "streamed_requests": 1,
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": true,
+        "total_time_s": 8.8976,
+        "orchestration_time_s": 8.8976,
+        "ttft_s": 6.1897,
+        "itl_s": 0.005904,
+        "rag_time_s": 4.6054,
+        "time_to_rag_s": 0.0,
+        "rag_calls": 1,
+        "mcp_time_s": 1.5842,
+        "time_to_mcp_s": 4.6054,
+        "input_tokens": 9484,
+        "output_tokens": 322,
+        "output_tokens_estimated": null,
+        "total_tokens": 9806,
+        "tokens_per_second": 169.9123,
+        "streamed": true,
+        "stream_delta_count": 181,
+        "mcp_calls": 1,
+        "tool_events": [
+          "file_search_call",
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools"
+        ]
+      }
+    ],
+    "suite_wall_time_s": 8.9113,
+    "semantic_success_rate": 0.0,
+    "trajectory_success_rate": 0.0,
+    "combined_success_rate": 0.0,
+    "judge_model": "vllm-inference-1/llama-32-fp8",
+    "judge_wall_time_s": 6.3852
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 8.89760650000244,
+      "status_code": 200,
+      "response_id": "resp_9d2c246d-276c-4975-b852-f941bacd01eb",
+      "output_text": "It seems that the issue creation failed due to unexpected keyword arguments in the fields and validate_only parameters. The fields parameter should not have the project key explicitly specified, as it is already set in the issue type. Similarly, the validate_only parameter should be a boolean value (True or False), not a string.\n\nHere's another attempt at creating the Jira issue:\n\n{\"name\": \"jira_create_issue\", \"parameters\": {\"fields\": \"{\\\"summary\\\": \\\"AI agents to streamline document retrieval\\\", \\\"description\\\": \\\"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\\\", \\\"assignee\\\": null, \\\"components\\\": null, \\\"attachments\\\": null}\", \"issue_type\": \"Epic\", \"project_key\": \"SUP\", \"validate_only\": false}}",
+      "tool_events": [
+        "file_search_call",
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_create_issue status=error args={\"fields\": \"{\\\"project\\\": {\\\"key\\\": \\\"SUP\\\"}, \\\"summary\\\": \\\"AI agents to streamline document retrieval\\\", \\\"description\\\": \\\"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\\\", \\\"assignee\\\": null, \\\"components\\\"",
+      "trial_id": 0,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_create_issue",
+          "status": "error",
+          "error": "Error (code 1): None",
+          "arguments": {
+            "fields": "{\"project\": {\"key\": \"SUP\"}, \"summary\": \"AI agents to streamline document retrieval\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\", \"assignee\": null, \"components\": null, \"attachments\": null}",
+            "issue_type": "Epic",
+            "project_key": "SUP",
+            "summary": "AI agents to streamline document retrieval",
+            "validate_only": false
+          },
+          "output_preview": null
+        }
+      ],
+      "jira_issues": [],
+      "streamed": true,
+      "ttft_s": 6.1897,
+      "itl_s": 0.005904,
+      "itl_s_median": 2.6e-05,
+      "itl_s_p95": 0.196568,
+      "input_tokens": 9484,
+      "output_tokens": 322,
+      "total_tokens": 9806,
+      "output_tokens_estimated": null,
+      "stream_delta_count": 181,
+      "tokens_per_second": 169.9123,
+      "rag_calls": 1,
+      "rag_time_s": 4.6054,
+      "time_to_rag_s": 0.0,
+      "rag_search_spans_s": [],
+      "mcp_time_s": 1.5842,
+      "time_to_mcp_s": 4.6054,
+      "mcp_call_spans_s": [
+        1.584202
+      ],
+      "total_time_s": 8.8976,
+      "orchestration_time_s": 8.8976
+    }
+  ],
+  "jira_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-rag-20260811-135258-jira-responses.json",
+  "rag_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-rag-20260811-135258-rag-responses.json",
+  "phoenix": {
+    "requests": 1,
+    "scenario": "rag",
+    "judge": "phoenix",
+    "judge_model": "vllm-inference-1/llama-32-fp8",
+    "judge_base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/v1",
+    "semantic_success_rate": 0.0,
+    "trajectory_success_rate": 0.0,
+    "combined_success_rate": 0.0,
+    "require_trajectory": true,
+    "orchestration_time_s": {
+      "min": 8.89760650000244,
+      "max": 8.89760650000244,
+      "mean": 8.89760650000244,
+      "median": 8.89760650000244
+    },
+    "trials": [
+      {
+        "trial_id": 0,
+        "total_time_s": 8.8976,
+        "orchestration_time_s": 8.8976,
+        "http_ok": true,
+        "semantic_label": "incorrect",
+        "semantic_explanation": "The agent successfully used RAG and MCP together. The trajectory includes the MCP tool call (jira_create_issue) and the final answer is consistent with retrieved context and tool outputs. However, the agent failed to retrieve the procedure or knowledge context when the task depends on company docs.",
+        "trajectory_label": "incorrect",
+        "trajectory_explanation": "The actual trajectory does not match the expected reference trajectory. The file_search is not invoked against the configured vector store(s) to retrieve procedure/knowledge context. The mcp_list_tools is invoked to list Jira tools, but the mcp_call is used to create a Jira issue without waiting for the tools to return the issue key. The actual trajectory invents the issue key before tools return it.",
+        "trajectory_code_ok": false,
+        "passed": false,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_create_issue status=error args={\"fields\": \"{\\\"project\\\": {\\\"key\\\": \\\"SUP\\\"}, \\\"summary\\\": \\\"AI agents to streamline document retrieval\\\", \\\"description\\\": \\\"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database. Asier Cidon is the main developer and Roman Marting is the author.\\\", \\\"assignee\\\": null, \\\"components\\\""
+      }
+    ],
+    "judge_wall_time_s": 6.3852
+  }
+}

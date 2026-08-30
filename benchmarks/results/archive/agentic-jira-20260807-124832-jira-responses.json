@@ -1,0 +1,192 @@
+{
+  "created_at": "2026-08-07T12:48:41.747960+00:00",
+  "benchmark_id": "20260807-124832",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "requests": [
+    {
+      "trial_id": 0,
+      "ok": true,
+      "total_time_s": 3.3044,
+      "ttft_s": 2.3812,
+      "itl_s": 0.00726,
+      "input_tokens": 9866,
+      "output_tokens": 128,
+      "output_tokens_estimated": null,
+      "total_tokens": 9994,
+      "tokens_per_second": 138.8258,
+      "streamed": true,
+      "response_id": "resp_a147cdcb-2932-4216-8fa0-9133d0679206",
+      "assistant_summary": "Here are the Jira issues in project SUP:\n\n- SUP-5: AI agents to streamline document retrieval 4 (Open, [System] Incident, Medium)\n- SUP-4: AI agents to streamline document retrieval 2 (Open, [System] Incident, Medium)\n- SUP-3: AI agents to streamline document retrieval (Open, [System] Incident, Medium)\n- SUP-2: test (Open, [System] Incident, Medium)",
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "mcp_tool_responses": [
+        {
+          "id": "fc_fd797caf-a32a-4a17-aad5-182982286779",
+          "name": "jira_get_project_issues",
+          "server_label": "jira",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output": {
+            "total": -1,
+            "start_at": 0,
+            "max_results": 10,
+            "issues": [
+              {
+                "id": "10154",
+                "key": "SUP-5",
+                "summary": "AI agents to streamline document retrieval 4",
+                "browse_url": "https://asiercidon.atlassian.net/browse/SUP-5",
+                "description": "We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database",
+                "status": {
+                  "name": "Open",
+                  "category": "To Do",
+                  "color": "blue-gray"
+                },
+                "issue_type": {
+                  "name": "[System] Incident"
+                },
+                "priority": {
+                  "name": "Medium"
+                },
+                "assignee": {
+                  "display_name": "Unassigned"
+                },
+                "reporter": {
+                  "account_id": "6272760376b8d30068735324",
+                  "display_name": "Asier Cidon",
+                  "name": "Asier Cidon",
+                  "email": "asier.cidon@gmail.com",
+                  "avatar_url": "https://secure.gravatar.com/avatar/adc1ec088f2948ce641d15abdd9e6ac3?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAC-1.png"
+                },
+                "created": "2026-08-06 13:26:39 UTC",
+                "updated": "2026-08-06 13:26:39 UTC"
+              },
+              {
+                "id": "10121",
+                "key": "SUP-4",
+                "summary": "AI agents to streamline document retrieval 2",
+                "browse_url": "https://asiercidon.atlassian.net/browse/SUP-4",
+                "description": "We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database",
+                "status": {
+                  "name": "Open",
+                  "category": "To Do",
+                  "color": "blue-gray"
+                },
+                "issue_type": {
+                  "name": "[System] Incident"
+                },
+                "priority": {
+                  "name": "Medium"
+                },
+                "assignee": {
+                  "display_name": "Unassigned"
+                },
+                "reporter": {
+                  "account_id": "6272760376b8d30068735324",
+                  "display_name": "Asier Cidon",
+                  "name": "Asier Cidon",
+                  "email": "asier.cidon@gmail.com",
+                  "avatar_url": "https://secure.gravatar.com/avatar/adc1ec088f2948ce641d15abdd9e6ac3?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAC-1.png"
+                },
+                "created": "2026-08-06 10:52:53 UTC",
+                "updated": "2026-08-06 10:52:53 UTC"
+              },
+              {
+                "id": "10088",
+                "key": "SUP-3",
+                "summary": "AI agents to streamline document retrieval",
+                "browse_url": "https://asiercidon.atlassian.net/browse/SUP-3",
+                "description": "We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database",
+                "status": {
+                  "name": "Open",
+                  "category": "To Do",
+                  "color": "blue-gray"
+                },
+                "issue_type": {
+                  "name": "[System] Incident"
+                },
+                "priority": {
+                  "name": "Medium"
+                },
+                "assignee": {
+                  "display_name": "Unassigned"
+                },
+                "reporter": {
+                  "account_id": "6272760376b8d30068735324",
+                  "display_name": "Asier Cidon",
+                  "name": "Asier Cidon",
+                  "email": "asier.cidon@gmail.com",
+                  "avatar_url": "https://secure.gravatar.com/avatar/adc1ec088f2948ce641d15abdd9e6ac3?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAC-1.png"
+                },
+                "created": "2026-08-06 10:18:07 UTC",
+                "updated": "2026-08-06 10:18:07 UTC"
+              },
+              {
+                "id": "10087",
+                "key": "SUP-2",
+                "summary": "test",
+                "browse_url": "https://asiercidon.atlassian.net/browse/SUP-2",
+                "description": "tet",
+                "status": {
+                  "name": "Open",
+                  "category": "To Do",
+                  "color": "blue-gray"
+                },
+                "issue_type": {
+                  "name": "[System] Incident"
+                },
+                "priority": {
+                  "name": "Medium"
+                },
+                "assignee": {
+                  "display_name": "Unassigned"
+                },
+                "reporter": {
+                  "account_id": "6272760376b8d30068735324",
+                  "display_name": "Asier Cidon",
+                  "name": "Asier Cidon",
+                  "email": "asier.cidon@gmail.com",
+                  "avatar_url": "https://secure.gravatar.com/avatar/adc1ec088f2948ce641d15abdd9e6ac3?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAC-1.png"
+                },
+                "created": "2026-08-06 09:55:19 UTC",
+                "updated": "2026-08-06 09:55:20 UTC"
+              }
+            ]
+          }
+        }
+      ],
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    }
+  ]
+}

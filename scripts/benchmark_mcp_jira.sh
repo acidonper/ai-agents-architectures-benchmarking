@@ -7,8 +7,8 @@
 #   - trajectory_success_rate tool path is correct (LLM judge)
 #   - combined_success_rate  both judges pass (+ HTTP ok)
 #
-# Phoenix judge always uses a Llama Stack LLM (/v1), not OpenAI.
-# Set PHOENIX_JUDGE_MODEL to a Stack model id different from --model when available.
+# Phoenix judge always uses Amazon Bedrock (Converse / inference profile).
+# Opt out: PHOENIX_JUDGE_PROVIDER=llama-stack + a live PHOENIX_JUDGE_BASE_URL.
 #
 # GuideLLM load test (no semantic judge):
 #   ./scripts/benchmark_guidellm.sh mcp-jira
@@ -23,17 +23,15 @@ mkdir -p "$PHOENIX_WORKING_DIR"
 export BENCH_MCP_SERVER_URL="${BENCH_MCP_SERVER_URL:-http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse}"
 export BENCH_MCP_SERVER_LABEL="${BENCH_MCP_SERVER_LABEL:-jira}"
 
-# Load Stack URL / keys; force Phoenix judge onto Llama Stack.
+# Load Stack URL / keys; Phoenix judge uses Amazon Bedrock (not the playground).
 if [[ -f "$ROOT/backend/.env" ]]; then
   set -a
   # shellcheck disable=SC1091
   source "$ROOT/backend/.env"
   set +a
 fi
-export PHOENIX_JUDGE_BASE_URL="${PHOENIX_JUDGE_BASE_URL:-${LLAMA_STACK_BASE_URL:-}}"
-if [[ "${PHOENIX_JUDGE_BASE_URL:-}" == *"api.openai.com"* ]]; then
-  export PHOENIX_JUDGE_BASE_URL="${LLAMA_STACK_BASE_URL:-}"
-fi
+# shellcheck disable=SC1091
+source "$ROOT/scripts/load_phoenix_judge_env.sh"
 
 PY=python3.12
 if ! command -v "$PY" >/dev/null 2>&1; then

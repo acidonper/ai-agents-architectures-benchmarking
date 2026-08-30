@@ -1,0 +1,198 @@
+{
+  "created_at": "2026-08-07T11:53:43.125552+00:00",
+  "benchmark_id": "20260807-115335",
+  "scenario": "list",
+  "target": "llama-stack",
+  "base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "instructions": "You are a Jira assistant. Always use MCP tools. For project listings, call jira_search (JQL like project = SUP) or jira_get_project_issues. Never invent issue keys. Summarize only issues returned by tools (key, status, summary).",
+  "prompt_files": {},
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "jira_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-jira-20260807-115335-jira-responses.json",
+  "summary": {
+    "requests": 1,
+    "ok": 1,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "total_time_s": {
+      "min": 7.550193417002447,
+      "max": 7.550193417002447,
+      "mean": 7.550193417002447,
+      "median": 7.550193417002447,
+      "sum": 7.550193417002447,
+      "p95": 7.550193417002447
+    },
+    "orchestration_time_s": {
+      "min": 7.550193417002447,
+      "max": 7.550193417002447,
+      "mean": 7.550193417002447,
+      "median": 7.550193417002447,
+      "sum": 7.550193417002447,
+      "p95": 7.550193417002447
+    },
+    "latency_s": {
+      "min": 7.550193417002447,
+      "max": 7.550193417002447,
+      "mean": 7.550193417002447,
+      "median": 7.550193417002447,
+      "sum": 7.550193417002447,
+      "p95": 7.550193417002447
+    },
+    "ttft_s": {
+      "min": 5.4450247079948895,
+      "max": 5.4450247079948895,
+      "mean": 5.4450247079948895,
+      "median": 5.4450247079948895,
+      "sum": 5.4450247079948895,
+      "p95": 5.4450247079948895
+    },
+    "itl_s": {
+      "min": 0.008157875283850936,
+      "max": 0.008157875283850936,
+      "mean": 0.008157875283850936,
+      "median": 0.008157875283850936,
+      "sum": 0.008157875283850936,
+      "p95": 0.008157875283850936
+    },
+    "input_tokens": {
+      "min": 9866.0,
+      "max": 9866.0,
+      "mean": 9866.0,
+      "median": 9866.0,
+      "sum": 9866.0,
+      "p95": 9866.0
+    },
+    "output_tokens": {
+      "min": 149.0,
+      "max": 149.0,
+      "mean": 149.0,
+      "median": 149.0,
+      "sum": 149.0,
+      "p95": 149.0
+    },
+    "total_tokens": {
+      "min": 10015.0,
+      "max": 10015.0,
+      "mean": 10015.0,
+      "median": 10015.0,
+      "sum": 10015.0,
+      "p95": 10015.0
+    },
+    "tokens_per_second": {
+      "min": 123.40918704036818,
+      "max": 123.40918704036818,
+      "mean": 123.40918704036818,
+      "median": 123.40918704036818,
+      "sum": 123.40918704036818,
+      "p95": 123.40918704036818
+    },
+    "streamed_requests": 1,
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": true,
+        "total_time_s": 7.5502,
+        "orchestration_time_s": 7.5502,
+        "ttft_s": 5.445,
+        "itl_s": 0.008158,
+        "input_tokens": 9866,
+        "output_tokens": 149,
+        "output_tokens_estimated": null,
+        "total_tokens": 10015,
+        "tokens_per_second": 123.4092,
+        "streamed": true,
+        "stream_delta_count": 114,
+        "mcp_calls": 1,
+        "tool_events": [
+          "mcp",
+          "mcp_call",
+          "mcp_list_tools",
+          "response.mcp_call.arguments.done",
+          "response.mcp_call.completed",
+          "response.mcp_call.in_progress",
+          "response.mcp_list_tools.completed",
+          "response.mcp_list_tools.in_progress"
+        ]
+      }
+    ],
+    "suite_wall_time_s": 7.8839
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 7.550193417002447,
+      "status_code": 200,
+      "response_id": "resp_aaba176d-7915-43fe-8720-e1bd781c6337",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |\n\nNote: The issues are summarized with their key, status, and summary. The status is \"Open\" for all issues, and the summaries are brief descriptions of the issues.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools",
+        "response.mcp_call.arguments.done",
+        "response.mcp_call.completed",
+        "response.mcp_call.in_progress",
+        "response.mcp_list_tools.completed",
+        "response.mcp_list_tools.in_progress"
+      ],
+      "mcp_list_tools": 3,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}",
+      "trial_id": 0,
+      "mcp_tool_responses": [
+        {
+          "name": "jira_get_project_issues",
+          "status": "ok",
+          "error": null,
+          "arguments": {
+            "project_key": "SUP",
+            "limit": "10",
+            "start_at": "0"
+          },
+          "output_preview": "{\"total\": -1, \"start_at\": 0, \"max_results\": 10, \"issues\": [{\"id\": \"10154\", \"key\": \"SUP-5\", \"summary\": \"AI agents to streamline document retrieval 4\", \"browse_url\": \"https://asiercidon.atlassian.net/browse/SUP-5\", \"description\": \"We are implementing an innovative capability that integrates autonomous AI agents into our internal workflows to streamline document retrieval from the central database\", \"status\": {\"name\": \"Open\", \"category\": \"To Do\", \"color\": \"blue-gray\"}, \"issue_type\": {\"name\": \"[Syst\u2026"
+        }
+      ],
+      "jira_issues": [
+        {
+          "key": "SUP-5",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 4"
+        },
+        {
+          "key": "SUP-4",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval 2"
+        },
+        {
+          "key": "SUP-3",
+          "status": "Open",
+          "summary": "AI agents to streamline document retrieval"
+        },
+        {
+          "key": "SUP-2",
+          "status": "Open",
+          "summary": "test"
+        }
+      ],
+      "streamed": true,
+      "ttft_s": 5.445,
+      "itl_s": 0.008158,
+      "itl_s_median": 2.4e-05,
+      "itl_s_p95": 0.159255,
+      "input_tokens": 9866,
+      "output_tokens": 149,
+      "total_tokens": 10015,
+      "output_tokens_estimated": null,
+      "stream_delta_count": 114,
+      "tokens_per_second": 123.4092,
+      "total_time_s": 7.5502,
+      "orchestration_time_s": 7.5502
+    }
+  ]
+}

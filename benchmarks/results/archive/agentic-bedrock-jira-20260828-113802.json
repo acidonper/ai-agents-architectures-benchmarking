@@ -1,0 +1,240 @@
+{
+  "created_at": "2026-08-28T11:38:08.893246+00:00",
+  "benchmark_id": "20260828-113802",
+  "scenario": "list",
+  "target": "bedrock-gateway",
+  "base_url": "https://quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.us-east-1.amazonaws.com",
+  "model": "eu.anthropic.claude-sonnet-5",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "instructions": "You are a Jira assistant. Always use MCP tools. For project listings, call jira_search (JQL like project = SUP) or jira_get_project_issues. Never invent issue keys. Summarize only issues returned by tools (key, status, summary).",
+  "prompt_files": {},
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "https://quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.us-east-1.amazonaws.com/mcp",
+    "allowed_tools": null
+  },
+  "rag": null,
+  "summary": {
+    "requests": 1,
+    "ok": 0,
+    "errors": 1,
+    "success_rate": 0.0,
+    "tool_activity_rate": 0.0,
+    "total_time_s": {
+      "min": 0.3639782499521971,
+      "max": 0.3639782499521971,
+      "mean": 0.3639782499521971,
+      "median": 0.3639782499521971,
+      "sum": 0.3639782499521971,
+      "p95": 0.3639782499521971
+    },
+    "orchestration_time_s": {
+      "min": 0.3639782499521971,
+      "max": 0.3639782499521971,
+      "mean": 0.3639782499521971,
+      "median": 0.3639782499521971,
+      "sum": 0.3639782499521971,
+      "p95": 0.3639782499521971
+    },
+    "latency_s": {
+      "min": 0.3639782499521971,
+      "max": 0.3639782499521971,
+      "mean": 0.3639782499521971,
+      "median": 0.3639782499521971,
+      "sum": 0.3639782499521971,
+      "p95": 0.3639782499521971
+    },
+    "ttft_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "itl_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "rag_time_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "time_to_rag_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "rag_calls_total": 0,
+    "mcp_time_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "time_to_mcp_s": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "mcp_calls_total": 0,
+    "input_tokens": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "output_tokens": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "total_tokens": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "tokens_per_second": {
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "sum": null
+    },
+    "streamed_requests": 0,
+    "per_request": [
+      {
+        "trial_id": 0,
+        "ok": false,
+        "total_time_s": 0.364,
+        "orchestration_time_s": 0.364,
+        "ttft_s": null,
+        "itl_s": null,
+        "rag_time_s": null,
+        "time_to_rag_s": null,
+        "rag_calls": 0,
+        "mcp_time_s": null,
+        "time_to_mcp_s": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "output_tokens_estimated": 0,
+        "total_tokens": null,
+        "tokens_per_second": null,
+        "streamed": false,
+        "stream_delta_count": 0,
+        "mcp_calls": 0,
+        "tool_events": []
+      }
+    ],
+    "suite_wall_time_s": 0.3749,
+    "semantic_success_rate": 0.0,
+    "trajectory_success_rate": 0.0,
+    "combined_success_rate": 0.0,
+    "judge_model": "eu.anthropic.claude-sonnet-5",
+    "judge_wall_time_s": 2.3443
+  },
+  "trials": [
+    {
+      "ok": false,
+      "latency_s": 0.3639782499521971,
+      "status_code": 404,
+      "response_id": null,
+      "output_text": "",
+      "tool_events": [],
+      "mcp_list_tools": 0,
+      "mcp_calls": 0,
+      "error": "{\"error\": {\"message\": \"Gateway not found\", \"type\": \"not_found_error\", \"code\": \"404\"}}",
+      "trajectory": "(no tool steps recorded)",
+      "trial_id": 0,
+      "mcp_tool_responses": [],
+      "jira_issues": [],
+      "streamed": false,
+      "ttft_s": null,
+      "itl_s": null,
+      "itl_s_median": null,
+      "itl_s_p95": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": null,
+      "output_tokens_estimated": 0,
+      "stream_delta_count": 0,
+      "tokens_per_second": null,
+      "rag_calls": 0,
+      "rag_time_s": null,
+      "time_to_rag_s": null,
+      "rag_search_spans_s": [],
+      "mcp_time_s": null,
+      "time_to_mcp_s": null,
+      "mcp_call_spans_s": [],
+      "total_time_s": 0.364,
+      "orchestration_time_s": 0.364
+    }
+  ],
+  "bedrock": {
+    "gateway_url": "https://quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.us-east-1.amazonaws.com",
+    "inference_url": "https://quick-start-7baf0f-x5hzcwjfcj.gateway.bedrock-agentcore.us-east-1.amazonaws.com/inference/v1/responses",
+    "runtime_arn": null,
+    "runtime_qualifier": null,
+    "region": "us-east-1",
+    "auth_mode": "bearer"
+  },
+  "jira_responses_file": "/Users/acidonpe/Documents/laptop-configuration/cursor/ia/benchmarks/results/agentic-bedrock-jira-20260828-113802-jira-responses.json",
+  "phoenix": {
+    "requests": 1,
+    "scenario": "list",
+    "judge": "heuristic",
+    "judge_model": "eu.anthropic.claude-sonnet-5",
+    "judge_base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/v1",
+    "semantic_success_rate": 0.0,
+    "trajectory_success_rate": 0.0,
+    "combined_success_rate": 0.0,
+    "require_trajectory": true,
+    "orchestration_time_s": {
+      "min": 0.3639782499521971,
+      "max": 0.3639782499521971,
+      "mean": 0.3639782499521971,
+      "median": 0.3639782499521971
+    },
+    "trials": [
+      {
+        "trial_id": 0,
+        "total_time_s": 0.364,
+        "orchestration_time_s": 0.364,
+        "http_ok": false,
+        "semantic_label": "incorrect",
+        "semantic_explanation": "heuristic: http_ok=False mcp_calls=0 mentions_sup=False",
+        "trajectory_label": "incorrect",
+        "trajectory_explanation": "heuristic: requires mcp_call; events=[]",
+        "trajectory_code_ok": false,
+        "passed": false,
+        "trajectory": "(no tool steps recorded)"
+      }
+    ],
+    "judge_wall_time_s": 2.3443
+  }
+}

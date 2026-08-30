@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-08-11T12:34:41.356407+00:00",
+  "benchmark_id": "20260811-123439",
+  "prompt": "According to the knowledge base, how many remote work days are allowed per week?\n\nAnswer using retrieved documents only.",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "rag": {
+    "vector_store_ids": [
+      "vs_f0f99ac9-0904-43a5-94e0-6fefd6305bf4"
+    ],
+    "enable_rag": true
+  },
+  "requests": [
+    {
+      "trial_id": 0,
+      "ok": true,
+      "total_time_s": 1.5126,
+      "ttft_s": 1.2513,
+      "rag_time_s": 0.4956,
+      "time_to_rag_s": 0.7556,
+      "rag_calls": 1,
+      "rag_search_spans_s": [
+        0.495571
+      ],
+      "itl_s": 0.004344,
+      "input_tokens": 945,
+      "output_tokens": 61,
+      "total_tokens": 1006,
+      "tokens_per_second": 234.0472,
+      "streamed": true,
+      "response_id": "resp_d081c9d1-f0ee-476b-8e2a-d34b0660e2a2",
+      "assistant_summary": "This is a fact. Remote work is allowed 3 days per week.",
+      "tool_events": [
+        "file_search_call",
+        "response.function_call_arguments.delta",
+        "response.function_call_arguments.done"
+      ],
+      "trajectory": "1. file_search_call name=None args=None"
+    }
+  ]
+}

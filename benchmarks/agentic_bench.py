@@ -2,8 +2,13 @@
 """Agentic MCP benchmark: LLM + MCP latency, Phoenix semantic/trajectory evals.
 
 Targets:
-  llama-stack  → POST {LLAMA_STACK}/v1/responses with tools=[{type:mcp,...}]
-  stackchat    → POST {STACKCHAT}/api/chat with enable_mcp=true
+  llama-stack       → POST {LLAMA_STACK}/v1/responses with tools=[{type:mcp,...}]
+  stackchat         → POST {STACKCHAT}/api/chat with enable_mcp=true
+  bedrock-gateway   → POST {GATEWAY}/{GW_AGENTIC_TARGET}/invocations + Cognito Bearer
+                      (or /inference/v1/responses if no target is set)
+  bedrock-runtime   → LLM = Bedrock Converse (BENCH_MODEL_INFERENCE_PROFILE_ID);
+                      MCP = AgentCore Runtime InvokeAgentRuntime JSON-RPC;
+                      RAG = bedrock-agent-runtime Retrieve (BENCH_RAG_MODE=bedrock_kb)
 
 Scenarios (--scenario):
   list    — list issues in SUP (default prompt / instructions)
@@ -27,6 +32,7 @@ import re
 import statistics
 import sys
 import time
+import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
@@ -38,6 +44,30 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+
+from benchmarks.bedrock_client import (
+    AgentCoreRuntimeMcpClient,
+    converse_with_tools,
+    extract_runtime_text,
+    format_kb_retrieval_context,
+    is_bedrock_rag_tool_name,
+    mcp_tool_text,
+    mcp_tools_to_converse_specs,
+    resolve_agent_runtime_arn,
+    resolve_auth_mode,
+    resolve_bedrock_gateway_url,
+    resolve_gateway_target_invocation_url,
+    resolve_gateway_target_name,
+    retrieve_knowledge_base,
+    resolve_kb_embedding_model,
+    resolve_kb_gateway_mcp_tool_names,
+    resolve_knowledge_base_id,
+    resolve_knowledge_base_api_id,
+    resolve_knowledge_base_name,
+    resolve_gateway_urls,
+    resolve_runtime_invocations_url,
+    build_request_headers,
+)
 
 DEFAULT_PROMPT = "List Jira issues in project SUP. Summarize key, status, and summary."
 DEFAULT_LIST_INSTRUCTIONS = (
@@ -130,7 +160,7 @@ class TrialResult:
         return self.output_tokens_estimated
 
 
-def _load_dotenv(path: Path) -> None:
+def _load_dotenv(path: Path, *, override: bool = False) -> None:
     if not path.is_file():
         return
     for line in path.read_text().splitlines():
@@ -138,7 +168,10 @@ def _load_dotenv(path: Path) -> None:
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+        key = key.strip()
+        val = value.strip().strip('"').strip("'")
+        if override or key not in os.environ:
+            os.environ[key] = val
 
 
 def _http_json(
@@ -198,9 +231,9 @@ def _extract_usage(payload: Any) -> dict[str, int | None]:
                 return int(val)
         return None
 
-    inp = _pick("input_tokens", "prompt_tokens")
-    out = _pick("output_tokens", "completion_tokens")
-    total = _pick("total_tokens")
+    inp = _pick("input_tokens", "prompt_tokens", "inputTokens")
+    out = _pick("output_tokens", "completion_tokens", "outputTokens")
+    total = _pick("total_tokens", "totalTokens")
     if total is None and inp is not None and out is not None:
         total = inp + out
     return {"input_tokens": inp, "output_tokens": out, "total_tokens": total}
@@ -481,10 +514,15 @@ def _stream_request(
                         elif typ in {"response.completed", "response.done"}:
                             final_payload = data.get("response") or data
 
-                    # RAG timing from file_search_call lifecycle events.
+                    # RAG timing from file_search_call or Bedrock KB MCP tools (Retrieve).
                     if _is_rag_stream_event(event_name, data):
                         low = typ.lower()
-                        events.append("file_search_call")
+                        rag_label = (
+                            "retrieve_call"
+                            if is_bedrock_rag_tool_name(_mcp_tool_name_from_event(data))
+                            else "file_search_call"
+                        )
+                        events.append(rag_label)
                         if final_payload is None:
                             final_payload = {"output": []}
                         raw_events = final_payload.setdefault("_stream_events", [])
@@ -512,6 +550,8 @@ def _stream_request(
 
                     # MCP call timing (ignore arguments.done — only in_progress→completed).
                     if _is_mcp_call_stream_event(event_name, data):
+                        if is_bedrock_rag_tool_name(_mcp_tool_name_from_event(data)):
+                            continue
                         low = typ.lower()
                         events.append("mcp_call")
                         if final_payload is None:
@@ -661,7 +701,11 @@ def _stream_request(
     result.mcp_list_tools = sum(
         1 for e in result.tool_events if e == "mcp_list_tools"
     )
-    result.rag_calls = sum(1 for e in result.tool_events if e == "file_search_call")
+    result.rag_calls = sum(
+        1
+        for e in result.tool_events
+        if e in {"file_search_call", "retrieve_call"} or "retrieve" in e.lower()
+    )
     if rag_spans:
         result.rag_search_spans_s = [round(s, 6) for s in rag_spans]
         result.rag_time_s = sum(rag_spans)
@@ -701,6 +745,8 @@ def _normalize_tool_event(name: str) -> str | None:
     low = n.lower()
     if "file_search" in low:
         return "file_search_call"
+    if "retrieve" in low:
+        return "retrieve_call"
     if "mcp_list_tools" in low:
         return "mcp_list_tools"
     if "mcp_call" in low:
@@ -712,12 +758,29 @@ def _normalize_tool_event(name: str) -> str | None:
     return None
 
 
+def _mcp_tool_name_from_event(payload: Any) -> str | None:
+    if not isinstance(payload, dict):
+        return None
+    for key in ("name", "tool_name", "tool"):
+        val = payload.get(key)
+        if isinstance(val, str) and val.strip():
+            return val.strip()
+    params = payload.get("params")
+    if isinstance(params, dict):
+        name = params.get("name")
+        if isinstance(name, str) and name.strip():
+            return name.strip()
+    return None
+
+
 def _is_rag_stream_event(event_name: str, payload: Any) -> bool:
     typ = ""
     if isinstance(payload, dict):
         typ = str(payload.get("type") or "")
     blob = f"{event_name} {typ}".lower()
-    return "file_search" in blob
+    if "file_search" in blob:
+        return True
+    return is_bedrock_rag_tool_name(_mcp_tool_name_from_event(payload))
 
 
 def _is_mcp_call_stream_event(event_name: str, payload: Any) -> bool:
@@ -823,6 +886,100 @@ def _finish_trial(
     )
 
 
+def _build_agent_tools(
+    *,
+    enable_rag: bool,
+    rag_mode: str,
+    vector_store_ids: list[str] | None,
+    enable_mcp: bool,
+    mcp_label: str | None,
+    mcp_url: str | None,
+    allowed_tools: list[str] | None,
+) -> tuple[list[dict[str, Any]], str | None]:
+    tools: list[dict[str, Any]] = []
+    if enable_rag and rag_mode == "file_search":
+        ids = [v for v in (vector_store_ids or []) if v]
+        if not ids:
+            return tools, "RAG enabled but no vector_store_ids provided"
+        tools.append({"type": "file_search", "vector_store_ids": ids})
+    if enable_mcp:
+        if not mcp_url or not mcp_label:
+            return tools, "MCP enabled but mcp_url/mcp_label missing"
+        tool: dict[str, Any] = {
+            "type": "mcp",
+            "server_label": mcp_label,
+            "server_url": mcp_url,
+            "require_approval": "never",
+        }
+        if allowed_tools:
+            tool["allowed_tools"] = allowed_tools
+        tools.append(tool)
+    return tools, None
+
+
+def _run_responses_api(
+    *,
+    responses_url: str,
+    model: str,
+    prompt: str,
+    instructions: str | None,
+    headers: dict[str, str],
+    timeout: float,
+    stream: bool = True,
+    tools: list[dict[str, Any]],
+) -> TrialResult:
+    payload: dict[str, Any] = {
+        "model": model,
+        "input": prompt,
+        "stream": bool(stream),
+    }
+    if tools:
+        payload["tools"] = tools
+        payload["tool_choice"] = "auto"
+    if instructions:
+        payload["instructions"] = instructions
+
+    if stream:
+        try:
+            return _stream_request(
+                url=responses_url,
+                payload=payload,
+                headers=headers,
+                timeout=timeout,
+                stackchat=False,
+            )
+        except Exception as exc:  # noqa: BLE001
+            print(f"Streaming failed ({exc}); falling back to non-stream.")
+            payload["stream"] = False
+
+    started = time.perf_counter()
+    try:
+        status, data = _http_json(
+            "POST",
+            responses_url,
+            payload,
+            headers=headers,
+            timeout=timeout,
+        )
+    except ConnectionError as exc:
+        return TrialResult(ok=False, latency_s=time.perf_counter() - started, error=str(exc))
+    result = _finish_trial(status=status, data=data, latency=time.perf_counter() - started)
+    events = result.tool_events
+    result.rag_calls = sum(
+        1
+        for e in events
+        if "file_search" in e.lower() or "retrieve" in e.lower()
+    )
+    return _attach_token_metrics(
+        result,
+        started=started,
+        delta_times=[],
+        delta_texts=[],
+        usage=_extract_usage(data),
+        streamed=False,
+    )
+
+
 def run_llama_stack(
     *,
     base_url: str,
@@ -838,84 +995,445 @@ def run_llama_stack(
     allowed_tools: list[str] | None = None,
     enable_rag: bool = False,
     vector_store_ids: list[str] | None = None,
+    rag_mode: str = "file_search",
 ) -> TrialResult:
-    tools: list[dict[str, Any]] = []
-    if enable_rag:
-        ids = [v for v in (vector_store_ids or []) if v]
-        if not ids:
-            return TrialResult(
-                ok=False,
-                latency_s=0.0,
-                error="RAG enabled but no vector_store_ids provided",
-            )
-        tools.append({"type": "file_search", "vector_store_ids": ids})
-    if enable_mcp:
-        if not mcp_url or not mcp_label:
-            return TrialResult(
-                ok=False,
-                latency_s=0.0,
-                error="MCP enabled but mcp_url/mcp_label missing",
-            )
-        tool: dict[str, Any] = {
-            "type": "mcp",
-            "server_label": mcp_label,
-            "server_url": mcp_url,
-            "require_approval": "never",
-        }
-        if allowed_tools:
-            tool["allowed_tools"] = allowed_tools
-        tools.append(tool)
-
-    payload: dict[str, Any] = {
-        "model": model,
-        "input": prompt,
-        "stream": bool(stream),
-    }
-    if tools:
-        payload["tools"] = tools
-        payload["tool_choice"] = "auto"
-    if instructions:
-        payload["instructions"] = instructions
+    tools, err = _build_agent_tools(
+        enable_rag=enable_rag,
+        rag_mode=rag_mode,
+        vector_store_ids=vector_store_ids,
+        enable_mcp=enable_mcp,
+        mcp_label=mcp_label,
+        mcp_url=mcp_url,
+        allowed_tools=allowed_tools,
+    )
+    if err:
+        return TrialResult(ok=False, latency_s=0.0, error=err)
 
     headers: dict[str, str] = {}
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
 
-    url = f"{base_url.rstrip('/')}/v1/responses"
-    if stream:
-        try:
-            return _stream_request(
-                url=url,
-                payload=payload,
-                headers=headers,
-                timeout=timeout,
-                stackchat=False,
-            )
-        except Exception as exc:  # noqa: BLE001
-            print(f"Streaming failed ({exc}); falling back to non-stream.")
-            payload["stream"] = False
+    responses_url = f"{base_url.rstrip('/')}/v1/responses"
+    return _run_responses_api(
+        responses_url=responses_url,
+        model=model,
+        prompt=prompt,
+        instructions=instructions,
+        headers=headers,
+        timeout=timeout,
+        stream=stream,
+        tools=tools,
+    )
+
+
+def run_bedrock_gateway(
+    *,
+    gateway_url: str,
+    model: str,
+    prompt: str,
+    instructions: str | None,
+    timeout: float,
+    stream: bool = True,
+    enable_mcp: bool = False,
+    mcp_label: str | None = None,
+    mcp_url: str | None = None,
+    allowed_tools: list[str] | None = None,
+    enable_rag: bool = False,
+    vector_store_ids: list[str] | None = None,
+    rag_mode: str = "gateway_mcp",
+    region: str | None = None,
+    auth_mode: str | None = None,
+    api_key: str | None = None,
+) -> TrialResult:
+    """Agentic bench via Bedrock AgentCore Gateway inference (/inference/v1/responses)."""
+    urls = resolve_gateway_urls(gateway_url)
+    effective_mcp_url = mcp_url or urls["mcp_url"]
+    tools, err = _build_agent_tools(
+        enable_rag=enable_rag,
+        rag_mode=rag_mode,
+        vector_store_ids=vector_store_ids,
+        enable_mcp=enable_mcp,
+        mcp_label=mcp_label,
+        mcp_url=effective_mcp_url,
+        allowed_tools=allowed_tools,
+    )
+    if err:
+        return TrialResult(ok=False, latency_s=0.0, error=err)
+
+    payload_preview: dict[str, Any] = {
+        "model": model,
+        "input": prompt,
+        "stream": bool(stream),
+    }
+    if tools:
+        payload_preview["tools"] = tools
+    if instructions:
+        payload_preview["instructions"] = instructions
+    body = json.dumps(payload_preview).encode("utf-8")
+    try:
+        headers = build_request_headers(
+            url=urls["responses_url"],
+            method="POST",
+            body=body,
+            region=region,
+            auth_mode=auth_mode,
+            bearer_token=api_key,
+            extra_headers={
+                "Accept": "text/event-stream, application/json",
+                "Content-Type": "application/json",
+            },
+        )
+    except RuntimeError as exc:
+        return TrialResult(ok=False, latency_s=0.0, error=str(exc))
+
+    return _run_responses_api(
+        responses_url=urls["responses_url"],
+        model=model,
+        prompt=prompt,
+        instructions=instructions,
+        headers=headers,
+        timeout=timeout,
+        stream=stream,
+        tools=tools,
+    )
+
+
+def run_bedrock_gateway_agent(
+    *,
+    gateway_url: str,
+    prompt: str,
+    instructions: str | None,
+    timeout: float,
+    region: str | None = None,
+    auth_mode: str | None = None,
+    api_key: str | None = None,
+    target: str | None = None,
+) -> TrialResult:
+    """Invoke AgentCore Runtime agent via Gateway target + Cognito (or bearer/IAM)."""
+    try:
+        invocation_url = resolve_gateway_target_invocation_url(gateway_url, target)
+    except ValueError as exc:
+        return TrialResult(ok=False, latency_s=0.0, error=str(exc))
+
+    payload: dict[str, Any] = {"prompt": prompt}
+    if instructions:
+        payload["instructions"] = instructions
+    body = json.dumps(payload).encode("utf-8")
+
+    try:
+        headers = build_request_headers(
+            url=invocation_url,
+            method="POST",
+            body=body,
+            region=region,
+            auth_mode=auth_mode or "cognito",
+            bearer_token=api_key,
+            extra_headers={
+                "Accept": "text/event-stream, application/json",
+                "Content-Type": "application/json",
+            },
+        )
+    except RuntimeError as exc:
+        return TrialResult(ok=False, latency_s=0.0, error=str(exc))
 
     started = time.perf_counter()
+    req = Request(url=invocation_url, data=body, headers=headers, method="POST")
+    accumulated = ""
+    delta_times: list[float] = []
+    delta_texts: list[str] = []
+    deadline = started + timeout
+    status = 0
+    final_data: dict[str, Any] | None = None
+
     try:
-        status, data = _http_json(
-            "POST",
-            url,
-            payload,
-            headers=headers,
-            timeout=timeout,
+        with urlopen(req, timeout=timeout) as resp:  # noqa: S310
+            status = getattr(resp, "status", 200) or 200
+            content_type = (resp.headers.get("Content-Type") or "").lower()
+
+            if "application/json" in content_type and "event-stream" not in content_type:
+                raw = resp.read().decode("utf-8", errors="replace")
+                try:
+                    final_data = json.loads(raw) if raw else {}
+                except json.JSONDecodeError:
+                    final_data = {"output_text": raw}
+                latency = time.perf_counter() - started
+                result = _finish_trial(
+                    status=status,
+                    data=final_data,
+                    latency=latency,
+                )
+                return _attach_token_metrics(
+                    result,
+                    started=started,
+                    delta_times=[],
+                    delta_texts=[],
+                    usage=_extract_usage(final_data),
+                    streamed=False,
+                )
+
+            for event_name, data in _iter_sse_events(resp):
+                if time.perf_counter() > deadline:
+                    break
+                if data == "[DONE]":
+                    break
+                now = time.perf_counter()
+                if isinstance(data, dict):
+                    text = _extract_text(data)
+                    if not text:
+                        text = extract_runtime_text(json.dumps(data)) or ""
+                    if text:
+                        delta_times.append(now)
+                        delta_texts.append(text)
+                        accumulated += text
+                    if data.get("type") in {"response.completed", "response.done"}:
+                        final_data = data.get("response") or data
+                elif isinstance(data, str):
+                    text = extract_runtime_text(data)
+                    if text:
+                        delta_times.append(now)
+                        delta_texts.append(text)
+                        accumulated += text
+    except HTTPError as exc:
+        raw = exc.read().decode("utf-8", errors="replace")
+        latency = time.perf_counter() - started
+        try:
+            err_data = json.loads(raw) if raw else {"detail": str(exc)}
+        except json.JSONDecodeError:
+            err_data = {"detail": raw or str(exc)}
+        result = _finish_trial(status=exc.code, data=err_data, latency=latency)
+        hint = ""
+        if "iss" in raw.lower() and "mismatch" in raw.lower():
+            hint = (
+                " Runtime inbound-auth discoveryUrl must match token iss "
+                "(see GW_AGENTIC_COGNITO_DISCOVERY_URL). Gateway ingress auth may "
+                "still succeed while the agent runtime behind the target rejects the JWT."
+            )
+        result.error = (raw[:1000] if raw else str(exc)) + hint
+        result.ok = False
+        return result
+    except URLError as exc:
+        return TrialResult(
+            ok=False,
+            latency_s=time.perf_counter() - started,
+            error=str(exc.reason or exc),
         )
-    except ConnectionError as exc:
-        return TrialResult(ok=False, latency_s=time.perf_counter() - started, error=str(exc))
-    result = _finish_trial(status=status, data=data, latency=time.perf_counter() - started)
-    # Best-effort RAG call count from non-stream payload.
-    if enable_rag:
-        events = result.tool_events
-        result.rag_calls = sum(1 for e in events if "file_search" in e.lower())
+
+    latency = time.perf_counter() - started
+    if final_data is None:
+        final_data = {"output_text": accumulated, "output": accumulated}
+    elif not accumulated and isinstance(final_data, dict):
+        accumulated = _extract_text(final_data) or str(
+            final_data.get("output_text") or ""
+        )
+
+    result = _finish_trial(status=status or 200, data=final_data, latency=latency)
+    result.streamed = bool(delta_times)
     return _attach_token_metrics(
         result,
         started=started,
-        delta_times=[],
-        delta_texts=[],
+        delta_times=delta_times,
+        delta_texts=delta_texts,
+        usage=_extract_usage(final_data),
+        streamed=bool(delta_times),
+    )
+
+
+def run_bedrock_runtime(
+    *,
+    agent_runtime_arn: str,
+    prompt: str,
+    instructions: str | None,
+    timeout: float,
+    model: str,
+    qualifier: str | None = None,
+    region: str | None = None,
+    runtime_session_id: str | None = None,
+    allowed_tools: list[str] | None = None,
+    enable_mcp: bool = True,
+    auth_mode: str | None = None,
+) -> TrialResult:
+    """LLM (Converse) + MCP (Runtime InvokeAgentRuntime) tool loop.
+
+    RAG context is expected already inlined in ``prompt`` (bedrock_kb prefetch).
+    """
+    from benchmarks.phoenix_semantic import extract_jira_issues, format_trajectory
+
+    started = time.perf_counter()
+    mcp_url = resolve_runtime_invocations_url(
+        agent_runtime_arn, qualifier=qualifier, region=region
+    )
+    events: list[str] = []
+    mcp_responses: list[dict[str, Any]] = []
+    mcp_spans: list[float] = []
+    time_to_mcp: float | None = None
+    mcp_calls = 0
+    list_ok = 0
+    converse_tools: list[dict[str, Any]] = []
+    mcp_client: AgentCoreRuntimeMcpClient | None = None
+    server_info = ""
+
+    if enable_mcp:
+        mcp_client = AgentCoreRuntimeMcpClient(
+            mcp_url,
+            auth_mode=auth_mode or "cognito",
+            timeout=min(timeout, 120.0),
+        )
+        try:
+            init = mcp_client.initialize()
+            if init.get("error"):
+                return TrialResult(
+                    ok=False,
+                    latency_s=time.perf_counter() - started,
+                    error=f"Runtime MCP initialize failed: {init.get('error')}",
+                )
+            info = (init.get("result") or {}).get("serverInfo") or {}
+            if isinstance(info, dict):
+                server_info = str(info.get("name") or "")
+            tools = mcp_client.list_tools()
+            list_ok = 1
+            events.append("mcp_list_tools")
+            converse_tools = mcp_tools_to_converse_specs(tools, allowed_tools)
+        except Exception as exc:  # noqa: BLE001
+            return TrialResult(
+                ok=False,
+                latency_s=time.perf_counter() - started,
+                error=f"Runtime MCP handshake failed: {exc}",
+            )
+
+    messages: list[dict[str, Any]] = [
+        {"role": "user", "content": [{"text": prompt}]},
+    ]
+    accumulated = ""
+    delta_times: list[float] = []
+    usage_acc = {"input_tokens": 0, "output_tokens": 0, "total_tokens": 0}
+    last_stop = ""
+    max_rounds = 8
+
+    try:
+        for _round in range(max_rounds):
+            resp = converse_with_tools(
+                model_id=model,
+                messages=messages,
+                system=instructions,
+                tools=converse_tools or None,
+                region=region,
+            )
+            delta_times.append(time.perf_counter())
+            usage = resp.get("usage") if isinstance(resp.get("usage"), dict) else {}
+            usage_acc["input_tokens"] += int(usage.get("inputTokens") or 0)
+            usage_acc["output_tokens"] += int(usage.get("outputTokens") or 0)
+            usage_acc["total_tokens"] += int(usage.get("totalTokens") or 0)
+
+            output = resp.get("output") or {}
+            message = output.get("message") if isinstance(output, dict) else None
+            if not isinstance(message, dict):
+                break
+            messages.append(message)
+            last_stop = str(resp.get("stopReason") or "")
+
+            text_bits: list[str] = []
+            tool_uses: list[dict[str, Any]] = []
+            for block in message.get("content") or []:
+                if not isinstance(block, dict):
+                    continue
+                if isinstance(block.get("text"), str) and block["text"]:
+                    text_bits.append(block["text"])
+                tool_use = block.get("toolUse")
+                if isinstance(tool_use, dict):
+                    tool_uses.append(tool_use)
+            if text_bits:
+                accumulated += "".join(text_bits)
+
+            if last_stop != "tool_use" or not tool_uses or mcp_client is None:
+                break
+
+            tool_result_blocks: list[dict[str, Any]] = []
+            for tool_use in tool_uses:
+                name = str(tool_use.get("name") or "")
+                tool_use_id = str(tool_use.get("toolUseId") or "")
+                arguments = tool_use.get("input")
+                if not isinstance(arguments, dict):
+                    arguments = {}
+                call_started = time.perf_counter()
+                if time_to_mcp is None:
+                    time_to_mcp = call_started - started
+                mcp_result = mcp_client.call_tool(name, arguments)
+                span = time.perf_counter() - call_started
+                mcp_spans.append(span)
+                mcp_calls += 1
+                events.append("mcp_call")
+                output_text = mcp_tool_text(mcp_result)
+                err = mcp_result.get("error")
+                mcp_responses.append(
+                    {
+                        "type": "mcp_call",
+                        "id": tool_use_id,
+                        "name": name,
+                        "server_label": "jira",
+                        "status": "error" if err else "ok",
+                        "error": err,
+                        "arguments": arguments,
+                        "output": output_text,
+                    }
+                )
+                tool_result_blocks.append(
+                    {
+                        "toolResult": {
+                            "toolUseId": tool_use_id,
+                            "content": [{"text": output_text[:24000]}],
+                            "status": "error" if err else "success",
+                        }
+                    }
+                )
+            messages.append({"role": "user", "content": tool_result_blocks})
+    except Exception as exc:  # noqa: BLE001
+        return TrialResult(
+            ok=False,
+            latency_s=time.perf_counter() - started,
+            error=f"Bedrock Converse / MCP loop failed: {exc}",
+            tool_events=sorted(set(events)),
+            mcp_calls=mcp_calls,
+            mcp_list_tools=list_ok,
+            mcp_tool_responses=mcp_responses,
+        )
+
+    latency = time.perf_counter() - started
+    data: dict[str, Any] = {
+        "output_text": accumulated,
+        "output": accumulated,
+        "stop_reason": last_stop,
+        "mcp_calls": mcp_responses,
+        "server_info": server_info,
+        "usage": {
+            "input_tokens": usage_acc["input_tokens"] or None,
+            "output_tokens": usage_acc["output_tokens"] or None,
+            "total_tokens": usage_acc["total_tokens"] or None,
+        },
+    }
+    ok = bool(accumulated.strip() or mcp_calls)
+    traj = format_trajectory(data, events)
+    result = TrialResult(
+        ok=ok,
+        latency_s=latency,
+        status_code=200 if ok else None,
+        output_text=accumulated[:4000],
+        tool_events=sorted(set(events)),
+        mcp_list_tools=list_ok,
+        mcp_calls=mcp_calls,
+        error=None if ok else "empty model output and no MCP calls",
+        raw_output=data,
+        trajectory=traj,
+        mcp_tool_responses=mcp_responses,
+        jira_issues=extract_jira_issues(mcp_responses),
+        mcp_time_s=sum(mcp_spans) if mcp_spans else None,
+        time_to_mcp_s=time_to_mcp,
+        mcp_call_spans_s=mcp_spans,
+    )
+    return _attach_token_metrics(
+        result,
+        started=started,
+        delta_times=delta_times,
+        delta_texts=[accumulated] if accumulated else [],
         usage=_extract_usage(data),
         streamed=False,
     )
@@ -1319,17 +1837,63 @@ def _print_final_report(summary: dict[str, Any], suite_wall_s: float) -> None:
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
     _load_dotenv(root / "backend" / ".env")
+    _load_dotenv(root / "backend" / ".env.bedrock", override=True)
+    profile_id = (os.getenv("BENCH_MODEL_INFERENCE_PROFILE_ID") or "").strip()
+    if profile_id:
+        os.environ["BENCH_MODEL"] = profile_id
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--target",
-        choices=("llama-stack", "stackchat"),
+        choices=("llama-stack", "stackchat", "bedrock-gateway", "bedrock-runtime"),
         default=os.getenv("BENCH_AGENTIC_TARGET", "llama-stack"),
+    )
+    parser.add_argument(
+        "--bedrock-gateway-url",
+        default=os.getenv("BEDROCK_GATEWAY_URL") or "",
+        help="AgentCore Gateway base URL (for --target bedrock-gateway)",
+    )
+    parser.add_argument(
+        "--bedrock-runtime-arn",
+        default=os.getenv("BEDROCK_AGENT_RUNTIME_ARN")
+        or os.getenv("GW_AGENTIC_RUNTIME_ARN")
+        or "",
+        help="AgentCore Runtime ARN (MCP server for --target bedrock-runtime)",
+    )
+    parser.add_argument(
+        "--bedrock-runtime-qualifier",
+        default=os.getenv("BEDROCK_RUNTIME_QUALIFIER") or "",
+        help="Optional AgentCore Runtime endpoint qualifier",
+    )
+    parser.add_argument(
+        "--bedrock-region",
+        default=os.getenv("BEDROCK_REGION") or os.getenv("AWS_REGION") or "",
+        help="AWS region for SigV4 / boto3 (defaults from AWS_REGION)",
+    )
+    parser.add_argument(
+        "--bedrock-auth",
+        choices=("iam", "bearer", "cognito", "api-key"),
+        default=resolve_auth_mode(os.getenv("BEDROCK_AUTH_MODE")),
+        help="Gateway auth: cognito (agent target), iam, bearer, or api-key",
+    )
+    parser.add_argument(
+        "--gateway-inference-only",
+        action="store_true",
+        default=os.getenv("BENCH_GATEWAY_INFERENCE_ONLY", "").strip().lower()
+        in {"1", "true", "yes"},
+        help="Use /inference/v1/responses instead of gateway runtime target invocations",
+    )
+    parser.add_argument(
+        "--rag-mode",
+        choices=("file_search", "gateway_mcp", "bedrock_kb"),
+        default=(os.getenv("BENCH_RAG_MODE") or "").strip().lower() or None,
+        help="RAG: file_search (Llama Stack), bedrock_kb (Retrieve API), or gateway_mcp (optional KB connector on /mcp)",
     )
     parser.add_argument("--base-url", default=None)
     parser.add_argument(
         "--model",
         default=os.getenv("BENCH_MODEL")
+        or os.getenv("BENCH_MODEL_INFERENCE_PROFILE_ID")
         or os.getenv("DEFAULT_MODEL")
         or "vllm-inference-1/llama-32-fp8",
     )
@@ -1364,6 +1928,20 @@ def main() -> int:
     parser.add_argument(
         "--mcp-label",
         default=os.getenv("BENCH_MCP_SERVER_LABEL", "jira"),
+    )
+    parser.add_argument(
+        "--knowledge-base-id",
+        default=os.getenv("BEDROCK_KNOWLEDGE_BASE_ID")
+        or os.getenv("GW_KNOWLEDGE_BASE_QUICK_START")
+        or "",
+        help="Bedrock managed KB id (10-char) for bedrock_kb Retrieve API",
+    )
+    parser.add_argument(
+        "--kb-embedding-model",
+        default=os.getenv("BEDROCK_KB_EMBEDDING_MODEL")
+        or os.getenv("GW_KB_EMBEDDING_MODEL")
+        or "",
+        help="KB embedding model id (e.g. amazon.titan-embed-text-v2:0) — metadata only",
     )
     parser.add_argument(
         "--allowed-tools",
@@ -1408,8 +1986,8 @@ def main() -> int:
         "--judge-model",
         default=os.getenv("PHOENIX_JUDGE_MODEL") or os.getenv("BENCH_JUDGE_MODEL") or "",
         help=(
-            "Llama Stack LLM id used by Phoenix judges "
-            "(defaults to another Stack LLM ≠ agent when available)"
+            "Phoenix LLM-as-judge model id (Amazon Bedrock inference profile by default; "
+            "set PHOENIX_JUDGE_PROVIDER=llama-stack for an OpenAI-compatible /v1 judge)"
         ),
     )
     parser.add_argument(
@@ -1424,6 +2002,18 @@ def main() -> int:
         help="Disable streaming (TTFT/ITL unavailable; tokens still read from usage if present)",
     )
     args = parser.parse_args()
+    if args.gateway_inference_only:
+        os.environ["BENCH_GATEWAY_INFERENCE_ONLY"] = "1"
+    if args.bedrock_runtime_arn.strip():
+        os.environ.setdefault("BEDROCK_AGENT_RUNTIME_ARN", args.bedrock_runtime_arn.strip())
+    elif not args.bedrock_runtime_arn.strip():
+        inferred = resolve_agent_runtime_arn() or ""
+        if inferred:
+            args.bedrock_runtime_arn = inferred
+    if args.knowledge_base_id.strip():
+        os.environ["BEDROCK_KNOWLEDGE_BASE_ID"] = args.knowledge_base_id.strip()
+    if args.kb_embedding_model.strip():
+        os.environ["BEDROCK_KB_EMBEDDING_MODEL"] = args.kb_embedding_model.strip()
     use_phoenix = args.phoenix and not args.no_phoenix
     use_stream = not args.no_stream
     scenario = args.scenario
@@ -1502,25 +2092,103 @@ def main() -> int:
     enable_rag = scenario == "rag"
     enable_mcp = scenario in {"list", "create", "rag"}
 
-    if enable_rag and not vector_store_ids:
+    if args.rag_mode:
+        rag_mode = args.rag_mode
+    elif args.target.startswith("bedrock"):
+        rag_mode = "bedrock_kb"
+    else:
+        rag_mode = "file_search"
+
+    gateway_url = (
+        resolve_bedrock_gateway_url(args.bedrock_gateway_url or args.base_url)
+    ).strip()
+    if args.target.startswith("bedrock") and not args.mcp_url:
+        if args.target == "bedrock-runtime" and (args.bedrock_runtime_arn or "").strip():
+            args.mcp_url = resolve_runtime_invocations_url(
+                args.bedrock_runtime_arn.strip(),
+                qualifier=args.bedrock_runtime_qualifier or None,
+                region=args.bedrock_region or None,
+            )
+        elif gateway_url:
+            args.mcp_url = resolve_gateway_urls(gateway_url)["mcp_url"]
+
+    if enable_rag and rag_mode == "file_search" and not vector_store_ids:
         print(
-            "Missing vector store ids for RAG. Pass --vector-store-ids or set "
-            "BENCH_VECTOR_STORE_IDS / DEFAULT_VECTOR_STORE_IDS.\n"
-            "Create a store first (UI or POST /api/rag/vector-stores) and upload docs.",
+            "Missing vector store ids for file_search RAG. Pass --vector-store-ids or set "
+            "BENCH_VECTOR_STORE_IDS / DEFAULT_VECTOR_STORE_IDS.",
             file=sys.stderr,
         )
         return 2
 
-    if enable_mcp and not args.mcp_url:
+    agent_gateway_target = (
+        args.target == "bedrock-gateway" and resolve_gateway_target_name()
+    )
+
+    if enable_mcp and not args.mcp_url and args.target != "bedrock-runtime" and not agent_gateway_target:
         print(
-            "Missing MCP server URL. Set BENCH_MCP_SERVER_URL or pass --mcp-url.\n"
-            "The URL must be reachable from the Llama Stack host (not only your laptop).",
+            "Missing MCP URL. Set BENCH_MCP_SERVER_URL, BEDROCK_GATEWAY_URL, or --mcp-url.\n"
+            "For Llama Stack, the URL must be reachable from the Stack host.",
             file=sys.stderr,
         )
         return 2
+
+    if args.target == "bedrock-gateway" and not gateway_url:
+        print(
+            "Missing AgentCore Gateway URL. Set BEDROCK_GATEWAY_URL or --bedrock-gateway-url.",
+            file=sys.stderr,
+        )
+        return 2
+
+    if args.target == "bedrock-runtime" and not args.bedrock_runtime_arn.strip():
+        print(
+            "Missing AgentCore Runtime ARN. Set BEDROCK_AGENT_RUNTIME_ARN or --bedrock-runtime-arn.",
+            file=sys.stderr,
+        )
+        return 2
+
+    if enable_rag and rag_mode == "bedrock_kb":
+        kb_api = resolve_knowledge_base_api_id(region=args.bedrock_region or None)
+        if not kb_api:
+            print(
+                "Missing Bedrock knowledge base id for bedrock_kb RAG. Set "
+                "BEDROCK_KNOWLEDGE_BASE_ID (10-char) or GW_KNOWLEDGE_BASE_QUICK_START.",
+                file=sys.stderr,
+            )
+            return 2
+
+    if enable_rag and rag_mode == "gateway_mcp":
+        kb_id = resolve_knowledge_base_id() or args.knowledge_base_id.strip() or None
+        kb_tools = resolve_kb_gateway_mcp_tool_names()
+        retrieve_names = ", ".join(kb_tools[:2])
+        if kb_id and "retrieve" not in (instructions or "").lower():
+            instructions = (
+                (instructions or "").strip()
+                + f"\n\nUse AgentCore Gateway MCP tools ({retrieve_names}) to query "
+                f"the managed knowledge base '{kb_id}' before Jira MCP actions. "
+                "Pass retrievalQuery.text with the user's question. Never invent facts or issue keys."
+            ).strip()
+        elif "retrieve" not in (instructions or "").lower():
+            instructions = (
+                (instructions or "").strip()
+                + "\n\nUse AgentCore Gateway MCP tools Retrieve or AgenticRetrieveStream to query "
+                "the knowledge base before Jira MCP actions. Never invent issue keys."
+            ).strip()
+
+    if enable_rag and rag_mode == "bedrock_kb" and "knowledge base" not in (instructions or "").lower():
+        kb_label = resolve_knowledge_base_name() or resolve_knowledge_base_api_id() or "configured KB"
+        instructions = (
+            (instructions or "").strip()
+            + f"\n\nAnswer using the retrieved Bedrock Knowledge Base context ('{kb_label}'). "
+            "Cite facts from the passages in the user message. "
+            "If nothing relevant was retrieved, say so. Never invent procedures or issue keys."
+        ).strip()
 
     if args.target == "llama-stack":
         base_url = args.base_url or os.getenv("LLAMA_STACK_BASE_URL") or "http://localhost:8321"
+    elif args.target == "bedrock-gateway":
+        base_url = gateway_url
+    elif args.target == "bedrock-runtime":
+        base_url = args.bedrock_runtime_arn
     else:
         base_url = (
             args.base_url
@@ -1529,6 +2197,12 @@ def main() -> int:
         )
 
     allowed = [t.strip() for t in args.allowed_tools.split(",") if t.strip()] or None
+    if enable_rag and rag_mode == "gateway_mcp":
+        kb_tool_names = resolve_kb_gateway_mcp_tool_names()
+        if allowed:
+            allowed = list(dict.fromkeys(allowed + kb_tool_names))
+        else:
+            allowed = kb_tool_names
     results_dir = root / "benchmarks" / "results"
     results_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
@@ -1538,21 +2212,53 @@ def main() -> int:
         prefix = "agentic-rag"
     else:
         prefix = "agentic-jira"
+    if args.target.startswith("bedrock"):
+        prefix = f"agentic-bedrock-{prefix.replace('agentic-', '')}"
     out_path = Path(args.output) if args.output else results_dir / f"{prefix}-{stamp}.json"
     jira_path = results_dir / f"{prefix}-{stamp}-jira-responses.json"
     rag_path = results_dir / f"{prefix}-{stamp}-rag-responses.json"
 
     tools_payload: list[dict[str, Any]] = []
-    if enable_rag:
+    if enable_rag and rag_mode == "file_search":
         tools_payload.append(
             {"type": "file_search", "vector_store_ids": vector_store_ids}
         )
-    if enable_mcp:
+    if enable_rag and rag_mode == "bedrock_kb":
+        tools_payload.append(
+            {
+                "type": "bedrock_kb_retrieve",
+                "knowledge_base_id": resolve_knowledge_base_api_id(),
+                "knowledge_base_name": resolve_knowledge_base_name(),
+                "kb_embedding_model": resolve_kb_embedding_model(),
+                "api": "bedrock-agent-runtime:Retrieve",
+            }
+        )
+    if enable_rag and rag_mode == "gateway_mcp":
+        tools_payload.append(
+            {
+                "type": "gateway_mcp_rag",
+                "mcp_tools": resolve_kb_gateway_mcp_tool_names(),
+                "knowledge_base_id": resolve_knowledge_base_api_id(),
+                "kb_embedding_model": resolve_kb_embedding_model(),
+                "gateway_mcp_url": args.mcp_url,
+            }
+        )
+    if enable_mcp and args.target != "bedrock-runtime":
         tools_payload.append(
             {
                 "type": "mcp",
                 "server_label": args.mcp_label,
                 "server_url": args.mcp_url,
+                "allowed_tools": allowed,
+            }
+        )
+    if enable_mcp and args.target == "bedrock-runtime":
+        tools_payload.append(
+            {
+                "type": "mcp",
+                "server_label": args.mcp_label,
+                "server_url": args.mcp_url,
+                "transport": "agentcore-runtime",
                 "allowed_tools": allowed,
             }
         )
@@ -1569,9 +2275,29 @@ def main() -> int:
     print(f"Base URL:     {base_url}")
     print(f"Model:        {args.model}")
     if enable_rag:
-        print(f"RAG stores:   {', '.join(vector_store_ids)}")
+        print(f"RAG mode:     {rag_mode}")
+        if rag_mode == "file_search" and vector_store_ids:
+            print(f"RAG stores:   {', '.join(vector_store_ids)}")
+        if rag_mode == "bedrock_kb":
+            print(f"RAG KB:       {resolve_knowledge_base_name() or '-'} ({resolve_knowledge_base_api_id() or '-'})")
+            emb = resolve_kb_embedding_model()
+            if emb:
+                print(f"RAG embed:    {emb}")
+            print("RAG API:      bedrock-agent-runtime Retrieve")
+        if rag_mode == "gateway_mcp":
+            kb_id = resolve_knowledge_base_id()
+            if kb_id:
+                print(f"RAG KB:       {kb_id}")
+            emb = resolve_kb_embedding_model()
+            if emb:
+                print(f"RAG embed:    {emb}")
+            print(f"RAG MCP tools:{', '.join(resolve_kb_gateway_mcp_tool_names()[:2])}")
     if enable_mcp:
         print(f"MCP:          {args.mcp_label} → {args.mcp_url}")
+    if args.target.startswith("bedrock"):
+        print(f"Bedrock auth: {args.bedrock_auth}")
+        if args.bedrock_region:
+            print(f"Bedrock region: {args.bedrock_region}")
     for key, value in prompt_meta.items():
         if value:
             print(f"{key}: {value}")
@@ -1584,32 +2310,101 @@ def main() -> int:
     if scenario == "create":
         span_name = "agentic.jira_create_issue"
     elif scenario == "rag":
-        span_name = "agentic.rag_file_search"
+        span_name = (
+            "agentic.bedrock_rag_mcp"
+            if args.target.startswith("bedrock")
+            else "agentic.rag_file_search"
+        )
     else:
         span_name = "agentic.jira_list_sup"
 
     def one(idx: int) -> TrialResult:
-        common = dict(
-            base_url=base_url,
-            model=args.model,
-            prompt=prompt,
-            instructions=instructions,
-            timeout=args.timeout,
-            stream=use_stream,
-            enable_mcp=enable_mcp,
-            mcp_label=args.mcp_label,
-            mcp_url=args.mcp_url,
-            allowed_tools=allowed,
-            enable_rag=enable_rag,
-            vector_store_ids=vector_store_ids,
-        )
-        if args.target == "llama-stack":
-            result = run_llama_stack(
-                api_key=args.api_key or None,
-                **common,
+        trial_prompt = prompt
+        rag_prefetch_s: float | None = None
+
+        if enable_rag and rag_mode == "bedrock_kb" and args.target.startswith("bedrock"):
+            rag_started = time.perf_counter()
+            try:
+                chunks = retrieve_knowledge_base(
+                    prompt,
+                    region=args.bedrock_region or None,
+                )
+                rag_prefetch_s = time.perf_counter() - rag_started
+                trial_prompt = (
+                    format_kb_retrieval_context(chunks)
+                    + "\n\nQuestion: "
+                    + prompt
+                )
+            except Exception as exc:  # noqa: BLE001
+                result = TrialResult(
+                    ok=False,
+                    latency_s=0.0,
+                    error=f"Bedrock KB Retrieve failed: {exc}",
+                    trial_id=idx,
+                )
+                return result
+
+        if args.target == "bedrock-runtime":
+            result = run_bedrock_runtime(
+                agent_runtime_arn=args.bedrock_runtime_arn,
+                prompt=trial_prompt,
+                instructions=instructions,
+                timeout=args.timeout,
+                model=args.model,
+                qualifier=args.bedrock_runtime_qualifier or None,
+                region=args.bedrock_region or None,
+                allowed_tools=allowed,
+                enable_mcp=enable_mcp,
+                auth_mode=args.bedrock_auth,
             )
         else:
-            result = run_stackchat(**common)
+            common = dict(
+                base_url=base_url,
+                model=args.model,
+                prompt=trial_prompt,
+                instructions=instructions,
+                timeout=args.timeout,
+                stream=use_stream,
+                enable_mcp=enable_mcp,
+                mcp_label=args.mcp_label,
+                mcp_url=args.mcp_url,
+                allowed_tools=allowed,
+                enable_rag=enable_rag,
+                vector_store_ids=vector_store_ids,
+                rag_mode=rag_mode,
+            )
+            if args.target == "llama-stack":
+                result = run_llama_stack(
+                    api_key=args.api_key or None,
+                    **common,
+                )
+            elif args.target == "bedrock-gateway":
+                agent_target = resolve_gateway_target_name()
+                if agent_target:
+                    result = run_bedrock_gateway_agent(
+                        gateway_url=gateway_url,
+                        prompt=trial_prompt,
+                        instructions=instructions,
+                        timeout=args.timeout,
+                        region=args.bedrock_region or None,
+                        auth_mode="cognito",
+                        api_key=args.api_key or None,
+                        target=agent_target,
+                    )
+                else:
+                    result = run_bedrock_gateway(
+                        gateway_url=gateway_url,
+                        region=args.bedrock_region or None,
+                        auth_mode=args.bedrock_auth,
+                        api_key=args.api_key or None,
+                        **{k: v for k, v in common.items() if k != "base_url"},
+                    )
+            else:
+                result = run_stackchat(**common)
+        if rag_prefetch_s is not None:
+            result.rag_time_s = rag_prefetch_s
+            result.time_to_rag_s = 0.0
+            result.rag_calls = max(result.rag_calls, 1)
         result.trial_id = idx
         if use_phoenix:
             from benchmarks.phoenix_semantic import trace_agent_span
@@ -1670,7 +2465,30 @@ def main() -> int:
         "allowed_tools": allowed,
     } if enable_mcp else None
     rag_meta = {
-        "vector_store_ids": vector_store_ids,
+        "mode": rag_mode,
+        "vector_store_ids": vector_store_ids if rag_mode == "file_search" else None,
+        "gateway_mcp_url": args.mcp_url if rag_mode == "gateway_mcp" else None,
+        "retrieve_api": (
+            "bedrock-agent-runtime:Retrieve" if rag_mode == "bedrock_kb" else None
+        ),
+        "knowledge_base_id": (
+            resolve_knowledge_base_api_id()
+            if rag_mode in {"gateway_mcp", "bedrock_kb"}
+            else None
+        ),
+        "knowledge_base_name": (
+            resolve_knowledge_base_name()
+            if rag_mode in {"gateway_mcp", "bedrock_kb"}
+            else None
+        ),
+        "kb_embedding_model": (
+            resolve_kb_embedding_model()
+            if rag_mode in {"gateway_mcp", "bedrock_kb"}
+            else None
+        ),
+        "mcp_tools": (
+            resolve_kb_gateway_mcp_tool_names() if rag_mode == "gateway_mcp" else None
+        ),
         "enable_rag": True,
     } if enable_rag else None
     report: dict[str, Any] = {
@@ -1688,6 +2506,24 @@ def main() -> int:
         "summary": summary,
         "trials": [_trial_dict(r) for r in sorted(results, key=lambda r: r.trial_id or 0)],
     }
+    if args.target.startswith("bedrock"):
+        report["bedrock"] = {
+            "gateway_url": gateway_url if args.target == "bedrock-gateway" else None,
+            "inference_url": (
+                resolve_gateway_urls(gateway_url)["responses_url"]
+                if args.target == "bedrock-gateway" and gateway_url
+                else None
+            ),
+            "runtime_arn": (
+                args.bedrock_runtime_arn if args.target == "bedrock-runtime" else None
+            ),
+            "runtime_mcp_url": args.mcp_url if args.target == "bedrock-runtime" else None,
+            "runtime_qualifier": args.bedrock_runtime_qualifier or None,
+            "region": args.bedrock_region or None,
+            "auth_mode": args.bedrock_auth,
+            "knowledge_base_id": resolve_knowledge_base_id() or None,
+            "kb_embedding_model": resolve_kb_embedding_model() or None,
+        }
     if enable_mcp:
         report["jira_responses_file"] = str(jira_path)
     if enable_rag:

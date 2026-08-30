@@ -1,0 +1,82 @@
+{
+  "created_at": "2026-08-07T08:39:25.994228+00:00",
+  "target": "llama-stack",
+  "base_url": "http://lsd-genai-playground-service-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com",
+  "model": "vllm-inference-1/llama-32-fp8",
+  "prompt": "List Jira issues in project SUP. Summarize key, status, and summary.",
+  "mcp": {
+    "server_label": "jira",
+    "server_url": "http://mcp-atlassian-acidonpe.apps.ocp.zd4ms.sandbox2306.opentlc.com/sse",
+    "allowed_tools": null
+  },
+  "summary": {
+    "requests": 1,
+    "ok": 1,
+    "errors": 0,
+    "success_rate": 1.0,
+    "tool_activity_rate": 1.0,
+    "orchestration_time_s": {
+      "min": 7.65545799996471,
+      "max": 7.65545799996471,
+      "mean": 7.65545799996471,
+      "median": 7.65545799996471,
+      "p95": 7.65545799996471
+    },
+    "latency_s": {
+      "min": 7.65545799996471,
+      "max": 7.65545799996471,
+      "mean": 7.65545799996471,
+      "median": 7.65545799996471,
+      "p95": 7.65545799996471
+    },
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 1.0,
+    "combined_success_rate": 1.0
+  },
+  "trials": [
+    {
+      "ok": true,
+      "latency_s": 7.65545799996471,
+      "status_code": 200,
+      "response_id": "resp_6481fe0f-8b6d-4ab9-8b8d-da1124fc3606",
+      "output_text": "Here are the Jira issues in project SUP:\n\n| Key | Status | Summary |\n| --- | --- | --- |\n| SUP-5 | Open | AI agents to streamline document retrieval 4 |\n| SUP-4 | Open | AI agents to streamline document retrieval 2 |\n| SUP-3 | Open | AI agents to streamline document retrieval |\n| SUP-2 | Open | test |\n\nNote that the list only includes the first 10 issues, and there may be more issues in the project.",
+      "tool_events": [
+        "mcp",
+        "mcp_call",
+        "mcp_list_tools"
+      ],
+      "mcp_list_tools": 1,
+      "mcp_calls": 1,
+      "error": null,
+      "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+    }
+  ],
+  "phoenix": {
+    "requests": 1,
+    "judge": "phoenix",
+    "semantic_success_rate": 1.0,
+    "trajectory_success_rate": 1.0,
+    "combined_success_rate": 1.0,
+    "require_trajectory": true,
+    "orchestration_time_s": {
+      "min": 7.65545799996471,
+      "max": 7.65545799996471,
+      "mean": 7.65545799996471,
+      "median": 7.65545799996471
+    },
+    "trials": [
+      {
+        "trial_id": 0,
+        "orchestration_time_s": 7.65545799996471,
+        "http_ok": true,
+        "semantic_label": "correct",
+        "semantic_explanation": "The final answer lists Jira issues for project SUP with key/status/summary style details, and the response is consistent with the tool trajectory. However, the answer only includes the first 10 issues, which may not be the complete list of issues in the project. This does not fully meet the criteria for a correct answer, but it is still usable for a human who asked to list issues in SUP. | overridden_by_code_heuristic: SUP issues present with valid trajectory",
+        "trajectory_label": "correct",
+        "trajectory_explanation": "Incorrect | overridden_by_code_trajectory_check",
+        "trajectory_code_ok": true,
+        "passed": true,
+        "trajectory": "1. mcp_list_tools  tools=[jira_get_issue, jira_search, jira_get_project_issues, jira_create_issue, jira_batch_create_issues, jira_batch_get_changelogs, jira_update_issue, jira_assign_issue, jira_delete_issue, jira_move_issue]\n2. mcp_call name=jira_get_project_issues status=ok args={\"project_key\": \"SUP\", \"limit\": \"10\", \"start_at\": \"0\"}"
+      }
+    ]
+  }
+}

@@ -28,3 +28,6 @@ benchmarks/prompts/jira_create/user.txt
 .vscode/
 
 *.tgz
+
+aws/mcp-atlassian
+aws/mcpatlassianagentcore

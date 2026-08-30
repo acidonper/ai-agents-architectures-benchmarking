@@ -26,13 +26,32 @@ Comprehensive platform for building, deploying, and benchmarking AI agent archit
 - **`prompts/`** - System/user prompts for scenarios (jira_create, rag)
 - **`results/`** - Benchmark output results (JSON)
 
-### `/charts` - Infrastructure & Deployment
-- OGX
-  - **`milvus/`** - Helm chart for Milvus vector database
-  - **`rhoai/`** - RHOAI/OpenShift deployment configurations
-    - LLM inference service
-    - MCP Atlassian integration
-    - Llama Stack distribution configs
+### `/assets` - Notebooks & Configuration
+- **`milvus-onboard.ipynb`** - Jupyter notebook for Milvus setup and testing
+- **`system_prompt`** - Default system prompt for AI agents
+
+### `/ogx` - Infrastructure & Deployment
+Complete Kubernetes/OpenShift deployment stack with vector database, LLM inference, and Llama Stack orchestration.
+
+- **`milvus/`** - Helm chart for Milvus vector database (RAG/file_search backend)
+- **`rhoai/`** - RHOAI/OpenShift AI stack with:
+  - LLM inference service (vLLM-based, KServe-managed)
+  - MCP Atlassian server (Jira tool integration)
+  - Llama Stack distribution (agent orchestration engine)
+  - Configuration for connecting all components
+
+**Quick Start:** See [ogx/README.md](ogx/README.md) for detailed deployment instructions, configuration options, and troubleshooting.
+
+### `/aws` - AWS Bedrock Deployment
+AWS Bedrock integration for cloud-based AI agent architecture.
+
+- **`Dockerfile`** - Container image for MCP server compatible with AWS AgentCore (port 8000)
+- **`README.md`** - Comprehensive guide for:
+  - Building and pushing MCP Docker image to ECR
+  - Configuring Bedrock AgentCore runtime
+  - Setting up Knowledge Bases with RAG
+  - Integrating LLM services
+  - Troubleshooting deployment issues
 
 ### `/scripts` - Utility & Setup Scripts
 - `dev.sh` - Development environment setup
